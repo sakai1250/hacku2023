@@ -20,24 +20,62 @@ struct PickImageView: View {
     @State private var imagePath: URL?
     @State private var isImagePickerDisplayed = false
     @State private var isActive = false
+    
+    let screen: CGRect = UIScreen.main.bounds
 
     var body: some View {
         NavigationStack {
-            VStack {
-                Button("画像を選択") {
-                    isImagePickerDisplayed = true
-                }
+            ZStack {
                 if let selectedImage = selectedImage {
-                    Image(uiImage: selectedImage)
+                    Image("Hacku_select2")
                         .resizable()
-                        .scaledToFit()
-                    Button("診断を始める") {
-                        isActive = true
-                        user.first?.exp += 1
-                        saveImage(selectedImage: selectedImage, imagePath: imagePath)
-                    }
-                    .navigationDestination(isPresented: $isActive) {
-                        LabelPredictionView(selectedImage: $selectedImage)
+                        .aspectRatio(CGSize(width: 1, height: 2), contentMode: .fill)
+                } else {
+                    Image("Hacku_select")
+                        .resizable()
+                        .aspectRatio(CGSize(width: 1, height: 2), contentMode: .fill)
+                }
+                VStack {
+                    if let selectedImage = selectedImage {
+                        Image(uiImage: selectedImage)
+                            .resizable()
+                            .scaledToFit()
+                        Button("診断を始める") {
+                            isActive = true
+                            user.first?.exp += 1
+                            saveImage(selectedImage: selectedImage, imagePath: imagePath)
+                        }
+                        .padding()
+                                .background(Color(red: 0.0, green: 0.6, blue: 0.9))
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                                .shadow(radius: 5)
+                                .frame(maxWidth: screen.width / 2)
+                                .frame(maxHeight: screen.height / 5)
+                        .navigationDestination(isPresented: $isActive) {
+                            LabelPredictionView(selectedImage: $selectedImage)
+                        }
+                        Button("画像を選択") {
+                            isImagePickerDisplayed = true
+                        }
+                        .padding()
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                                .shadow(radius: 5)
+                                .frame(maxWidth: screen.width / 2)
+                                .frame(maxHeight: screen.height / 5)
+                    } else {
+                        Button("画像を選択") {
+                            isImagePickerDisplayed = true
+                        }
+                        .padding()
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                                .shadow(radius: 5)
+                                .frame(maxWidth: screen.width / 2)
+                                .frame(maxHeight: screen.height / 5)
                     }
                 }
             }

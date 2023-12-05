@@ -15,7 +15,9 @@ struct HomeView: View {
     private var users: FetchedResults<ViViTUser>
     
     @ObservedObject private var weatherAPI = WeatherAPI()
+    
     let screen: CGRect = UIScreen.main.bounds
+    
     @StateObject var manager = ScreenShotManager()
     
     var body: some View {
@@ -33,7 +35,7 @@ struct HomeView: View {
                             .resizable()
                             .frame(maxWidth: screen.width * 2 / 3.5)
                             .frame(maxHeight: screen.height * 2 / 3)
-                            .offset(y: screen.height / 6)
+                            .offset(y: screen.height / 7)
                     }
                     Spacer()
                 }
@@ -56,20 +58,23 @@ struct HomeView: View {
                                     VStack(alignment: .leading) { // VStackを左揃えに設定
                                         Text("Name: \(user.name ?? "Unknown")")
                                             .font(.headline)
-                                        Text("Level: \(user.level)")
-                                            .font(.subheadline).foregroundColor(.gray)
                                     }
                                     Spacer() // 右側にスペースを追加して左揃えにする
-                                    ProgressView(value: Double(user.exp), total: 3) // 仮の最大値
-                                        .progressViewStyle(LinearProgressViewStyle())
-                                        .frame(width: 100)
+                                    VStack(alignment: .leading) {
+                                        Text("Level: \(user.level)")
+                                            .font(.subheadline)
+                                        Text("Exp: \(user.exp)")
+                                            .font(.subheadline)
+                                        ProgressView(value: Double(user.exp), total: 3) // 仮の最大値
+                                            .progressViewStyle(LinearProgressViewStyle())
+                                            .frame(width: 100)
                                     }
                                 }
+                            }
                             Button(action: {
                                 manager.captureScreenShot(windowScene: UIApplication.shared.connectedScenes.first as? UIWindowScene, rect: manager.rect)
                             }){
                                 Text("共有")
-                                    .padding()
                             }.sheet(isPresented: $manager.showActivityView) {
                                 ActivityView(
                                     activityItems: [manager.url],

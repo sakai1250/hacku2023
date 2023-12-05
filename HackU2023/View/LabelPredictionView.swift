@@ -15,32 +15,52 @@ struct LabelPredictionView: View {
     @State private var isActiveHome = false
     @State private var feedback = ""
     @Binding var selectedImage: UIImage?
+    let screen: CGRect = UIScreen.main.bounds
 
     var body: some View {
         NavigationStack {
-            VStack {
-                Image(uiImage: selectedImage ?? UIImage(named: "tops.png")!)
+            ZStack {
+                Image("Hacku_select2")
                     .resizable()
-                    .scaledToFit()
-                    .frame(width: 200, height: 200)
-                
-                Text(predictionResult)
-                
-                // 3画面に遷移
-                Button("合ってる") {
-                    feedback = "おしゃれ"
-                    isActiveRetrain = true
-                }
-                .navigationDestination(isPresented: $isActiveRetrain) {
-                    RetrainingView(feedback: $feedback, selectedImage: $selectedImage)
-                }
-                // 3画面目に遷移
-                Button("間違い") {
-                    feedback = "おしゃれじゃない"
-                    isActiveRetrain = true
-                }
-                .navigationDestination(isPresented: $isActiveRetrain) {
-                    RetrainingView(feedback: $feedback, selectedImage: $selectedImage)
+                    .aspectRatio(CGSize(width: 1, height: 2), contentMode: .fill)
+                VStack {
+                    Image(uiImage: selectedImage ?? UIImage(named: "tops.png")!)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200, height: 200)
+                    
+                    Text(predictionResult)
+                    
+                    // 3画面に遷移
+                    Button("合ってる") {
+                        feedback = "おしゃれ"
+                        isActiveRetrain = true
+                    }
+                    .padding()
+                            .background(Color(red: 0.0, green: 0.6, blue: 0.9))
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                            .shadow(radius: 5)
+                            .frame(maxWidth: screen.width / 2)
+                            .frame(maxHeight: screen.height / 5)
+                    .navigationDestination(isPresented: $isActiveRetrain) {
+                        RetrainingView(feedback: $feedback, selectedImage: $selectedImage)
+                    }
+                    // 3画面目に遷移
+                    Button("間違い") {
+                        feedback = "おしゃれじゃない"
+                        isActiveRetrain = true
+                    }
+                    .padding()
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                            .shadow(radius: 5)
+                            .frame(maxWidth: screen.width / 2)
+                            .frame(maxHeight: screen.height / 5)
+                    .navigationDestination(isPresented: $isActiveRetrain) {
+                        RetrainingView(feedback: $feedback, selectedImage: $selectedImage)
+                    }
                 }
             }
         }.onAppear {

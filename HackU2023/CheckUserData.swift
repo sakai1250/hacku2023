@@ -59,7 +59,5 @@ func checkAndUpdateLevel(for user: ViViTUser) -> [String] {
         }
 
     }
-    print(room)
-
     return [room, avater]
 }
