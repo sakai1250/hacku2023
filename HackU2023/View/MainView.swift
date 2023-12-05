@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct ViewController: View {
+struct MainView: View {
     @State var selection = 1
-    
+
     var body: some View {
         // 下部のタブビュー
         TabView(selection: $selection) {
@@ -26,7 +26,7 @@ struct ViewController: View {
                 }
                 .tag(2)
             
-            PhotosView()
+            EditPhotosView()
                 .tabItem {
                     Label("画像一覧", systemImage: "3.circle")
                 }
@@ -39,10 +39,11 @@ struct ViewController: View {
                 .tag(4)
             
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
-struct ViewController_Previews: PreviewProvider {
+struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        ViewController()
+        MainView()
     }
 }

@@ -14,6 +14,7 @@ struct RetrainingView: View {
     @State var isActive = false
     @State var isTrainingInProgress = false
     @Binding var feedback: String
+    @Binding var selectedImage: UIImage?
 
     var body: some View {
         NavigationStack {
@@ -40,7 +41,7 @@ struct RetrainingView: View {
     func startRetraining() {
         isTrainingInProgress = true
         let newTrainingData: [TrainingData] = [
-            TrainingData(image: UIImage(named: "tops.png")!, label: feedback)
+            TrainingData(image: self.selectedImage!, label: self.feedback)
         ]
         let newFeatureProviders = newTrainingData.compactMap { createMLFeatureProvider(from: $0) }
         let newData = MLArrayBatchProvider(array: newFeatureProviders)
@@ -104,7 +105,8 @@ struct RetrainingView: View {
 
 
 struct RetrainingView_Previews: PreviewProvider {
+    @State static var selectedImage = UIImage(named: "tops.png")
     static var previews: some View {
-        RetrainingView( feedback: .constant("おしゃれ"))
+        RetrainingView(feedback: .constant("おしゃれ"), selectedImage: $selectedImage)
     }
 }

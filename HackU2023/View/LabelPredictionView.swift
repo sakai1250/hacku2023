@@ -11,7 +11,8 @@ import UIKit
 
 struct LabelPredictionView: View {
     @State private var predictionResult = "ラベルを推定中..."
-    @State private var isActive = false
+    @State private var isActiveRetrain = false
+    @State private var isActiveHome = false
     @State private var feedback = ""
     @Binding var selectedImage: UIImage?
 
@@ -25,21 +26,21 @@ struct LabelPredictionView: View {
                 
                 Text(predictionResult)
                 
-                // 3画面目に遷移
+                // 3画面に遷移
                 Button("合ってる") {
                     feedback = "おしゃれ"
-                    isActive = true
+                    isActiveRetrain = true
                 }
-                .navigationDestination(isPresented: $isActive) {
-                    RetrainingView(feedback: $feedback)
+                .navigationDestination(isPresented: $isActiveRetrain) {
+                    RetrainingView(feedback: $feedback, selectedImage: $selectedImage)
                 }
                 // 3画面目に遷移
                 Button("間違い") {
                     feedback = "おしゃれじゃない"
-                    isActive = true
+                    isActiveRetrain = true
                 }
-                .navigationDestination(isPresented: $isActive) {
-                    RetrainingView(feedback: $feedback)
+                .navigationDestination(isPresented: $isActiveRetrain) {
+                    RetrainingView(feedback: $feedback, selectedImage: $selectedImage)
                 }
             }
         }.onAppear {
@@ -47,7 +48,25 @@ struct LabelPredictionView: View {
             let imageToPredict = selectedImage ?? UIImage(named: "tops.png")!
             predictLabel(image: imageToPredict)
         }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    isActiveHome = true
+                })
+                    {
+                    HStack {
+                        Image(systemName: "arrow.left")
+                        Text("HONE")
+                    }
+                    .navigationDestination(isPresented: $isActiveHome) {
+                        MainView()
+                    }
+                }
+            }
+        }
+        .navigationBarBackButtonHidden(true)
     }
+    
     func predictLabel(image: UIImage) {
         guard let model = try? VNCoreMLModel(for: MobileNetV2_pytorch().model) else { return }
         
