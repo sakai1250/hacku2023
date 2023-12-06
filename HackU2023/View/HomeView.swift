@@ -19,9 +19,9 @@ struct HomeView: View {
     let screen: CGRect = UIScreen.main.bounds
     
     @StateObject var manager = ScreenShotManager()
-    
+    @State private var items = ["", "", "", ""]
+
     var body: some View {
-        let items = checkAndUpdateLevel(for: users.first!)
         VStack {
             ZStack(alignment: .topLeading) { // 左上に配置
                 HStack(alignment: .center) {
@@ -85,6 +85,9 @@ struct HomeView: View {
                         }
                     }
                 }
+            }
+            .onAppear {
+                items = checkAndUpdateLevel(for: users.first!)
             }
         .background(RectangleGetter(rect: $manager.rect))
         }

@@ -14,12 +14,12 @@ struct RetrainingCompleteView: View {
         NavigationStack {
             VStack {
                 Text("再学習完了")
-                Button("1画面目に戻る"){
+                Button("ホームに戻る"){
                         isActive = true
                 }
             }
             .navigationDestination(isPresented: $isActive) {
-                StartView()
+                MainView()
             }
         }
     }
