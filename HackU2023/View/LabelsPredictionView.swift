@@ -196,7 +196,7 @@ struct LabelsPredictionView: View {
                             if let index = self.predictionResults.firstIndex(of: highestValue) {
                                 print("最も高い値: \(highestValue), 位置番号: \(index)")
                                 self.predictionResult = self.predictionResults[index]
-                                self.selectedImages = selectedImagesPair.dropFirst()[index]
+                                self.selectedImages = selectedImagesPair[index+1]
                                 print("結果\(self.predictionResults)")
                             }
                         } else {
