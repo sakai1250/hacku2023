@@ -20,7 +20,7 @@ struct RetrainingView: View {
     @State var isActive = false
     @State var isTrainingInProgress = false
     @Binding var feedback: String
-    @Binding var selectedImage: UIImage?
+    @Binding var combinedImage: UIImage?
     @State private var items = ["", "", "", ""]
 
     @State private var retraining = true
@@ -68,7 +68,7 @@ struct RetrainingView: View {
         self.isTrainingInProgress = true
         if self.feedback == "おしゃれじゃない" {
             let newTrainingData: [TrainingData] = [
-                TrainingData(image: self.selectedImage!, label: self.feedback)
+                TrainingData(image: self.combinedImage!, label: self.feedback)
             ]
             let newFeatureProviders = newTrainingData.compactMap { createMLFeatureProvider(from: $0) }
             let newData = MLArrayBatchProvider(array: newFeatureProviders)
@@ -133,9 +133,9 @@ struct RetrainingView: View {
 }
 
 
-struct RetrainingView_Previews: PreviewProvider {
-    @State static var selectedImage = UIImage(named: "tops.png")
-    static var previews: some View {
-        RetrainingView(feedback: .constant("おしゃれ"), selectedImage: $selectedImage)
-    }
-}
+//struct RetrainingView_Previews: PreviewProvider {
+//    @State static var selectedImage = UIImage(named: "tops.png")
+//    static var previews: some View {
+//        RetrainingView(feedback: .constant("おしゃれ"), combinedImage: $combinedImage)
+//    }
+//}

@@ -7,56 +7,59 @@ struct EditPhotosView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
-                    // 画像の表示
-                    ForEach(imageKeys, id: \.self) { key in
-                        if let image = retrieveImage(forKey: key) {
-                            Image(uiImage: image)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 100)
-                                .cornerRadius(10)
-                                .overlay(
-                                    Rectangle()
-                                        .foregroundColor(.clear)
-                                        .border(selectedImages.contains(key) ? Color.blue : Color.clear, width: 3)
-                                )
-                                .onTapGesture {
-                                    if selectedImages.contains(key) {
-                                        selectedImages.remove(key)
-                                    } else {
-                                        selectedImages.insert(key)
+            ScrollView {
+                VStack {
+                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
+                        // 画像の表示
+                        ForEach(imageKeys, id: \.self) { key in
+                            if let image = retrieveImage(forKey: key) {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: 100)
+                                    .cornerRadius(10)
+                                    .overlay(
+                                        Rectangle()
+                                            .foregroundColor(.clear)
+                                            .border(selectedImages.contains(key) ? Color.blue : Color.clear, width: 3)
+                                    )
+                                    .onTapGesture {
+                                        if selectedImages.contains(key) {
+                                            selectedImages.remove(key)
+                                        } else {
+                                            selectedImages.insert(key)
+                                        }
                                     }
-                                }
+                            }
                         }
+                        .padding()
+                        
                     }
-                    .padding()
-                }
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button("削除") {
-                            showingDeleteAlert = !selectedImages.isEmpty
-                        }
-                        .disabled(selectedImages.isEmpty)
-                    }
-                }
-                .navigationBarTitle("画像一覧", displayMode: .inline)
-                .navigationBarBackButtonHidden(true)
-                .onAppear {
-                    loadImages()
-                }
-                .alert(isPresented: $showingDeleteAlert) {
-                    Alert(
-                        title: Text("削除の確認"),
-                        message: Text("選択した画像を削除しますか？"),
-                        primaryButton: .destructive(Text("削除")) {
-                            deleteSelectedImages()
-                        },
-                        secondaryButton: .cancel()
-                    )
                 }
             }
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("削除") {
+                    showingDeleteAlert = !selectedImages.isEmpty
+                }
+                .disabled(selectedImages.isEmpty)
+            }
+        }
+        .navigationBarTitle("画像一覧", displayMode: .inline)
+        .navigationBarBackButtonHidden(true)
+        .onAppear {
+            loadImages()
+        }
+        .alert(isPresented: $showingDeleteAlert) {
+            Alert(
+                title: Text("削除の確認"),
+                message: Text("選択した画像を削除しますか？"),
+                primaryButton: .destructive(Text("削除")) {
+                    deleteSelectedImages()
+                },
+                secondaryButton: .cancel()
+            )
         }
     }
     

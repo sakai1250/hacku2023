@@ -64,6 +64,44 @@ class WeatherAPI: ObservableObject {
         }
     }
     
+    
+    // 天気カテゴリを取得する関数
+    public func getWeatherCategory_for_predict(_ weatherCategory: String) -> String {
+        switch weatherCategory {
+        case "晴れ", "曇り":
+            return "晴れ"
+        case "雨", "雪", "雷雨":
+            return "雨"
+        default:
+            return "不明"
+        }
+    }
+    
+    func seasonFromDates(_ dateStrings: [String]) -> String {
+        func seasonForMonth(_ month: Int) -> String {
+            switch month {
+            case 3...5:
+                return "春"
+            case 6...8:
+                return "夏"
+            case 9...11:
+                return "秋"
+            case 12, 1...2:
+                return "冬"
+            default:
+                return "不明な季節"
+            }
+        }
+
+        if let firstDateString = dateStrings.first,
+           let monthString = firstDateString.split(separator: "-").dropFirst().first,
+           let month = Int(monthString) {
+            return seasonForMonth(month)
+        } else {
+            return "不明な季節"
+        }
+    }
+    
     private func getLocationAndFetchData() {
         // 位置情報を取得
         LocationManager.shared.getLocation { result in

@@ -15,11 +15,17 @@ struct LabelPredictionView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \ViViTUser.level, ascending: true)],
         animation: .default)
     private var user: FetchedResults<ViViTUser>
+    
+    @ObservedObject private var weatherAPI = WeatherAPI()
+
     @State private var predictionResult = "ラベルを推定中..."
     @State private var isActiveRetrain = false
     @State private var isActiveHome = false
     @State private var feedback = ""
-    @Binding var selectedImage: UIImage?
+    @State private var combinedImage: UIImage?
+
+    @Binding var selectedImages: [UIImage]
+
     let screen: CGRect = UIScreen.main.bounds
     
     @State private var assuming = true
@@ -57,14 +63,11 @@ struct LabelPredictionView: View {
                         .frame(maxHeight: screen.height / 0.9)
                     VStack {
                         HStack {
-                            Image(uiImage: selectedImage ?? UIImage(named: "tops.png")!)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 200, height: 200)
-                            Image(uiImage: selectedImage ?? UIImage(named: "tops.png")!)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 200, height: 200)
+                            ForEach(selectedImages, id: \.self) { image in
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFit()
+                            }
                         }
                         Text(predictionResult)
                             .font(.system(size: 32))
@@ -86,7 +89,7 @@ struct LabelPredictionView: View {
                             .frame(maxWidth: screen.width / 2)
                             .frame(maxHeight: screen.height / 5)
                             .navigationDestination(isPresented: $isActiveRetrain) {
-                                RetrainingView(feedback: $feedback, selectedImage: $selectedImage)
+                                RetrainingView(feedback: $feedback, combinedImage: $combinedImage)
                             }
                             // 3画面目に遷移
                             Button("やめとく") {
@@ -101,7 +104,7 @@ struct LabelPredictionView: View {
                             .frame(maxWidth: screen.width / 2)
                             .frame(maxHeight: screen.height / 5)
                             .navigationDestination(isPresented: $isActiveRetrain) {
-                                RetrainingView(feedback: $feedback, selectedImage: $selectedImage)
+                                RetrainingView(feedback: $feedback, combinedImage: $combinedImage)
                             }
                         }
                         Spacer()
@@ -130,18 +133,48 @@ struct LabelPredictionView: View {
         .onAppear {
             user.first?.exp += 1
             items = checkAndUpdateLevel(for: user.first!)
+
+//            // MLモデルを使用してラベル推定
+//            if selectedImages.count >= 2 {
+//                combinedImage = combineImages(selectedImages[0], selectedImages[1])
+//                if let data = weatherAPI.weatherData {
+//                    if let weatherCode = data.daily.weather_code.first {
+//                        if let combinedImage = combinedImage {
+//                            if let usr = user.first {
+//                                if let gender = usr.gender {
+//                                    let season = weatherAPI.seasonFromDates(data.daily.time)
+//                                    let weather = weatherAPI.getWeatherCategory_for_predict(weatherAPI.getWeatherCategory(weatherCode).rawValue)
+//                                    if let model = selectModel(gender: gender, season: season, weather: weather) {
+//                                        predictLabel(image: combinedImage, model: model)
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//            }
             // MLモデルを使用してラベル推定
-            let imageToPredict = selectedImage ?? UIImage(named: "tops.png")!
-            predictLabel(image: imageToPredict)
+            if selectedImages.count >= 2, let combinedImage = combineImages(selectedImages[0], selectedImages[1]),
+               let data = weatherAPI.weatherData, let weatherCode = data.daily.weather_code.first,
+               let usr = user.first, let gender = usr.gender {
+
+                let season = weatherAPI.seasonFromDates(data.daily.time)
+                let weather = weatherAPI.getWeatherCategory_for_predict(weatherAPI.getWeatherCategory(weatherCode).rawValue)
+                if let model = selectModel(gender: gender, season: season, weather: weather) {
+                    predictLabel(image: combinedImage, model: model)
+                }
+            }
+
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 assuming = false
             }
         }
     }
     
-    func predictLabel(image: UIImage) {
-        guard let model = try? VNCoreMLModel(for: MobileNetV2_pytorch().model) else { return }
-
+    func predictLabel(image: UIImage?, model: VNCoreMLModel) {
+        guard let image = image else { return }
+        
         let request = VNCoreMLRequest(model: model) { request, error in
             if let results = request.results as? [VNClassificationObservation] {
                 // 「おしゃれ」ラベルの結果を探す
@@ -156,7 +189,7 @@ struct LabelPredictionView: View {
 
         // 画像をVisionリクエストに変換
         if let ciImage = CIImage(image: image) {
-            let handler = VNImageRequestHandler(ciImage: ciImage)
+            let handler = VNImageRequestHandler(ciImage: ciImage, options: [:])
 
             do {
                 try handler.perform([request])
@@ -165,10 +198,24 @@ struct LabelPredictionView: View {
             }
         }
     }
+    
+    func combineImages(_ firstImage: UIImage, _ secondImage: UIImage) -> UIImage? {
+        let size = CGSize(width: firstImage.size.width, height: firstImage.size.height * 2)
+        UIGraphicsBeginImageContext(size)
+
+        firstImage.draw(in: CGRect(x: 0, y: 0, width: firstImage.size.width, height: firstImage.size.height))
+        secondImage.draw(in: CGRect(x: 0, y: firstImage.size.height, width: secondImage.size.width, height: secondImage.size.height))
+
+        let combinedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return combinedImage
+    }
+
 }
 
-struct LabelPredictionView_Previews: PreviewProvider {
-    static var previews: some View {
-        LabelPredictionView(selectedImage: .constant(UIImage(named: "tops.png")))
-    }
-}
+//struct LabelPredictionView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LabelPredictionView(selectedImages: )
+//    }
+//}

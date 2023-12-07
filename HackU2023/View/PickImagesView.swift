@@ -9,120 +9,170 @@ import SwiftUI
 import UIKit
 
 
-struct PickImagesView: View {
+struct PickOneView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \ViViTUser.level, ascending: true)],
         animation: .default)
     private var user: FetchedResults<ViViTUser>
     
-    @State private var selectedImage: UIImage?
+    @State private var selectedImages: [UIImage] = []
+    @State private var selectedImagesPair: [[UIImage]] = [[]]
     @State private var imagePath: URL?
     @State private var isImagePickerDisplayed = false
     @State private var isActive = false
     @State private var isActiveHome = false
+    @State private var isActiveBack = false
+    @State private var isEmpty = true
+
 
     let screen: CGRect = UIScreen.main.bounds
 
     var body: some View {
         NavigationStack {
-            ZStack {
-                if let selectedImage = selectedImage {
-                    Image("Hacku_select2")
-                        .resizable()
-                        .frame(maxWidth: screen.width / 0.9)
-                        .frame(maxHeight: screen.height / 0.9)
-                } else {
-                    Image("Hacku_select")
-                        .resizable()
-                        .frame(maxWidth: screen.width / 0.9)
-                        .frame(maxHeight: screen.height / 0.9)
-                }
-                VStack {
-                    if let selectedImage = selectedImage {
-                        Image(uiImage: selectedImage)
+            VStack {
+                ZStack {
+                    if !isEmpty {
+                        Image("Hacku_select2")
                             .resizable()
-                            .scaledToFit()
-                        Button("診断を始める") {
-                            isActive = true
-                            saveImage(selectedImage: selectedImage, imagePath: imagePath)
-                        }
-                        .padding()
-                                .background(Color(red: 0.0, green: 0.6, blue: 0.9))
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                                .shadow(radius: 5)
-                                .frame(maxWidth: screen.width / 2)
-                                .frame(maxHeight: screen.height / 5)
-                        .navigationDestination(isPresented: $isActive) {
-                            LabelPredictionView(selectedImage: $selectedImage)
-                        }
-                        Button("服を選ぶ") {
-                            isImagePickerDisplayed = true
-                        }
-                        .padding()
-                                .background(Color.blue)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                                .shadow(radius: 5)
-                                .frame(maxWidth: screen.width / 2)
-                                .frame(maxHeight: screen.height / 5)
+                            .frame(maxWidth: screen.width / 0.9)
+                            .frame(maxHeight: screen.height / 0.9)
                     } else {
-                        Button("服を選ぶ") {
-                            isImagePickerDisplayed = true
-                        }
-                        .padding()
+                        Image("Hacku_select")
+                            .resizable()
+                            .frame(maxWidth: screen.width / 0.9)
+                            .frame(maxHeight: screen.height / 0.9)
+                    }
+                    VStack {
+                            if !isEmpty {
+                                VStack {
+                                    ForEach(selectedImagesPair, id: \.self) { _selectedImages in
+                                        HStack {
+                                            ForEach(_selectedImages, id: \.self) { image in
+                                                Image(uiImage: image)
+                                                    .resizable()
+                                                    .scaledToFit()
+                                            }
+                                        }
+                                            .padding()
+                                            .background(Color.brown)
+                                            .cornerRadius(10)
+                                            .shadow(radius: 5)
+                                    }
+                                    
+
+                                    Button("服を選ぶ") {
+                                        isImagePickerDisplayed = true
+                                    }
+                                        .padding()
+                                        .background(Color.blue)
+                                        .foregroundColor(.white)
+                                        .cornerRadius(10)
+                                        .shadow(radius: 5)
+                                        .frame(maxWidth: screen.width / 2)
+                                        .frame(maxHeight: screen.height / 5)
+                                }
+                                Button("診断を始める") {
+                                    isActive = true
+                                    for _selectedImages in selectedImagesPair {
+                                        saveImages(selectedImages: _selectedImages, imagePath: imagePath)
+                                    }
+                                }
+                                    .padding()
+                                    .background(Color.blue)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                                    .shadow(radius: 5)
+                                    .frame(maxWidth: screen.width / 2)
+                                    .frame(maxHeight: screen.height / 5)
+                                    .navigationDestination(isPresented: $isActive) {
+                                        LabelsPredictionView(selectedImagesPair: $selectedImagesPair)
+                                }
+                            }
+                            else {
+                            Button("服を選ぶ") {
+                                isImagePickerDisplayed = true
+                            }
+                                .padding()
                                 .background(Color.blue)
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
                                 .shadow(radius: 5)
                                 .frame(maxWidth: screen.width / 2)
                                 .frame(maxHeight: screen.height / 5)
+                            }
+                        Button("ホームへ") {
+                            isActiveBack = true
+                        }
+                        .padding()
+                        .background(Color(red: 0.0, green: 0.6, blue: 0.9))
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                        .shadow(radius: 5)
+                        .frame(maxWidth: screen.width / 2)
+                        .frame(maxHeight: screen.height / 5)
+                        .navigationDestination(isPresented: $isActiveBack) {
+                            MainView()
+                        }
+                    }
+                }
+            }
+
+            .sheet(isPresented: $isImagePickerDisplayed) {
+                ImagePicker(selectedImages: $selectedImages)
+                    .onDisappear {
+                        // ImagePickerが閉じられるときにselectedImagesPairに選択された画像を追加
+                        if !selectedImages.isEmpty {
+                            selectedImagesPair.append(selectedImages)
+                            isEmpty = false
+                            selectedImages = [] // 選択された画像をリセット
+                        }
+                        selectedImagesPair = Array(selectedImagesPair.dropFirst()) // ここでdropFirstの結果を使用
+                    }
+            }
+            .navigationBarBackButtonHidden(true)
+
+
+//            .toolbar {
+//                ToolbarItem(placement: .navigationBarLeading) {
+//                    Button(action: {
+//                        isActiveHome = true
+//                    })
+//                    {
+//                        HStack {
+//                            Image(systemName: "arrow.left")
+//                            Text("HONE")
+//                        }
+//                        .navigationDestination(isPresented: $isActiveHome) {
+//                            MainView()
+//                        }
+//                    }
+//                }
+//            }
+        }
+    }
+
+
+    func saveImages(selectedImages: [UIImage], imagePath: URL?) {
+        for selectedImage in selectedImages {
+            DispatchQueue.global(qos: .background).async {
+                guard let _ = selectedImage.pngData() else { return }
+
+                // 画像のファイルパスを取得
+                DispatchQueue.main.async {
+                    if let imagePath = imagePath {
+                        let imagePathString = imagePath.lastPathComponent
+                        
+                        store(image: selectedImage, forKey: imagePathString)
+                    } else {
+                        let fileName = "your_default_filename.png"
+                        store(image: selectedImage, forKey: fileName)
                     }
                 }
             }
         }
-        .sheet(isPresented: $isImagePickerDisplayed) {
-            ImagePicker(selectedImage: $selectedImage, imagePath: $imagePath)
-        }
-//        .toolbar {
-//            ToolbarItem(placement: .navigationBarLeading) {
-//                Button(action: {
-//                    isActiveHome = true
-//                })
-//                    {
-//                    HStack {
-//                        Image(systemName: "arrow.left")
-//                        Text("HONE")
-//                    }
-//                    .navigationDestination(isPresented: $isActiveHome) {
-//                        MainView()
-//                    }
-//                }
-//            }
-//        }
     }
-}
 
-
-    func saveImage(selectedImage: UIImage?, imagePath: URL?) {
-        DispatchQueue.global(qos: .background).async {
-            guard let selectedImage = selectedImage,
-                  let _ = selectedImage.pngData() else { return }
-            
-            // 画像のファイルパスを取得
-            DispatchQueue.main.async {
-                if let imagePath = imagePath {
-                    let imagePathString = imagePath.lastPathComponent // ファイル名のみ取得
-                    
-                    store(image: selectedImage, forKey: imagePathString)
-                } else {
-                    // imagePathがnilの場合、別の方法でファイル名を生成
-                    let fileName = "tops.png" // ここにデフォルトのファイル名を指定
-                    store(image: selectedImage, forKey: fileName)
-                }
-            }
-        }
 
 
     func store(image: UIImage, forKey key: String) {
@@ -152,6 +202,6 @@ struct PickImagesView: View {
 
 struct PickImagesView_Previews: PreviewProvider {
     static var previews: some View {
-        PickImagesView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        PickOneView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

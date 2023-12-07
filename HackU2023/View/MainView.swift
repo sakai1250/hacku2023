@@ -30,7 +30,7 @@ struct MainView: View {
             case .home:
                 HomeView()
             case .pickimage:
-                PickImageView()
+                SelectFunctionView()
             case .editphoto:
                 EditPhotosView()
             case .settings:
