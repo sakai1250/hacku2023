@@ -32,7 +32,7 @@ struct MainView: View {
             case .pickimage:
                 SelectFunctionView()
             case .editphoto:
-                EditPhotosView()
+                AlbamView()
             case .settings:
                 SettingView()
                 

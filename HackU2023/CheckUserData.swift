@@ -13,14 +13,24 @@ func checkAndUpdateLevel(for user: ViViTUser) -> [String] {
     var avater: String = ""
     var assume: String = "Hacku_thinking"
     var retrain: String = "Hacku_learning"
+    var shouldPlayVideo = false
+    var videoName = ""
 
     if user.exp == 3 {
         user.level += 1
         user.exp = 0
+        if user.level == 2 {
+            shouldPlayVideo = true
+            videoName = user.gender == "男性" ? "movies/male_orenge/male1o.mp4" : "movies/female_orenge/female1o.mp4"
+        }
     }
-    else if user.exp == 5 {
+    if user.exp == 5 {
         user.level += 1
         user.exp = 0
+        if user.level == 3 {
+            shouldPlayVideo = true
+            videoName = user.gender == "男性" ? "movies/male_orenge/male2o.mp4" : "movies/female_orenge/female2o.mp4"
+        }
     }
     
     if user.level == 1 {
@@ -66,7 +76,7 @@ func checkAndUpdateLevel(for user: ViViTUser) -> [String] {
             avater = "Male3"
             assume = "\(assume)5"
             retrain = "\(retrain)5"
-
+            
             
         }
         else if user.gender == "女性" {
@@ -76,9 +86,13 @@ func checkAndUpdateLevel(for user: ViViTUser) -> [String] {
             retrain = "\(retrain)4"
             
         }
-
     }
-    return [room, avater, assume, retrain]
+    
+    if !shouldPlayVideo {
+        videoName = ""
+        }
+
+    return [room, avater, assume, retrain, videoName]
 }
 
 

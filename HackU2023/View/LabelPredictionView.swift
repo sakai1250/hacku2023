@@ -41,6 +41,13 @@ struct LabelPredictionView: View {
                         .frame(maxWidth: screen.width / 0.9)
                         .frame(maxHeight: screen.height / 0.9)
                     VStack {
+                        Text(printRandomString())
+                            .font(.system(size: 24))
+                            .padding()
+                        Spacer()
+                            .frame(height: screen.height / 1.4)
+                    }
+                    VStack {
                         Spacer()
                             .frame(height: screen.height / 2)
                         HStack {
@@ -95,6 +102,13 @@ struct LabelPredictionView: View {
                             Button("やめとく") {
                                 feedback = "おしゃれじゃない"
                                 isActiveRetrain = true
+                                
+                                if combinedImage == nil {
+                                    // combinedImage が nil の場合、適切に設定
+                                    if selectedImages.count >= 2 {
+                                        combinedImage = combineImages(selectedImages[0], selectedImages[1])
+                                    }
+                                }
                             }
                             .padding()
                             .background(Color.blue)
@@ -131,7 +145,6 @@ struct LabelPredictionView: View {
 //        }
         .navigationBarBackButtonHidden(true)
         .onAppear {
-            user.first?.exp += 1
             items = checkAndUpdateLevel(for: user.first!)
 
 //            // MLモデルを使用してラベル推定
@@ -154,16 +167,27 @@ struct LabelPredictionView: View {
 //                }
 //            }
             // MLモデルを使用してラベル推定
-            if selectedImages.count >= 2, let combinedImage = combineImages(selectedImages[0], selectedImages[1]),
-               let data = weatherAPI.weatherData, let weatherCode = data.daily.weather_code.first,
-               let usr = user.first, let gender = usr.gender {
-
-                let season = weatherAPI.seasonFromDates(data.daily.time)
-                let weather = weatherAPI.getWeatherCategory_for_predict(weatherAPI.getWeatherCategory(weatherCode).rawValue)
-                if let model = selectModel(gender: gender, season: season, weather: weather) {
-                    predictLabel(image: combinedImage, model: model)
+            DispatchQueue.main.async {
+                if selectedImages.count >= 2, let combinedImage = combineImages(selectedImages[0], selectedImages[1]),
+                   let data = weatherAPI.weatherData, let usr = user.first, let gender = usr.gender {
+                    
+                    let weatherCode = data.weather.first?.description ?? "" // ここを修正
+                    
+                    // 現在の日付を取得
+                    let currentDate = Date()
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                    let dateString = dateFormatter.string(from: currentDate)
+                    // 季節を出力
+                    let season = seasonFromDates([dateString])
+                    let weather = weatherAPI.getWeatherCategory(from: weatherCode).rawValue
+                    
+                    if let model = selectModel(gender: gender, season: season, weather: weather) {
+                        predictLabel(image: combinedImage, model: model)
+                    }
                 }
             }
+
 
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {

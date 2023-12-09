@@ -60,6 +60,7 @@ struct RetrainingView: View {
         .navigationBarBackButtonHidden(true)
         .onAppear {
             items = checkAndUpdateLevel(for: user.first!)
+            user.first?.exp += 1
             startRetraining()
         }
     }

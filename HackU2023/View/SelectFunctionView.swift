@@ -10,8 +10,11 @@ import SwiftUI
 struct SelectFunctionView: View {
     @State private var isActiveScore = false
     @State private var isActiveOne = false
+    @State private var isActive1Recommend = false
 
     let screen: CGRect = UIScreen.main.bounds
+
+    @State private var selectedImagesPair: [[UIImage]] = [[]]
 
     var body: some View {
         ZStack {
@@ -20,7 +23,21 @@ struct SelectFunctionView: View {
                 .frame(maxWidth: screen.width / 0.9)
                 .frame(maxHeight: screen.height / 0.9)
             VStack {
-                Button("服を採点する") {
+                Button("コーディネート提案") {
+                    isActive1Recommend = true
+                }
+                .padding()
+                .background(Color(red: 0.2, green: 0.55, blue: 0.9))
+                .foregroundColor(.white)
+                .cornerRadius(10)
+                .shadow(radius: 5)
+                .frame(maxWidth: screen.width / 2)
+                .frame(maxHeight: screen.height / 5)
+                .navigationDestination(isPresented: $isActive1Recommend) {
+                    OnetapRecommendView(selectedImagesPair: $selectedImagesPair)
+                }
+
+                Button("おしゃれ度測定") {
                     isActiveScore = true
                 }
                 .padding()
@@ -33,7 +50,7 @@ struct SelectFunctionView: View {
                 .navigationDestination(isPresented: $isActiveScore) {
                     ImageScoreView()
                 }
-                Button("ペアを決める") {
+                Button("購入サポート") {
                     isActiveOne = true
                 }
                 .padding()
@@ -48,8 +65,21 @@ struct SelectFunctionView: View {
                 }
             }
         }
+        .onAppear{
+            selectedImagesPair = convertURLsToUIImages(urls: generateCombinations())
+        }
     }
 }
+
+func convertURLsToUIImages(urls: [[URL]]) -> [[UIImage]] {
+    return urls.map { urlArray in
+        urlArray.compactMap { url in
+            UIImage(contentsOfFile: url.path) // URLからUIImageを生成
+        }
+    }
+}
+
+
 
 struct SelectFunctionView_Previews: PreviewProvider {
     static var previews: some View {

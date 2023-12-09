@@ -51,18 +51,20 @@ struct ImageScoreView: View {
                             }
                             Button("診断を始める") {
                                 isActive = true
-                                saveImages(selectedImages: selectedImages, imagePath: imagePath)
+                                // saveImages(selectedImages: selectedImages, imagePath: imagePath)
                             }
-                                .padding()
-                                .background(Color(red: 0.0, green: 0.6, blue: 0.9))
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                                .shadow(radius: 5)
-                                .frame(maxWidth: screen.width / 2)
-                                .frame(maxHeight: screen.height / 5)
-                                .navigationDestination(isPresented: $isActive) {
-                                    LabelPredictionView(selectedImages: $selectedImages)
+                            .padding()
+                            .background(Color(red: 0.0, green: 0.6, blue: 0.9))
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                            .shadow(radius: 5)
+                            .frame(maxWidth: screen.width / 2)
+                            .frame(maxHeight: screen.height / 5)
+                            .disabled(selectedImages.count != 2) // ここで無効化を設定
+                            .navigationDestination(isPresented: $isActive) {
+                                LabelPredictionView(selectedImages: $selectedImages)
                             }
+
                             Button("服を選ぶ") {
                                 isImagePickerDisplayed = true
                             }
@@ -106,23 +108,6 @@ struct ImageScoreView: View {
                 ImagePicker(selectedImages: $selectedImages)
             }
             .navigationBarBackButtonHidden(true)
-
-//            .toolbar {
-//                ToolbarItem(placement: .navigationBarLeading) {
-//                    Button(action: {
-//                        isActiveHome = true
-//                    })
-//                    {
-//                        HStack {
-//                            Image(systemName: "arrow.left")
-//                            Text("HONE")
-//                        }
-//                        .navigationDestination(isPresented: $isActiveHome) {
-//                            MainView()
-//                        }
-//                    }
-//                }
-//            }
         }
     }
 

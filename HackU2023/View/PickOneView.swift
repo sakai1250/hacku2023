@@ -25,6 +25,8 @@ struct PickOneView: View {
     @State private var isActiveBack = false
     @State private var isEmpty = true
 
+    @State private var topsImages: [UIImage] = []
+    @State private var bottomsImages: [UIImage] = []
 
     let screen: CGRect = UIScreen.main.bounds
 
@@ -44,22 +46,15 @@ struct PickOneView: View {
                             .frame(maxHeight: screen.height / 0.9)
                     }
                     VStack {
-                            if !isEmpty {
+                        if !selectedImages.isEmpty {
                                 VStack {
-                                    ForEach(selectedImagesPair.dropFirst(), id: \.self) { _selectedImages in
-                                        HStack {
-                                            ForEach(_selectedImages, id: \.self) { image in
-                                                Image(uiImage: image)
-                                                    .resizable()
-                                                    .scaledToFit()
-                                            }
+                                    HStack {
+                                        ForEach(selectedImages, id: \.self) { image in
+                                            Image(uiImage: image)
+                                                .resizable()
+                                                .scaledToFit()
                                         }
-                                            .padding()
-                                            .background(Color.brown)
-                                            .cornerRadius(10)
-                                            .shadow(radius: 5)
                                     }
-                                    
 
                                     Button("服を選ぶ") {
                                         isImagePickerDisplayed = true
@@ -72,12 +67,11 @@ struct PickOneView: View {
                                         .frame(maxWidth: screen.width / 2)
                                         .frame(maxHeight: screen.height / 5)
                                 }
-                                Button("診断を始める") {
-                                    isActive = true
-                                    for _selectedImages in selectedImagesPair {
-                                        saveImages(selectedImages: _selectedImages, imagePath: imagePath)
+                                HStack {
+                                    Button("上の服と診断") {
+                                        isActive = true
+                                        selectedImagesPair = generateCombinations_customed(images1: selectedImages, images2: topsImages)
                                     }
-                                }
                                     .padding()
                                     .background(Color.blue)
                                     .foregroundColor(.white)
@@ -87,6 +81,22 @@ struct PickOneView: View {
                                     .frame(maxHeight: screen.height / 5)
                                     .navigationDestination(isPresented: $isActive) {
                                         LabelsPredictionView(selectedImagesPair: $selectedImagesPair)
+                                    }
+                                    Button("下の服と診断") {
+                                        isActive = true
+                                        selectedImagesPair = generateCombinations_customed(images1: selectedImages, images2: bottomsImages)
+
+                                    }
+                                    .padding()
+                                    .background(Color.blue)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                                    .shadow(radius: 5)
+                                    .frame(maxWidth: screen.width / 2)
+                                    .frame(maxHeight: screen.height / 5)
+                                    .navigationDestination(isPresented: $isActive) {
+                                        LabelsPredictionView(selectedImagesPair: $selectedImagesPair)
+                                    }
                                 }
                             }
                             else {
@@ -120,37 +130,20 @@ struct PickOneView: View {
 
             .sheet(isPresented: $isImagePickerDisplayed) {
                 ImagePicker(selectedImages: $selectedImages)
-                    .onDisappear {
-                        // ImagePickerが閉じられるときにselectedImagesPairに選択された画像を追加
-                        if !selectedImages.isEmpty {
-                            selectedImagesPair.append(selectedImages)
-                            isEmpty = false
-                            selectedImages = [] // 選択された画像をリセット
-                        }
-                    }
+            }
+            .onAppear {
+                topsImages = convertURLsToUIImages(urls: fetchImageURLs(from: "tops"))
+                bottomsImages = convertURLsToUIImages(urls: fetchImageURLs(from: "bottoms"))
             }
             .navigationBarBackButtonHidden(true)
-
-
-//            .toolbar {
-//                ToolbarItem(placement: .navigationBarLeading) {
-//                    Button(action: {
-//                        isActiveHome = true
-//                    })
-//                    {
-//                        HStack {
-//                            Image(systemName: "arrow.left")
-//                            Text("HONE")
-//                        }
-//                        .navigationDestination(isPresented: $isActiveHome) {
-//                            MainView()
-//                        }
-//                    }
-//                }
-//            }
         }
     }
-
+    
+    func convertURLsToUIImages(urls: [URL]) -> [UIImage] {
+        return urls.compactMap { url in
+            UIImage(contentsOfFile: url.path) // 各URLからUIImageを生成
+        }
+    }
 
     func saveImages(selectedImages: [UIImage], imagePath: URL?) {
         for selectedImage in selectedImages {

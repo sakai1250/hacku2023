@@ -93,3 +93,39 @@ struct ImagePicker: UIViewControllerRepresentable {
         }
     }
 }
+
+
+//struct ImagePicker_for_main: UIViewControllerRepresentable {
+//    @Binding var selectedImage: UIImage?
+//    @Environment(\.presentationMode) private var presentationMode
+//
+//    var viewContext: NSManagedObjectContext
+//
+//    func makeUIViewController(context: Context) -> some UIViewController {
+//        let picker = UIImagePickerController()
+//        picker.delegate = context.coordinator
+//        return picker
+//    }
+//
+//    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
+//
+//    func makeCoordinator() -> Coordinator {
+//        Coordinator(self)
+//    }
+//
+//    class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+//        var parent: ImagePicker_for_main
+//
+//        init(_ parent: ImagePicker_for_main) {
+//            self.parent = parent
+//        }
+//
+//        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//            if let image = info[.originalImage] as? UIImage {
+//                parent.selectedImage = image
+//            }
+//
+//            picker.dismiss(animated: true)
+//        }
+//    }
+//}

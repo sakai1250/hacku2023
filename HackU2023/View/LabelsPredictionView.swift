@@ -33,6 +33,7 @@ struct LabelsPredictionView: View {
     @State private var assuming = true
     @State private var waiting = true
     @State private var items = ["", "", "", ""]
+    @State private var currentIndex: Int? = nil
 
 
     var body: some View {
@@ -44,6 +45,13 @@ struct LabelsPredictionView: View {
                         .aspectRatio(CGSize(width: 1, height: 2), contentMode: .fill)
                         .frame(maxWidth: screen.width / 0.9)
                         .frame(maxHeight: screen.height / 0.9)
+                    VStack {
+                        Text(printRandomString())
+                            .font(.system(size: 24))
+                            .padding()
+                        Spacer()
+                            .frame(height: screen.height / 1.4)
+                    }
                     VStack {
                         Spacer()
                             .frame(height: screen.height / 2)
@@ -66,24 +74,43 @@ struct LabelsPredictionView: View {
                         .frame(maxWidth: screen.width / 0.9)
                         .frame(maxHeight: screen.height / 0.9)
                     VStack {
-                        HStack {
-                            ForEach(selectedImages, id: \.self) { image in
-                                Image(uiImage: image)
-                                    .resizable()
-                                    .scaledToFit()
+                        ScrollView {
+                            ForEach(Array(selectedImagesPair.enumerated()), id: \.offset) { index, _selectedImages in
+                                VStack {
+                                    HStack {
+                                        ForEach(_selectedImages, id: \.self) { image in
+                                            Image(uiImage: image)
+                                                .resizable()
+                                                .scaledToFit()
+                                        }
+                                    }
+                                    // 対応する予測結果を表示
+                                    if index < predictionResults.count {
+                                        Text("おしゃれ度: \(predictionResults[index])%")
+                                            .font(.system(size: 32))
+                                            .bold()
+                                            .background(Color.white)
+                                            .foregroundColor(.black)
+                                    }
+                                }
                             }
-                        }
-                        Text("おしゃれ度:\(predictionResult)%")
-                            .font(.system(size: 32))
-                            .bold()
-                            .background(Color.white)
-                            .foregroundColor(.black)
-                        Spacer()
-                        // 3画面に遷移
-                        HStack {
-                            Button("これにする") {
-                                feedback = "おしゃれ"
-                                isActiveRetrain = true
+                            //                        ForEach(selectedImagesPair, id: \.self) { _selectedImages in
+                            //                            HStack {
+                            //                                ForEach(_selectedImages, id: \.self) { image in
+                            //                                    Image(uiImage: image)
+                            //                                        .resizable()
+                            //                                        .scaledToFit()
+                            //                                }
+                            //                            }
+                            //                        }
+                            //                        Text("おしゃれ度:\(predictionResult)%")
+                            //                            .font(.system(size: 32))
+                            //                            .bold()
+                            //                            .background(Color.white)
+                            //                            .foregroundColor(.black)
+                            Spacer()
+                            Button("ホームへ") {
+                                isActiveHome = true
                             }
                             .padding()
                             .background(Color(red: 0.0, green: 0.6, blue: 0.9))
@@ -92,26 +119,56 @@ struct LabelsPredictionView: View {
                             .shadow(radius: 5)
                             .frame(maxWidth: screen.width / 2)
                             .frame(maxHeight: screen.height / 5)
-                            .navigationDestination(isPresented: $isActiveRetrain) {
-                                RetrainingView(feedback: $feedback, combinedImage: $combinedImage)
+                            .navigationDestination(isPresented: $isActiveHome) {
+                                MainView()
                             }
+                            // 3画面に遷移
+                            //                        HStack {
+                            //                            Button("これにする") {
+                            //                                feedback = "おしゃれ"
+                            //                                isActiveRetrain = true
+                            //                            }
+                            //                            .padding()
+                            //                            .background(Color(red: 0.0, green: 0.6, blue: 0.9))
+                            //                            .foregroundColor(.white)
+                            //                            .cornerRadius(10)
+                            //                            .shadow(radius: 5)
+                            //                            .frame(maxWidth: screen.width / 2)
+                            //                            .frame(maxHeight: screen.height / 5)
+                            //                            .navigationDestination(isPresented: $isActiveRetrain) {
+                            //                                RetrainingView(feedback: $feedback, combinedImage: $combinedImage)
+                            //                            }
                             // 3画面目に遷移
-                            Button("やめとく") {
-                                feedback = "おしゃれじゃない"
-                                isActiveRetrain = true
-                            }
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                            .shadow(radius: 5)
-                            .frame(maxWidth: screen.width / 2)
-                            .frame(maxHeight: screen.height / 5)
-                            .navigationDestination(isPresented: $isActiveRetrain) {
-                                RetrainingView(feedback: $feedback, combinedImage: $combinedImage)
-                            }
+                            //                            Button("やめとく") {
+                            //                                if currentIndex == nil {
+                            //                                    currentIndex = selectedImagesPair.firstIndex(where: { $0 == selectedImages })
+                            //                                }
+                            //                                if let currentIndex = currentIndex, currentIndex < selectedImagesPair.count {
+                            //                                    // 次の組み合わせを表示
+                            //                                    selectedImages = selectedImagesPair[self.currentIndex!]
+                            //                                    predictionResult = predictionResults[self.currentIndex!]
+                            //                                    combinedImage = combineImages(selectedImagesPair[self.currentIndex!][0], selectedImagesPair[self.currentIndex!][1])
+                            //                                    self.currentIndex! += 1
+                            //                                } else {
+                            //                                    // 配列の最後に達した場合、RetrainingViewに遷移
+                            //                                    feedback = "おしゃれじゃない"
+                            //                                    isActiveRetrain = true
+                            //                                    currentIndex = nil // currentIndexをリセット
+                            //                                }
+                            //                            }
+                            //                            .padding()
+                            //                            .background(Color.blue)
+                            //                            .foregroundColor(.white)
+                            //                            .cornerRadius(10)
+                            //                            .shadow(radius: 5)
+                            //                            .frame(maxWidth: screen.width / 2)
+                            //                            .frame(maxHeight: screen.height / 5)
+                            //                            .navigationDestination(isPresented: $isActiveRetrain) {
+                            //                                RetrainingView(feedback: $feedback, combinedImage: $combinedImage)
+                            //                            }
+                            //                        }
+                            Spacer()
                         }
-                        Spacer()
                     }
                 }
             }
@@ -135,7 +192,6 @@ struct LabelsPredictionView: View {
 //        }
         .navigationBarBackButtonHidden(true)
         .onAppear {
-            user.first?.exp += 1
             items = checkAndUpdateLevel(for: user.first!)
 
 //            // MLモデルを使用してラベル推定
@@ -158,20 +214,31 @@ struct LabelsPredictionView: View {
 //                }
 //            }
             // MLモデルを使用してラベル推定
-            for _selectedImages in selectedImagesPair.dropFirst() {
-                if _selectedImages.count >= 2, let combinedImage = combineImages(_selectedImages[0], _selectedImages[1]),
-                   let data = weatherAPI.weatherData, let weatherCode = data.daily.weather_code.first,
-                   let usr = user.first, let gender = usr.gender {
-                    print("画像\(combinedImage)")
-
-                    let season = weatherAPI.seasonFromDates(data.daily.time)
-                    let weather = weatherAPI.getWeatherCategory_for_predict(weatherAPI.getWeatherCategory(weatherCode).rawValue)
-                    if let model = selectModel(gender: gender, season: season, weather: weather) {
-                        predictLabel(image: combinedImage, model: model)
+            DispatchQueue.main.async {
+                for _selectedImages in selectedImagesPair {
+                    if _selectedImages.count >= 2, let combinedImage = combineImages(_selectedImages[0], _selectedImages[1]),
+                       let data = weatherAPI.weatherData, let weatherCodeCharacter = data.weather.description.first,
+                       let usr = user.first, let gender = usr.gender {
+                        
+                        let weatherCode = String(weatherCodeCharacter) // 文字を文字列に変換
+                        let weather = weatherAPI.getWeatherCategory(from: weatherCode).rawValue // WeatherCategory を String に変換
+                        
+                        // 現在の日付を取得
+                        let currentDate = Date()
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd"
+                        let dateString = dateFormatter.string(from: currentDate)
+                        // 季節を出力
+                        let season = seasonFromDates([dateString])
+                        
+                        if let model = selectModel(gender: gender, season: season, weather: weather) {
+                            predictLabel(image: combinedImage, model: model)
+                        }
                     }
-                }
-                else {
-                    print("ない")
+                    
+                    else {
+                        print("ない")
+                    }
                 }
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {

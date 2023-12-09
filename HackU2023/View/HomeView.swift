@@ -20,6 +20,10 @@ struct HomeView: View {
     
     @StateObject var manager = ScreenShotManager()
     @State private var items = ["", "", "", ""]
+    
+    @State private var videoName: String = ""
+    @State private var shouldPlayVideo = false
+    @State private var shouldDismiss = false
 
     var body: some View {
         VStack {
@@ -39,17 +43,21 @@ struct HomeView: View {
                     }
                     Spacer()
                 }
+                
                 VStack {
                     HStack {
                         VStack(alignment: .leading)  {
                             if let data = weatherAPI.weatherData {
-                                if let weatherCode = data.daily.weather_code.first,
-                                   let maxTemperature = data.daily.temperature_2m_max.first,
-                                   let minTemperature = data.daily.temperature_2m_min.first {
-                                    Text("天気: \(weatherAPI.getWeatherCategory(weatherCode).rawValue)")
+                                if let weatherCode = data.weather.first?.description {
+                                    let maxTemperature = data.main.temp_max
+                                    let minTemperature = data.main.temp_min
+                                    Text("天気: \(weatherAPI.getWeatherCategory(from: weatherCode).rawValue)")
                                     Text("最高気温: \(Int(round(maxTemperature))) °C")
                                     Text("最低気温: \(Int(round(minTemperature))) °C")
                                 }
+//                                    Text("天気: \(weatherAPI.getWeatherCategory(weatherCode).rawValue)")
+//                                    Text("最高気温: \(Int(round(maxTemperature))) °C")
+//                                    Text("最低気温: \(Int(round(minTemperature))) °C")
                             } else {
                                 Text("データがありません")
                             }
@@ -86,11 +94,26 @@ struct HomeView: View {
                     }
                 }
             }
-            .onAppear {
-                items = checkAndUpdateLevel(for: users.first!)
+            if shouldPlayVideo {
+                VideoPlayerView(videoName: videoName, shouldDismiss: $shouldDismiss)
+                    .onAppear {
+                        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: nil, queue: .main) { _ in
+                            shouldDismiss = true
+                            shouldPlayVideo = false
+                        }
+                    }
             }
-        .background(RectangleGetter(rect: $manager.rect))
         }
+        .sheet(isPresented: $shouldPlayVideo) {
+            VideoPlayerView(videoName: videoName, shouldDismiss: $shouldDismiss)
+        }
+        .onAppear {
+            let updateResults = checkAndUpdateLevel(for: users.first!)
+            videoName = updateResults.last ?? ""
+            items = updateResults
+            shouldPlayVideo = !videoName.isEmpty
+        }
+        .background(RectangleGetter(rect: $manager.rect))
     }
 }
 

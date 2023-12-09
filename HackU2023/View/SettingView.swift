@@ -27,7 +27,6 @@ struct SettingView: View {
                     }
                 }
             }
-            .navigationTitle("設定")
             .navigationBarItems(trailing: Button("タイトル画面に戻る") {
                 navigateToStart = true
             })
@@ -46,14 +45,27 @@ struct SettingView: View {
         .navigationDestination(isPresented: $navigateToStart) {
             StartView()
         }
+        .navigationBarBackButtonHidden(true)
+
     }
 
     private func resetCoreData() {
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "ViViTUser")
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        let fetchRequest1: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "ViViTUser")
+        let deleteRequest1 = NSBatchDeleteRequest(fetchRequest: fetchRequest1)
 
         do {
-            try viewContext.execute(deleteRequest)
+            try viewContext.execute(deleteRequest1)
+            viewContext.reset() // コンテキストをリセット
+        } catch {
+            let nsError = error as NSError
+            // エラーを適切に処理してください。
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
+        let fetchRequest2: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "ImageEntity")
+        let deleteRequest2 = NSBatchDeleteRequest(fetchRequest: fetchRequest2)
+
+        do {
+            try viewContext.execute(deleteRequest2)
             viewContext.reset() // コンテキストをリセット
         } catch {
             let nsError = error as NSError
