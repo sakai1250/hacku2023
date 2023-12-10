@@ -21,7 +21,7 @@ func checkAndUpdateLevel(for user: ViViTUser) -> [String] {
         user.exp = 0
         if user.level == 2 {
             shouldPlayVideo = true
-            videoName = user.gender == "男性" ? "movies/male_orenge/male1o.mp4" : "movies/female_orenge/female1o.mp4"
+            videoName = user.gender == "男性" ? "movies/male_blue/male1b.mp4" : "movies/female_pink/female1p.mp4"
         }
     }
     if user.exp == 5 {
@@ -29,7 +29,7 @@ func checkAndUpdateLevel(for user: ViViTUser) -> [String] {
         user.exp = 0
         if user.level == 3 {
             shouldPlayVideo = true
-            videoName = user.gender == "男性" ? "movies/male_orenge/male2o.mp4" : "movies/female_orenge/female2o.mp4"
+            videoName = user.gender == "男性" ? "movies/male_blue/male2b.mp4" : "movies/female_pink/female2p.mp4"
         }
     }
     
@@ -112,7 +112,8 @@ func selectModel(gender: String, season: String, weather: String) -> VNCoreMLMod
 //    case ("男性", "秋", "雨"):
 //        return try? VNCoreMLModel(for: autumn_rainy_Man().model)
     case ("男性", "冬", "晴れ"):
-        return try? VNCoreMLModel(for: winter_sunny_Man().model)
+//        return try? VNCoreMLModel(for: winter_sunny_Man().model)
+        return try? VNCoreMLModel(for: MobileNetV2_pytorch().model)
 //    case ("男性", "冬", "雨"):
 //        return try? VNCoreMLModel(for: winter_rainy_Man().model)
 
@@ -136,6 +137,53 @@ func selectModel(gender: String, season: String, weather: String) -> VNCoreMLMod
 
     default:
         return try? VNCoreMLModel(for: MobileNetV2_pytorch().model)
+//        return try? VNCoreMLModel(for: spring_sunny_Man().model)
+    }
+}
+
+
+func selectModel_for_retrain(gender: String, season: String, weather: String) -> String? {
+    switch (gender, season, weather) {
+    // 男性の組み合わせ
+    case ("男性", "春", "晴れ"):
+        return "spring_sunny_Man"
+//    case ("男性", "春", "雨"):
+//        return try? VNCoreMLModel(for: spring_rainy_Man().model)
+//    case ("男性", "夏", "晴れ"):
+//        return try? VNCoreMLModel(for: summer_sunny_Man().model)
+//    case ("男性", "夏", "雨"):
+//        return try? VNCoreMLModel(for: summer_rainy_Man().model)
+//    case ("男性", "秋", "晴れ"):
+//        return try? VNCoreMLModel(for: autumn_sunny_Man().model)
+//    case ("男性", "秋", "雨"):
+//        return try? VNCoreMLModel(for: autumn_rainy_Man().model)
+    case ("男性", "冬", "晴れ"):
+//        return "winter_sunny_Man"
+        return "MobileNetV2_pytorch"
+//    case ("男性", "冬", "雨"):
+//        return try? VNCoreMLModel(for: winter_rainy_Man().model)
+
+    // 女性の組み合わせ
+    case ("女性", "春", "晴れ"):
+        return "spring_sunny_Woman"
+//    case ("女性", "春", "雨"):
+//        return try? VNCoreMLModel(for: spring_rainy_Woman().model)
+//    case ("女性", "夏", "晴れ"):
+//        return try? VNCoreMLModel(for: summer_sunny_Woman().model)
+//    case ("女性", "夏", "雨"):
+//        return try? VNCoreMLModel(for: summer_rainy_Woman().model)
+//    case ("女性", "秋", "晴れ"):
+//        return try? VNCoreMLModel(for: autumn_sunny_Woman().model)
+//    case ("女性", "秋", "雨"):
+//        return try? VNCoreMLModel(for: autumn_rainy_Woman().model)
+    case ("女性", "冬", "晴れ"):
+        return "winter_sunny_Woman"
+        
+//        return try? VNCoreMLModel(for: winter_rainy_Woman().model)
+
+    default:
+        return "MobileNetV2_pytorch"
+//        return "spring_sunny_Man"
     }
 }
 

@@ -122,7 +122,7 @@ struct AlbamView: View {
                             }
                             .padding()
                             .background(Color(red: 0.0, green: 0.6, blue: 0.9))
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                             .cornerRadius(10)
                             .shadow(radius: 5)
                             .frame(maxWidth: screen.width / 2)
@@ -133,7 +133,7 @@ struct AlbamView: View {
                                 }
                                 .padding()
                                 .background(Color(red: 0.0, green: 0.6, blue: 0.9))
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
                                 .cornerRadius(10)
                                 .shadow(radius: 5)
                                 .frame(maxWidth: screen.width / 2)
@@ -144,7 +144,7 @@ struct AlbamView: View {
                                 }
                                 .padding()
                                 .background(Color(red: 0.0, green: 0.6, blue: 0.9))
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
                                 .cornerRadius(10)
                                 .shadow(radius: 5)
                                 .frame(maxWidth: screen.width / 2)

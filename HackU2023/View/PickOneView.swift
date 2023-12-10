@@ -50,7 +50,7 @@ struct PickOneView: View {
                                 VStack {
                                     HStack {
                                         ForEach(selectedImages, id: \.self) { image in
-                                            Image(uiImage: image)
+                                            Image(uiImage: resizeImage(image: image, targetSize: CGSize(width: 200, height: 200)))
                                                 .resizable()
                                                 .scaledToFit()
                                         }
@@ -61,7 +61,7 @@ struct PickOneView: View {
                                     }
                                         .padding()
                                         .background(Color.blue)
-                                        .foregroundColor(.white)
+                                        .foregroundColor(.black)
                                         .cornerRadius(10)
                                         .shadow(radius: 5)
                                         .frame(maxWidth: screen.width / 2)
@@ -70,11 +70,11 @@ struct PickOneView: View {
                                 HStack {
                                     Button("上の服と診断") {
                                         isActive = true
-                                        selectedImagesPair = generateCombinations_customed(images1: selectedImages, images2: topsImages)
+                                        selectedImagesPair = generateCombinations_customed(images1: topsImages, images2: selectedImages)
                                     }
                                     .padding()
                                     .background(Color.blue)
-                                    .foregroundColor(.white)
+                                    .foregroundColor(.black)
                                     .cornerRadius(10)
                                     .shadow(radius: 5)
                                     .frame(maxWidth: screen.width / 2)
@@ -89,7 +89,7 @@ struct PickOneView: View {
                                     }
                                     .padding()
                                     .background(Color.blue)
-                                    .foregroundColor(.white)
+                                    .foregroundColor(.black)
                                     .cornerRadius(10)
                                     .shadow(radius: 5)
                                     .frame(maxWidth: screen.width / 2)
@@ -105,7 +105,7 @@ struct PickOneView: View {
                             }
                                 .padding()
                                 .background(Color.blue)
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
                                 .cornerRadius(10)
                                 .shadow(radius: 5)
                                 .frame(maxWidth: screen.width / 2)
@@ -116,7 +116,7 @@ struct PickOneView: View {
                         }
                         .padding()
                         .background(Color(red: 0.0, green: 0.6, blue: 0.9))
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .cornerRadius(10)
                         .shadow(radius: 5)
                         .frame(maxWidth: screen.width / 2)

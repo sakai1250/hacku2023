@@ -25,6 +25,7 @@ struct OnetapRecommendView: View {
     @State private var feedback = ""
     @State private var combinedImage: UIImage?
     @State private var selectedImages: [UIImage] = []
+    @State private var weather = ""
 
     @Binding var selectedImagesPair: [[UIImage]]
 
@@ -48,11 +49,19 @@ struct OnetapRecommendView: View {
                         .frame(maxWidth: screen.width / 0.9)
                         .frame(maxHeight: screen.height / 0.9)
                     VStack {
-                        Text(printRandomString())
-                            .font(.system(size: 24))
-                            .padding()
+                        HStack {
+                            Spacer()
+                                .frame(width: screen.width / 10)
+                            Text(printRandomString())
+                                .font(.system(size: 32))
+                                .bold()
+                            Spacer()
+                                .frame(width: screen.width / 10)
+
+                        }
                         Spacer()
-                            .frame(height: screen.height / 1.4)
+                            .frame(height: screen.height / 1.6)
+                            
                     }
                     VStack {
                         Spacer()
@@ -78,7 +87,7 @@ struct OnetapRecommendView: View {
                     VStack {
                         HStack {
                             ForEach(selectedImages, id: \.self) { image in
-                                Image(uiImage: image)
+                                Image(uiImage: resizeImage(image: image, targetSize: CGSize(width: 200, height: 200)))
                                     .resizable()
                                     .scaledToFit()
                             }
@@ -97,13 +106,13 @@ struct OnetapRecommendView: View {
                             }
                             .padding()
                             .background(Color(red: 0.0, green: 0.6, blue: 0.9))
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                             .cornerRadius(10)
                             .shadow(radius: 5)
                             .frame(maxWidth: screen.width / 2)
                             .frame(maxHeight: screen.height / 5)
                             .navigationDestination(isPresented: $isActiveRetrain) {
-                                RetrainingView(feedback: $feedback, combinedImage: $combinedImage)
+                                RetrainingView(feedback: $feedback, combinedImage: $combinedImage, items: $items, weather: $weather)
                             }
                             // 3画面目に遷移
 //                            Button("やめとく") {
@@ -144,18 +153,18 @@ struct OnetapRecommendView: View {
                             }
                             
                             .navigationDestination(isPresented: $isActiveRetrain) {
-                                RetrainingView(feedback: $feedback, combinedImage: $combinedImage)
+                                RetrainingView(feedback: $feedback, combinedImage: $combinedImage, items: $items, weather: $weather)
                             }
 
                             .padding()
                             .background(Color.blue)
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                             .cornerRadius(10)
                             .shadow(radius: 5)
                             .frame(maxWidth: screen.width / 2)
                             .frame(maxHeight: screen.height / 5)
                             .navigationDestination(isPresented: $isActiveRetrain) {
-                                RetrainingView(feedback: $feedback, combinedImage: $combinedImage)
+                                RetrainingView(feedback: $feedback, combinedImage: $combinedImage, items: $items, weather: $weather)
                             }
 
 
@@ -171,29 +180,31 @@ struct OnetapRecommendView: View {
             
             DispatchQueue.main.async {
                 // MLモデルを使用してラベル推定
-                for _selectedImages in selectedImagesPair {
-                    if _selectedImages.count >= 2, let combinedImage = combineImages(_selectedImages[0], _selectedImages[1]),
-                       let data = weatherAPI.weatherData, let weatherCodeCharacter = data.weather.description.first,
-                       let usr = user.first, let gender = usr.gender {
-                        
-                        let weatherCode = String(weatherCodeCharacter) // 文字を文字列に変換
-                        let weather = weatherAPI.getWeatherCategory(from: weatherCode).rawValue // WeatherCategory を String に変換
-                        
-                        // 現在の日付を取得
-                        let currentDate = Date()
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "yyyy-MM-dd"
-                        let dateString = dateFormatter.string(from: currentDate)
-                        // 季節を出力
-                        let season = seasonFromDates([dateString])
-                        
-                        if let model = selectModel(gender: gender, season: season, weather: weather) {
-                            predictLabel(image: combinedImage, model: model)
+                if let data = weatherAPI.weatherData {
+                    for _selectedImages in selectedImagesPair {
+                        if _selectedImages.count >= 2, let combinedImage = combineImages(_selectedImages[0], _selectedImages[1]),
+                           let usr = user.first, let gender = usr.gender {
+                            
+                            let weatherCode = data.weather.first?.description ?? ""
+                            let weather = weatherAPI.getWeatherCategory_for_predict(weatherAPI.getWeatherCategory(from: weatherCode).rawValue)
+
+                            // 現在の日付を取得
+                            let currentDate = Date()
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "yyyy-MM-dd"
+                            let dateString = dateFormatter.string(from: currentDate)
+                            // 季節を出力
+                            let season = seasonFromDates([dateString])
+                            print(gender, season, weather)
+                            if let model = selectModel(gender: gender, season: season, weather: weather) {
+                                predictLabel(image: combinedImage, model: model)
+                            }
                         }
-                    }
-                    
-                    else {
-                        print("ない")
+                        
+                        
+                        else {
+                            print("ない")
+                        }
                     }
                 }
             }

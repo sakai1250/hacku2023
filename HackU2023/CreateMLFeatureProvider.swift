@@ -31,3 +31,19 @@ func createMLFeatureProvider(from data: TrainingData) -> MLFeatureProvider? {
 
     return featureProvider
 }
+
+func createBatchProvider(data: [TrainingData], batchSize: Int) -> MLArrayBatchProvider {
+    var batchProviders: [MLFeatureProvider] = []
+    
+    // データをバッチサイズに応じて分割
+    for batchStart in stride(from: 0, to: data.count, by: batchSize) {
+        let batchEnd = min(batchStart + batchSize, data.count)
+        let batch = Array(data[batchStart..<batchEnd])
+
+        // 各バッチのデータから MLFeatureProvider を作成
+        let featureProviders = batch.compactMap { createMLFeatureProvider(from: $0) }
+        batchProviders.append(contentsOf: featureProviders)
+    }
+
+    return MLArrayBatchProvider(array: batchProviders)
+}

@@ -20,6 +20,8 @@ struct StartView: View {
                 Image("Hacku_start")
                     .resizable()
                     .aspectRatio(CGSize(width: 1, height: 2), contentMode: .fill)
+//                    .frame(maxWidth: screen.width / 0.8)
+//                    .frame(maxHeight: screen.height / 0.8)
                 VStack {
                     GeometryReader { geometry in
                         Button(action: {

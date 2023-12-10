@@ -37,6 +37,7 @@ struct HomeView: View {
                             .frame(maxHeight: screen.height / 0.9)
                         Image(items[1]) // 画像
                             .resizable()
+                            .aspectRatio(CGSize(width: 1, height: 2), contentMode:.fit)
                             .frame(maxWidth: screen.width * 2 / 3.5)
                             .frame(maxHeight: screen.height * 2 / 3)
                             .offset(y: screen.height / 7)

@@ -27,8 +27,8 @@ struct SelectFunctionView: View {
                     isActive1Recommend = true
                 }
                 .padding()
-                .background(Color(red: 0.2, green: 0.55, blue: 0.9))
-                .foregroundColor(.white)
+                .background(Color(red: 1.0, green: 182/255, blue: 193/255))
+                .foregroundColor(.black)
                 .cornerRadius(10)
                 .shadow(radius: 5)
                 .frame(maxWidth: screen.width / 2)
@@ -42,7 +42,7 @@ struct SelectFunctionView: View {
                 }
                 .padding()
                 .background(Color(red: 0.0, green: 0.6, blue: 0.9))
-                .foregroundColor(.white)
+                .foregroundColor(.black)
                 .cornerRadius(10)
                 .shadow(radius: 5)
                 .frame(maxWidth: screen.width / 2)
@@ -55,7 +55,7 @@ struct SelectFunctionView: View {
                 }
                 .padding()
                 .background(Color(red: 0.0, green: 0.6, blue: 0.9))
-                .foregroundColor(.white)
+                .foregroundColor(.black)
                 .cornerRadius(10)
                 .shadow(radius: 5)
                 .frame(maxWidth: screen.width / 2)

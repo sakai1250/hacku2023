@@ -22,7 +22,8 @@ struct LabelPredictionView: View {
     @State private var isActiveRetrain = false
     @State private var isActiveHome = false
     @State private var feedback = ""
-    @State private var combinedImage: UIImage?
+    @State public var combinedImage: UIImage?
+    @State private var weather = ""
 
     @Binding var selectedImages: [UIImage]
 
@@ -41,11 +42,19 @@ struct LabelPredictionView: View {
                         .frame(maxWidth: screen.width / 0.9)
                         .frame(maxHeight: screen.height / 0.9)
                     VStack {
-                        Text(printRandomString())
-                            .font(.system(size: 24))
-                            .padding()
+                        HStack {
+                            Spacer()
+                                .frame(width: screen.width / 10)
+                            Text(printRandomString())
+                                .font(.system(size: 32))
+                                .bold()
+                            Spacer()
+                                .frame(width: screen.width / 10)
+
+                        }
                         Spacer()
-                            .frame(height: screen.height / 1.4)
+                            .frame(height: screen.height / 1.6)
+                            
                     }
                     VStack {
                         Spacer()
@@ -71,7 +80,7 @@ struct LabelPredictionView: View {
                     VStack {
                         HStack {
                             ForEach(selectedImages, id: \.self) { image in
-                                Image(uiImage: image)
+                                Image(uiImage: resizeImage(image: image, targetSize: CGSize(width: 200, height: 200)))
                                     .resizable()
                                     .scaledToFit()
                             }
@@ -90,13 +99,13 @@ struct LabelPredictionView: View {
                             }
                             .padding()
                             .background(Color(red: 0.0, green: 0.6, blue: 0.9))
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                             .cornerRadius(10)
                             .shadow(radius: 5)
                             .frame(maxWidth: screen.width / 2)
                             .frame(maxHeight: screen.height / 5)
                             .navigationDestination(isPresented: $isActiveRetrain) {
-                                RetrainingView(feedback: $feedback, combinedImage: $combinedImage)
+                                RetrainingView(feedback: $feedback, combinedImage: $combinedImage, items: $items, weather: $weather)
                             }
                             // 3画面目に遷移
                             Button("やめとく") {
@@ -112,13 +121,13 @@ struct LabelPredictionView: View {
                             }
                             .padding()
                             .background(Color.blue)
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                             .cornerRadius(10)
                             .shadow(radius: 5)
                             .frame(maxWidth: screen.width / 2)
                             .frame(maxHeight: screen.height / 5)
                             .navigationDestination(isPresented: $isActiveRetrain) {
-                                RetrainingView(feedback: $feedback, combinedImage: $combinedImage)
+                                RetrainingView(feedback: $feedback, combinedImage: $combinedImage, items: $items, weather: $weather)
                             }
                         }
                         Spacer()
@@ -170,8 +179,8 @@ struct LabelPredictionView: View {
             DispatchQueue.main.async {
                 if selectedImages.count >= 2, let combinedImage = combineImages(selectedImages[0], selectedImages[1]),
                    let data = weatherAPI.weatherData, let usr = user.first, let gender = usr.gender {
-                    
-                    let weatherCode = data.weather.first?.description ?? "" // ここを修正
+
+                    let weatherCode = data.weather.first?.description ?? ""
                     
                     // 現在の日付を取得
                     let currentDate = Date()
@@ -180,8 +189,8 @@ struct LabelPredictionView: View {
                     let dateString = dateFormatter.string(from: currentDate)
                     // 季節を出力
                     let season = seasonFromDates([dateString])
-                    let weather = weatherAPI.getWeatherCategory(from: weatherCode).rawValue
-                    
+                    weather = weatherAPI.getWeatherCategory_for_predict(weatherAPI.getWeatherCategory(from: weatherCode).rawValue)
+
                     if let model = selectModel(gender: gender, season: season, weather: weather) {
                         predictLabel(image: combinedImage, model: model)
                     }
