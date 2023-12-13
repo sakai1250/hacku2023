@@ -92,20 +92,25 @@ struct RetrainingView: View {
         
     func startRetraining(model: String) {
         self.isTrainingInProgress = true
-        if self.feedback == "おしゃれじゃない" {
-            let newTrainingData: [TrainingData] = [
-                TrainingData(image: self.combinedImage!, label: self.feedback)
-            ]
-            let newFeatureProviders = newTrainingData.compactMap { createMLFeatureProvider(from: $0) }
-            let newData = MLArrayBatchProvider(array: newFeatureProviders)
-            print(newData)
-            retrainModel(with: newData, model: model)
-        } else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-                self.isTrainingComplete = true
-                self.isActive = true
-                self.isTrainingInProgress = false
-            }
+//        if self.feedback == "おしゃれじゃない" {
+//            let newTrainingData: [TrainingData] = [
+//                TrainingData(image: self.combinedImage!, label: self.feedback)
+//            ]
+//            let newFeatureProviders = newTrainingData.compactMap { createMLFeatureProvider(from: $0) }
+//            let newData = MLArrayBatchProvider(array: newFeatureProviders)
+//            print(newData)
+//            retrainModel(with: newData, model: model)
+//        } else {
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+//                self.isTrainingComplete = true
+//                self.isActive = true
+//                self.isTrainingInProgress = false
+//            }
+//        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            self.isTrainingComplete = true
+            self.isActive = true
+            self.isTrainingInProgress = false
         }
     }
     
@@ -166,7 +171,7 @@ struct RetrainingView: View {
             print("guard let URLToModel = Bundle.main.url(forResource: model, withExtension: mlmodelc")
             let newModelURL = URLToModel.deletingLastPathComponent().appendingPathComponent("\(model).mlpackage")
             try updatedModel.write(to: newModelURL)
-            // ここで新しいモデルのURLを保存し、次回の起動時にそれを使用するようにします
+
         } catch {
             print("Error saving updated model: \(error)")
         }
