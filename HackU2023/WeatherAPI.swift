@@ -105,16 +105,20 @@ class WeatherAPI: ObservableObject {
     // 天気カテゴリを取得する関数
     public func getWeatherCategory(from weatherDescription: String) -> WeatherCategory {
         switch weatherDescription {
-        case "clear sky":
-            return .clearSky
-        case "few clouds", "scattered clouds", "broken clouds":
-            return .cloudy
-        case "shower rain", "rain":
-            return .rain
-        case "thunderstorm":
+        case "Thunderstorm":
             return .thunderstorm
-        case "snow":
+        case "Drizzle":
+            return .rain
+        case "Rain":
+            return .rain
+        case "Snow":
             return .snow
+        case "Clear":
+            return .clearSky
+        case "Clouds":
+            return .cloudy
+        case "Fog":
+            return .cloudy
         default:
             return .unknown
         }
@@ -144,9 +148,15 @@ class WeatherAPI: ObservableObject {
     // 天気カテゴリを取得する関数
     public func getWeatherCategory_for_predict(_ weatherCategory: String) -> String {
         switch weatherCategory {
-        case "晴れ", "曇り":
+        case "晴れ":
             return "晴れ"
-        case "雨", "雪", "雷雨":
+        case "曇り":
+            return "晴れ"
+        case "雨":
+            return "雨"
+        case "雷雨":
+            return "雨"
+        case "雪":
             return "雨"
         default:
             return "不明"

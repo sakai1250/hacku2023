@@ -16,7 +16,7 @@ func checkAndUpdateLevel(for user: ViViTUser) -> [String] {
     var shouldPlayVideo = false
     var videoName = ""
 
-    if user.exp == 3 {
+    if user.exp == 3 && user.level == 1{
         user.level += 1
         user.exp = 0
         if user.level == 2 {
@@ -24,7 +24,7 @@ func checkAndUpdateLevel(for user: ViViTUser) -> [String] {
             videoName = user.gender == "男性" ? "movies/male_blue/male1b.mp4" : "movies/female_pink/female1p.mp4"
         }
     }
-    if user.exp == 5 {
+    if user.exp == 3 && user.level == 2{
         user.level += 1
         user.exp = 0
         if user.level == 3 {

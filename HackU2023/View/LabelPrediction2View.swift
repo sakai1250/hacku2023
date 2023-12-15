@@ -135,7 +135,7 @@ struct LabelPrediction2View: View {
                 if selectedImages.count >= 2, let combinedImage = combineImages(selectedImages[0], selectedImages[1]),
                    let data = weatherAPI.weatherData, let usr = user.first, let gender = usr.gender {
 
-                    let weatherCode = data.weather.first?.description ?? ""
+                    let weatherCode = data.weather.first?.main ?? ""
                     
                     // 現在の日付を取得
                     let currentDate = Date()

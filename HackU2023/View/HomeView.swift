@@ -49,7 +49,7 @@ struct HomeView: View {
                     HStack {
                         VStack(alignment: .leading)  {
                             if let data = weatherAPI.weatherData {
-                                if let weatherCode = data.weather.first?.description {
+                                if let weatherCode = data.weather.first?.main {
                                     let maxTemperature = data.main.temp_max
                                     let minTemperature = data.main.temp_min
                                     Text("天気: \(weatherAPI.getWeatherCategory(from: weatherCode).rawValue)")

@@ -227,7 +227,7 @@ struct LabelsPredictionView: View {
                     for _selectedImages in selectedImagesPair {
                         if _selectedImages.count >= 2, let combinedImage = combineImages(_selectedImages[0], _selectedImages[1]),
                            let usr = user.first, let gender = usr.gender {
-                            let weatherCode = data.weather.first?.description ?? ""
+                            let weatherCode = data.weather.first?.main ?? ""
                             
                             // 現在の日付を取得
                             let currentDate = Date()
