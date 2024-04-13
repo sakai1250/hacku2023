@@ -69,12 +69,12 @@ struct SetupView: View {
         } else {
             // 新しいユーザー設定を作成
             userSetting = ViViTUser(context: viewContext)
+            userSetting.level = 1
+            userSetting.exp = 0
         }
 
         userSetting.name = username
         userSetting.gender = selectedGender.rawValue
-        userSetting.level = 1
-        userSetting.exp = 0
 
         do {
             try viewContext.save()

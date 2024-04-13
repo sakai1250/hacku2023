@@ -11,6 +11,7 @@ struct SelectFunctionView: View {
     @State private var isActiveScore = false
     @State private var isActiveOne = false
     @State private var isActive1Recommend = false
+    @State private var showAlert = false  // アラート表示用の状態
 
     let screen: CGRect = UIScreen.main.bounds
 
@@ -24,7 +25,13 @@ struct SelectFunctionView: View {
                 .frame(maxHeight: screen.height / 0.9)
             VStack {
                 Button("コーディネート提案") {
-                    isActive1Recommend = true
+                    if selectedImagesPair.isEmpty || selectedImagesPair.allSatisfy({ $0.isEmpty }) {
+                        // selectedImagesPairが空の場合、アラートを表示
+                        showAlert = true
+                    } else {
+                        // selectedImagesPairに画像がある場合、画面遷移
+                        isActive1Recommend = true
+                    }
                 }
                 .padding()
                 .background(Color(red: 1.0, green: 182/255, blue: 193/255))
@@ -64,6 +71,13 @@ struct SelectFunctionView: View {
                     PickOneView()
                 }
             }
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("エラー"),
+                message: Text("画像がありません。下のアルバムから服を選択することで、その中からベストな組み合わせをを選択します。"),
+                dismissButton: .default(Text("OK"))
+            )
         }
         .onAppear{
             selectedImagesPair = convertURLsToUIImages(urls: generateCombinations())

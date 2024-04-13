@@ -28,6 +28,8 @@
 		5A78B66D2B1BC0FA004EC2AE /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A78B66C2B1BC0FA004EC2AE /* WeatherAPI.swift */; };
 		5A78B6722B1BC2CE004EC2AE /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 5A78B6712B1BC2CE004EC2AE /* Alamofire */; };
 		5A78B6742B1BC9EB004EC2AE /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A78B6732B1BC9EB004EC2AE /* home.png */; };
+		5A972D292BC31FCC00B52570 /* retrain.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 5A972D282BC31FCB00B52570 /* retrain.mlpackage */; };
+		5AAC08512BB842EB00C345E8 /* FullconnectionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAC08502BB842EB00C345E8 /* FullconnectionLayer.swift */; };
 		5ABB02C32B23992B00487284 /* VideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB02C22B23992B00487284 /* VideoController.swift */; };
 		5ABB02C52B23A40E00487284 /* movies in Resources */ = {isa = PBXBuildFile; fileRef = 5ABB02C42B23A40E00487284 /* movies */; };
 		5ABB02C72B2428C600487284 /* OnetapRecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB02C62B2428C600487284 /* OnetapRecommendView.swift */; };
@@ -70,6 +72,8 @@
 		5A5CBB862B1A6A0F00971E05 /* PickImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickImage.swift; sourceTree = "<group>"; };
 		5A78B66C2B1BC0FA004EC2AE /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
 		5A78B6732B1BC9EB004EC2AE /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		5A972D282BC31FCB00B52570 /* retrain.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; name = retrain.mlpackage; path = ../../retrain.mlpackage; sourceTree = "<group>"; };
+		5AAC08502BB842EB00C345E8 /* FullconnectionLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullconnectionLayer.swift; sourceTree = "<group>"; };
 		5ABB02C22B23992B00487284 /* VideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoController.swift; sourceTree = "<group>"; };
 		5ABB02C42B23A40E00487284 /* movies */ = {isa = PBXFileReference; lastKnownFileType = folder; path = movies; sourceTree = "<group>"; };
 		5ABB02C62B2428C600487284 /* OnetapRecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnetapRecommendView.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 				5A5CBB7A2B1A366300971E05 /* View */,
 				5A5CBB7B2B1A36D800971E05 /* Model */,
 				5A5CBB6C2B1A32AF00971E05 /* CreateMLFeatureProvider.swift */,
+				5AAC08502BB842EB00C345E8 /* FullconnectionLayer.swift */,
 				5AC6A3492B1E820D006EDF36 /* ScreenShotManager.swift */,
 				5AC6A3432B1E2EF5006EDF36 /* CheckUserData.swift */,
 				5ABB02C22B23992B00487284 /* VideoController.swift */,
@@ -136,6 +141,7 @@
 				5A5CBB6F2B1A32AF00971E05 /* ToCVPixelBuffer.swift */,
 				5ABB02C82B2473FB00487284 /* FashionTips.swift */,
 				5A5CBB5E2B1A30AA00971E05 /* Persistence.swift */,
+				5A972D282BC31FCB00B52570 /* retrain.mlpackage */,
 				5A5CBB7C2B1A62E100971E05 /* EditPhotosView.swift */,
 				5A5CBB602B1A30AA00971E05 /* HackU2023.xcdatamodeld */,
 				5A5CBB592B1A30AA00971E05 /* Assets.xcassets */,
@@ -284,6 +290,7 @@
 				5ABB02D52B25CBDB00487284 /* LabelPrediction2View.swift in Sources */,
 				5A5CBB622B1A30AA00971E05 /* HackU2023.xcdatamodeld in Sources */,
 				5AC6A3532B20E7DD006EDF36 /* spring_sunny_Man.mlpackage in Sources */,
+				5AAC08512BB842EB00C345E8 /* FullconnectionLayer.swift in Sources */,
 				5AC6A33F2B1DEDCE006EDF36 /* LocationManager.swift in Sources */,
 				5AC6A3512B20E7DD006EDF36 /* winter_sunny_Woman.mlpackage in Sources */,
 				5A5CBB7D2B1A62E100971E05 /* EditPhotosView.swift in Sources */,
@@ -299,6 +306,7 @@
 				5A78B66D2B1BC0FA004EC2AE /* WeatherAPI.swift in Sources */,
 				5AC6A34C2B20B1EC006EDF36 /* PickOneView.swift in Sources */,
 				5AC6A3582B21CBBD006EDF36 /* LabelsPredictionView.swift in Sources */,
+				5A972D292BC31FCC00B52570 /* retrain.mlpackage in Sources */,
 				5A5CBB772B1A32B000971E05 /* ToCVPixelBuffer.swift in Sources */,
 				5A5CBB562B1A30A900971E05 /* HackU2023App.swift in Sources */,
 			);
@@ -433,14 +441,17 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HackU2023/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = KikonAshI;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = "$(PRODUCT_NAME)";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = HackU2023;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "このAppは位置情報を利用します。";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -448,9 +459,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sakai.tai.HackU2023;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -466,14 +481,17 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HackU2023/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = KikonAshI;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = "$(PRODUCT_NAME)";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = HackU2023;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "このAppは位置情報を利用します。";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -481,9 +499,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sakai.tai.HackU2023;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

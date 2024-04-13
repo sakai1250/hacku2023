@@ -9,11 +9,13 @@ import CryptoKit
 import CoreData
 import Foundation
 import UIKit
+import Photos
 
 struct AlbamView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @State private var isImagePickerPresented = false
-    
+    @State private var isImagePickerDisplayed = false
+    @State private var isImageSaved = false
+
     @State private var selectedImage: UIImage?
     @State private var selectedImages: [UIImage] = []
     
@@ -118,7 +120,7 @@ struct AlbamView: View {
                         }
                         HStack {
                             Button("服を選ぶ") {
-                                isImagePickerPresented = true
+                                checkPhotoLibraryAuthorization()
                             }
                             .padding()
                             .background(Color(red: 0.0, green: 0.6, blue: 0.9))
@@ -130,6 +132,7 @@ struct AlbamView: View {
                             if !selectedImages.isEmpty {
                                 Button("上の服として保存") {
                                     saveImage(selectedImages, to: "tops")
+                                    self.isImageSaved = true
                                 }
                                 .padding()
                                 .background(Color(red: 0.0, green: 0.6, blue: 0.9))
@@ -141,6 +144,7 @@ struct AlbamView: View {
                                 
                                 Button("下の服として保存") {
                                     saveImage(selectedImages, to: "bottoms")
+                                    self.isImageSaved = true
                                 }
                                 .padding()
                                 .background(Color(red: 0.0, green: 0.6, blue: 0.9))
@@ -170,8 +174,8 @@ struct AlbamView: View {
 //                            }
 //                        }
 //                    }
-                    .sheet(isPresented: $isImagePickerPresented) {
-                        ImagePicker(selectedImages: $selectedImages)
+                        .sheet(isPresented: $isImagePickerDisplayed) {
+                            ImagePicker(selectedImages: $selectedImages)
                     }
                     .onAppear {
                         createFolders()
@@ -179,9 +183,14 @@ struct AlbamView: View {
                         topsImageURLs = fetchImageURLs(from: "tops")
                         bottomsImageURLs = fetchImageURLs(from: "bottoms")
                     }
+                    .navigationDestination(isPresented: $isImageSaved) {
+                        AlbamView()
+                    }
+
                 }
             }
         }
+        
     }
 
     func saveImage(_ images: [UIImage], to folder: String) {
@@ -256,6 +265,24 @@ struct AlbamView: View {
             bottomsImageURLs = fetchImageURLs(from: "bottoms")
         } catch {
             print("Error deleting image: \(error)")
+        }
+    }
+    
+    func checkPhotoLibraryAuthorization() {
+        let status = PHPhotoLibrary.authorizationStatus()
+        if status == .notDetermined {
+            PHPhotoLibrary.requestAuthorization { status in
+                if status == .authorized {
+                    DispatchQueue.main.async {
+                        self.isImagePickerDisplayed = true
+                    }
+                }
+            }
+        } else if status == .authorized {
+            self.isImagePickerDisplayed = true
+        } else {
+            // アクセスが拒否された場合の処理
+            // 例: 設定を開くためのアラートを表示する
         }
     }
 

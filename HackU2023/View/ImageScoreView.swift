@@ -7,7 +7,7 @@
 
 import SwiftUI
 import UIKit
-
+import Photos
 
 struct ImageScoreView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -66,7 +66,7 @@ struct ImageScoreView: View {
                                 }
 
                             Button("服を選ぶ") {
-                                isImagePickerDisplayed = true
+                                checkPhotoLibraryAuthorization()
                             }
                                 .padding()
                                 .background(Color.blue)
@@ -77,7 +77,7 @@ struct ImageScoreView: View {
                                 .frame(maxHeight: screen.height / 5)
                         } else {
                             Button("服を選ぶ") {
-                                isImagePickerDisplayed = true
+                                checkPhotoLibraryAuthorization()
                             }
                                 .padding()
                                 .background(Color.blue)
@@ -157,6 +157,24 @@ struct ImageScoreView: View {
                                                   in: .userDomainMask).first else { return nil }
          return documentURL.appendingPathComponent(key + ".png")
      }
+    
+    func checkPhotoLibraryAuthorization() {
+        let status = PHPhotoLibrary.authorizationStatus()
+        if status == .notDetermined {
+            PHPhotoLibrary.requestAuthorization { status in
+                if status == .authorized {
+                    DispatchQueue.main.async {
+                        self.isImagePickerDisplayed = true
+                    }
+                }
+            }
+        } else if status == .authorized {
+            self.isImagePickerDisplayed = true
+        } else {
+            // アクセスが拒否された場合の処理
+            // 例: 設定を開くためのアラートを表示する
+        }
+    }
  }
 
 struct PickImageView_Previews: PreviewProvider {

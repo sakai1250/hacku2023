@@ -9,19 +9,26 @@ import SwiftUI
 import CoreData
 
 struct SettingView: View {
-    let items = ["プロフィール設定", "画像一覧の編集", "リセット"]
+    let items = ["プロフィール変更", "リセット"]
     @State private var navigateToStart = false
+    @State private var navigateToSetup = false
     @State private var showResetAlert = false
     @Environment(\.managedObjectContext) private var viewContext
 
     var body: some View {
         NavigationStack {
             List(items, id: \.self) { item in
-                if item == "リセット" {
+                if item == "プロフィール変更" {
+                    Button("プロフィール変更") {
+                        navigateToSetup = true
+                    }
+                }
+                else if item == "リセット" {
                     Button("リセット") {
                         showResetAlert = true
                     }
-                } else {
+                }
+                else {
                     NavigationLink(destination: Text(item)) {
                         Text(item)
                     }
@@ -44,6 +51,9 @@ struct SettingView: View {
         }
         .navigationDestination(isPresented: $navigateToStart) {
             StartView()
+        }
+        .navigationDestination(isPresented: $navigateToSetup) {
+            SetupView()
         }
         .navigationBarBackButtonHidden(true)
 

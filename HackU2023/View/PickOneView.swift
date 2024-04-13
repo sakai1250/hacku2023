@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UIKit
+import Photos
 
 
 struct PickOneView: View {
@@ -57,7 +58,7 @@ struct PickOneView: View {
                                     }
 
                                     Button("服を選ぶ") {
-                                        isImagePickerDisplayed = true
+                                        checkPhotoLibraryAuthorization()
                                     }
                                         .padding()
                                         .background(Color.blue)
@@ -101,7 +102,7 @@ struct PickOneView: View {
                             }
                             else {
                             Button("服を選ぶ") {
-                                isImagePickerDisplayed = true
+                                checkPhotoLibraryAuthorization()
                             }
                                 .padding()
                                 .background(Color.blue)
@@ -190,6 +191,24 @@ struct PickOneView: View {
                                                   in: .userDomainMask).first else { return nil }
          return documentURL.appendingPathComponent(key + ".png")
      }
+    
+    func checkPhotoLibraryAuthorization() {
+        let status = PHPhotoLibrary.authorizationStatus()
+        if status == .notDetermined {
+            PHPhotoLibrary.requestAuthorization { status in
+                if status == .authorized {
+                    DispatchQueue.main.async {
+                        self.isImagePickerDisplayed = true
+                    }
+                }
+            }
+        } else if status == .authorized {
+            self.isImagePickerDisplayed = true
+        } else {
+            // アクセスが拒否された場合の処理
+            // 例: 設定を開くためのアラートを表示する
+        }
+    }
  }
 
 struct PickImagesView_Previews: PreviewProvider {
