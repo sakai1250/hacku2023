@@ -213,7 +213,7 @@ struct OnetapRecommendView: View {
             }
         }
     }
-
+    //  推論
     func predictLabel(image: UIImage?, model: VNCoreMLModel) {
         guard let image = image else { return }
 

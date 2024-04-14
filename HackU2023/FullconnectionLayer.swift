@@ -26,7 +26,7 @@ func convertToDoubleArray(from multiArray: MLMultiArray) -> [Double] {
 
 
 
-// フルコネクテッドニューラルネットワークのクラス定義
+// 全結合のクラス定義
 class FullyConnectedNetwork {
     var weights: [[Double]]
     var biases: [Double]

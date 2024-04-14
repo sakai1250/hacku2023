@@ -74,6 +74,7 @@ struct RetrainingView: View {
                     // 季節を出力
                     let season = seasonFromDates([dateString])
                     print(weather, season, gender)
+                    //  学習
                     if let model = selectModel_for_retrain(gender: gender, season: season, weather: weather) {
                         startRetraining(model: model)
 
@@ -89,7 +90,7 @@ struct RetrainingView: View {
             }
         }
     }
-        
+//  学習
     func startRetraining(model: String) {
         self.isTrainingInProgress = true
 //        if self.feedback == "おしゃれじゃない" {
@@ -114,6 +115,7 @@ struct RetrainingView: View {
         }
     }
     
+//  学習
     func retrainModel(with newData: MLBatchProvider, model: String) {
         let modelConfiguration = MLModelConfiguration()
         modelConfiguration.computeUnits = .all // CPUとGPUの両方を使用
@@ -158,7 +160,7 @@ struct RetrainingView: View {
         updateTask?.resume()
     }
 
-
+//  学習
     func handleModelUpdate(_ context: MLUpdateContext, model: String) {
         do {
             let updatedModel = context.model

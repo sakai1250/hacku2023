@@ -190,10 +190,11 @@ struct LabelPredictionView: View {
                     // 季節を出力
                     let season = seasonFromDates([dateString])
                     weather = weatherAPI.getWeatherCategory_for_predict(weatherAPI.getWeatherCategory(from: weatherCode).rawValue)
-
+                    //  推論
                     if let model = selectModel(gender: gender, season: season, weather: weather) {
-                        predictLabel(image: combinedImage, model: model)
+                            predictLabel(image: combinedImage, model: model)
                     }
+
                 }
             }
 
@@ -204,18 +205,21 @@ struct LabelPredictionView: View {
             }
         }
     }
-    
+//  推論
     func predictLabel(image: UIImage?, model: VNCoreMLModel) {
         guard let image = image else { return }
         
         let request = VNCoreMLRequest(model: model) { request, error in
-            if let results = request.results as? [VNClassificationObservation] {
-                // 「おしゃれ」ラベルの結果を探す
-                if let stylishResult = results.first(where: { $0.identifier == "おしゃれ" }) {
-                    DispatchQueue.main.async {
-                        // 「おしゃれ」ラベルの信頼度を設定
-                        self.predictionResult = "おしゃれ度:\(Int(stylishResult.confidence * 100))%"
-                    }
+            if let features_64 = request.results as? [VNClassificationObservation] {
+                //  分類器
+                let fc = FullyConnectedNetwork(inputChannels: 64, outputChannels: 2)
+                let results = fc.infer(input: features_64.map { Double($0.confidence) })
+                // 要素数2の[Double]配列で1番目が大きいと"おしゃれ"
+                let stylishResult = results[0] / (results[0] + results[1])
+                
+                DispatchQueue.main.async {
+                    // 「おしゃれ」ラベルの信頼度を設定
+                    self.predictionResult = "おしゃれ度: \(Int((stylishResult) * 100))%"
                 }
             }
         }
