@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct SelectFunctionView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \ViViTUser.level, ascending: true)],
+        animation: .default)
+    private var userSettings: FetchedResults<ViViTUser>
+
     @State private var isActiveScore = false
     @State private var isActiveOne = false
     @State private var isActive1Recommend = false
@@ -58,7 +64,13 @@ struct SelectFunctionView: View {
                     ImageScoreView()
                 }
                 Button("購入サポート") {
-                    isActiveOne = true
+                    if selectedImagesPair.isEmpty || selectedImagesPair.allSatisfy({ $0.isEmpty }) {
+                        // selectedImagesPairが空の場合、アラートを表示
+                        showAlert = true
+                    } else {
+                        // selectedImagesPairに画像がある場合、画面遷移
+                        isActiveOne = true
+                    }
                 }
                 .padding()
                 .background(Color(red: 0.0, green: 0.6, blue: 0.9))

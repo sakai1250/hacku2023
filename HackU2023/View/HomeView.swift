@@ -25,6 +25,8 @@ struct HomeView: View {
     @State private var shouldPlayVideo = false
     @State private var shouldDismiss = false
 
+    @State private var selectedTab: Tab = .home
+    
     var body: some View {
         VStack {
             ZStack(alignment: .topLeading) { // 左上に配置

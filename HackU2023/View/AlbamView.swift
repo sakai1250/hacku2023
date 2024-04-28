@@ -25,6 +25,8 @@ struct AlbamView: View {
     @State private var bottomsImageURLs: [URL] = []
     
     let screen: CGRect = UIScreen.main.bounds
+    
+    @State private var selectedTab: Tab = .editphoto
 
     var body: some View {
         NavigationView {
@@ -155,25 +157,6 @@ struct AlbamView: View {
                                 .frame(maxHeight: screen.height / 5)
                             }
                         }
-//                        ScrollView {
-//                            HStack {
-//                                ForEach(imageCombinations, id: \.self) { combination in
-//                                    VStack {
-//                                        ForEach(combination, id: \.self) { imageUrl in
-//                                            // オプショナルバインディングを使用して安全にアンラップ
-//                                            if let image = UIImage(contentsOfFile: imageUrl.path) {
-//                                                let resizedImage = resizeImage(image: image, targetSize: CGSize(width: 64, height: 64))
-//                                                Image(uiImage: resizedImage)
-//                                                    .resizable()
-//                                                    .scaledToFit()
-//                                                    .frame(width: 100, height: 100)
-//                                            }
-//                                        }
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
                         .sheet(isPresented: $isImagePickerDisplayed) {
                             ImagePicker(selectedImages: $selectedImages)
                     }
@@ -184,7 +167,7 @@ struct AlbamView: View {
                         bottomsImageURLs = fetchImageURLs(from: "bottoms")
                     }
                     .navigationDestination(isPresented: $isImageSaved) {
-                        AlbamView()
+                        MainView(selectedTab: $selectedTab).environment(\.managedObjectContext, viewContext)
                     }
 
                 }

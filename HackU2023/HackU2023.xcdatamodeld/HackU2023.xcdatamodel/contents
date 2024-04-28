@@ -4,11 +4,21 @@
         <attribute name="imageHash" optional="YES" attributeType="String"/>
     </entity>
     <entity name="ViViTUser" representedClassName="ViViTUser" syncable="YES" codeGenerationType="class">
-        <attribute name="bias" optional="YES" attributeType="Binary"/>
         <attribute name="exp" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="first_fl" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_sm" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_sp" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_wi" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="fullconne_fl_b" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_fl_w" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_sm_b" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_sm_w" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_sp_b" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_sp_w" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_wi_b" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_wi_w" optional="YES" attributeType="Transformable"/>
         <attribute name="gender" optional="YES" attributeType="String" defaultValueString="選択してください"/>
         <attribute name="level" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="weight" optional="YES" attributeType="Binary"/>
     </entity>
 </model>

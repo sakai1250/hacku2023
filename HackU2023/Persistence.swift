@@ -57,8 +57,8 @@ struct PersistenceController {
     // Core Dataのコンテナ
     let container: NSPersistentContainer
 
-    /// `NSPersistentContainer`を初期化し、データモデルを設定します。
-    /// メモリ内でのテストのためには`inMemory`を`true`に設定します。
+    /// `NSPersistentContainer`を初期化し、データモデルを設定
+    /// メモリ内でのテストのためには`inMemory`を`true`に設定
     init(inMemory: Bool = false) {
         container = NSPersistentContainer(name: "HackU2023")
         if inMemory {
@@ -66,14 +66,14 @@ struct PersistenceController {
         }
         container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
-                // 本番環境では適切なエラーハンドリングを実装してください。
+                // 本番環境では適切なエラーハンドリングを実装
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
     }
 
-    /// 新しい`User`インスタンスを作成し、与えられた情報を保存します。
+    /// 新しい`User`インスタンスを作成し、与えられた情報を保存
     /// - Parameters:
     ///   - name: `User`の名前
     ///   - level: `User`のレベル
@@ -88,8 +88,9 @@ struct PersistenceController {
             try viewContext.save()
         } catch {
             let nsError = error as NSError
-            // エラーを適切に処理してください。
+            // エラーを適切に処理
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
+
 }

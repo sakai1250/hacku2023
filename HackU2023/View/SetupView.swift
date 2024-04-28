@@ -27,6 +27,7 @@ struct SetupView: View {
     
     @State private var isActive = false
     @State private var showResetAlert = false
+    @State private var selectedTab: Tab = .home
 
     var body: some View {
         NavigationStack {
@@ -56,7 +57,7 @@ struct SetupView: View {
                 }
             }
             .navigationDestination(isPresented: $isActive) {
-                MainView()
+                MainView(selectedTab: $selectedTab).environment(\.managedObjectContext, viewContext)
             }
         }
     }

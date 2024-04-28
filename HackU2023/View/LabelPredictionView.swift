@@ -15,13 +15,13 @@ struct LabelPredictionView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \ViViTUser.level, ascending: true)],
         animation: .default)
     private var user: FetchedResults<ViViTUser>
-    
+
     @ObservedObject private var weatherAPI = WeatherAPI()
 
     @State private var predictionResult = "ラベルを推定中..."
     @State private var isActiveRetrain = false
     @State private var isActiveHome = false
-    @State private var feedback = ""
+    @State private var feedback: [Double] = [0.0, 0.0]
     @State public var combinedImage: UIImage?
     @State private var weather = ""
 
@@ -94,7 +94,7 @@ struct LabelPredictionView: View {
                         // 3画面に遷移
                         HStack {
                             Button("これにする") {
-                                feedback = "おしゃれ"
+                                feedback = [1.0, 0.0] as [Double]
                                 isActiveRetrain = true
                             }
                             .padding()
@@ -109,7 +109,7 @@ struct LabelPredictionView: View {
                             }
                             // 3画面目に遷移
                             Button("やめとく") {
-                                feedback = "おしゃれじゃない"
+                                feedback = [0.0, 1.0] as [Double]
                                 isActiveRetrain = true
                                 
                                 if combinedImage == nil {
@@ -135,46 +135,9 @@ struct LabelPredictionView: View {
                 }
             }
         }
-//        .toolbar {
-//            ToolbarItem(placement: .navigationBarLeading) {
-//                Button(action: {
-//                    isActiveHome = true
-//                    user.first?.exp += 1
-//                })
-//                {
-//                    HStack {
-//                        Image(systemName: "arrow.left")
-//                        Text("HONE")
-//                    }
-//                    .navigationDestination(isPresented: $isActiveHome) {
-//                        MainView()
-//                    }
-//                }
-//            }
-//        }
         .navigationBarBackButtonHidden(true)
         .onAppear {
             items = checkAndUpdateLevel(for: user.first!)
-
-//            // MLモデルを使用してラベル推定
-//            if selectedImages.count >= 2 {
-//                combinedImage = combineImages(selectedImages[0], selectedImages[1])
-//                if let data = weatherAPI.weatherData {
-//                    if let weatherCode = data.daily.weather_code.first {
-//                        if let combinedImage = combinedImage {
-//                            if let usr = user.first {
-//                                if let gender = usr.gender {
-//                                    let season = weatherAPI.seasonFromDates(data.daily.time)
-//                                    let weather = weatherAPI.getWeatherCategory_for_predict(weatherAPI.getWeatherCategory(weatherCode).rawValue)
-//                                    if let model = selectModel(gender: gender, season: season, weather: weather) {
-//                                        predictLabel(image: combinedImage, model: model)
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            }
             // MLモデルを使用してラベル推定
             DispatchQueue.main.async {
                 if selectedImages.count >= 2, let combinedImage = combineImages(selectedImages[0], selectedImages[1]),
@@ -208,19 +171,21 @@ struct LabelPredictionView: View {
 //  推論
     func predictLabel(image: UIImage?, model: VNCoreMLModel) {
         guard let image = image else { return }
-        
+
         let request = VNCoreMLRequest(model: model) { request, error in
-            if let features_64 = request.results as? [VNClassificationObservation] {
-                //  分類器
-                let fc = FullyConnectedNetwork(inputChannels: 64, outputChannels: 2)
-                let results = fc.infer(input: features_64.map { Double($0.confidence) })
-                // 要素数2の[Double]配列で1番目が大きいと"おしゃれ"
-                let stylishResult = results[0] / (results[0] + results[1])
-                
-                DispatchQueue.main.async {
-                    // 「おしゃれ」ラベルの信頼度を設定
-                    self.predictionResult = "おしゃれ度: \(Int((stylishResult) * 100))%"
-                }
+            guard let results = request.results as? [VNCoreMLFeatureValueObservation],
+                  let firstResult = results.first,
+                  let multiArray = firstResult.featureValue.multiArrayValue else { return }
+            //  分類器
+            let fc = FullyConnectedNetwork(inputChannels: 64, outputChannels: 2, user: user.first!)
+            let featureArray = self.convertToDoubleArray(from: multiArray)
+
+            let fcResults = fc.infer(input: featureArray)
+            let stylishResult  = softmax(fcResults)[0]
+            
+            DispatchQueue.main.async {
+                // 「おしゃれ」ラベルの信頼度を設定
+                self.predictionResult = "おしゃれ度: \(Int(stylishResult * 100))%"
             }
         }
 
@@ -235,6 +200,25 @@ struct LabelPredictionView: View {
             }
         }
     }
+    
+    // MLMultiArrayからDouble型の配列へ変換する関数
+    private func convertToDoubleArray(from multiArray: MLMultiArray) -> [Double] {
+        guard multiArray.dataType == .float32 else {
+            print("データタイプがFloat32ではありません。")
+            return []
+        }
+
+        return (0..<multiArray.count).compactMap { index in
+            Double(multiArray[index].floatValue)
+        }
+    }
+
+    func softmax(_ x: [Double]) -> [Double] {
+        let exps = x.map { exp($0) }
+        let sumExps = exps.reduce(0, +)
+        return exps.map { $0 / sumExps }
+    }
+
     
     func combineImages(_ firstImage: UIImage, _ secondImage: UIImage) -> UIImage? {
         let size = CGSize(width: firstImage.size.width, height: firstImage.size.height * 2)

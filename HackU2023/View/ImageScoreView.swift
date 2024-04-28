@@ -22,6 +22,7 @@ struct ImageScoreView: View {
     @State private var isActive = false
     @State private var isActiveBack = false
     @State private var isActiveHome = false
+    @State private var selectedTab: Tab = .home
 
     let screen: CGRect = UIScreen.main.bounds
 
@@ -97,11 +98,11 @@ struct ImageScoreView: View {
                             .shadow(radius: 5)
                             .frame(maxWidth: screen.width / 2)
                             .frame(maxHeight: screen.height / 5)
-                            .navigationDestination(isPresented: $isActiveBack) {
-                                MainView()
-                            }
                     }
                 }
+            }
+            .navigationDestination(isPresented: $isActiveBack) {
+                MainView(selectedTab: $selectedTab).environment(\.managedObjectContext, viewContext)
             }
 
             .sheet(isPresented: $isImagePickerDisplayed) {

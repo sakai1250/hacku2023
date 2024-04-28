@@ -17,7 +17,9 @@ enum Tab {
 
 struct MainView: View {
 //    @State var selection = 1
-    @State private var selectedTab: Tab = .home
+//    @State private var selectedTab: Tab = .home
+    @Binding var selectedTab: Tab
+
     let tabHeight = UIScreen.main.bounds.height * 0.08
     let tabWidth = UIScreen.main.bounds.width
     let iconHeight = UIScreen.main.bounds.height * 0.08
@@ -79,8 +81,8 @@ struct MainView: View {
         .navigationBarBackButtonHidden(true)
     }
 }
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
-    }
-}
+//struct MainView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MainView(selectedTab: .home)
+//    }
+//}

@@ -11,7 +11,8 @@ struct StartView: View {
     @State private var isActive_main = false
     @State private var isActive_setup = false
     @State private var isTextVisible = true
-    
+    @State private var selectedTab: Tab = .home
+
     let screen: CGRect = UIScreen.main.bounds
 
     var body: some View {
@@ -36,7 +37,7 @@ struct StartView: View {
                                 .frame(width: geometry.size.width, height: geometry.size.height)
                         }
                         .navigationDestination(isPresented: $isActive_main) {
-                            MainView().environment(\.managedObjectContext, viewContext)
+                            MainView(selectedTab: $selectedTab).environment(\.managedObjectContext, viewContext)
                         }
                         .navigationDestination(isPresented: $isActive_setup) {
                             SetupView().environment(\.managedObjectContext, viewContext)

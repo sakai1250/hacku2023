@@ -22,7 +22,7 @@ struct OnetapRecommendView: View {
     @State private var predictionResults: [Int] = []
     @State private var isActiveRetrain = false
     @State private var isActiveHome = false
-    @State private var feedback = ""
+    @State private var feedback: [Double] = [0.0, 0.0]
     @State private var combinedImage: UIImage?
     @State private var selectedImages: [UIImage] = []
     @State private var weather = ""
@@ -101,7 +101,7 @@ struct OnetapRecommendView: View {
                         // 3画面に遷移
                         HStack {
                             Button("これにする") {
-                                feedback = "おしゃれ"
+                                feedback = [1.0, 0.0] as [Double]
                                 isActiveRetrain = true
                             }
                             .padding()
@@ -114,40 +114,21 @@ struct OnetapRecommendView: View {
                             .navigationDestination(isPresented: $isActiveRetrain) {
                                 RetrainingView(feedback: $feedback, combinedImage: $combinedImage, items: $items, weather: $weather)
                             }
-                            // 3画面目に遷移
-//                            Button("やめとく") {
-//                                if currentIndex == nil {
-//                                    currentIndex = selectedImagesPair.firstIndex(where: { $0 == selectedImages })
-//                                }
-//                                if let currentIndex = currentIndex, currentIndex < selectedImagesPair.count {
-//                                    // 次の組み合わせを表示
-//                                    selectedImages = selectedImagesPair[self.currentIndex!]
-//                                    predictionResult = predictionResults[self.currentIndex!]
-//                                    combinedImage = combineImages(selectedImagesPair[self.currentIndex!][0], selectedImagesPair[self.currentIndex!][1])
-//                                    self.currentIndex! += 1
-//                                } else {
-//                                    // 配列の最後に達した場合、RetrainingViewに遷移
-//                                    feedback = "おしゃれじゃない"
-//                                    isActiveRetrain = true
-//                                    currentIndex = nil // currentIndexをリセット
-//                                }
-//                            }
                             
                             Button("やめとく") {
                                 if isfirst {
-                                    sortedIndices.removeFirst()
                                     isfirst = false
                                 }
                                 // 次の画像を表示
                                 if let currentIndex = sortedIndices.first {
-                                    print(currentIndex)
                                     selectedImages = selectedImagesPair[currentIndex]
                                     predictionResult = predictionResults[currentIndex]
                                     combinedImage = combineImages(selectedImagesPair[currentIndex][0], selectedImagesPair[currentIndex][1])
                                     sortedIndices.removeFirst()
+                                    
                                 } else {
                                     // 画像がもうない場合、RetrainingViewに遷移
-                                    feedback = "おしゃれじゃない"
+                                    feedback = [0.0, 1.0] as [Double]
                                     isActiveRetrain = true
                                 }
                             }
@@ -218,33 +199,36 @@ struct OnetapRecommendView: View {
         guard let image = image else { return }
 
         let request = VNCoreMLRequest(model: model) { request, error in
-            if let results = request.results as? [VNClassificationObservation] {
-                // 「おしゃれ」ラベルの結果を探す
-                if let stylishResult = results.first(where: { $0.identifier == "おしゃれ" }) {
-                    DispatchQueue.main.async {
-                        // 「おしゃれ」ラベルの信頼度を設定
-                        self.predictionResult = Int(stylishResult.confidence * 100)
-                        self.predictionResults.append(self.predictionResult)
-                    
-                        if let highestValue = self.predictionResults.max() {
-                            if let index = self.predictionResults.firstIndex(of: highestValue) {
-                                print("最も高い値: \(highestValue), 位置番号: \(index)")
-                                self.predictionResult = self.predictionResults[index]
-                                self.selectedImages = selectedImagesPair[index+1]
-                                print("結果\(self.predictionResults)")
-                                // 予測結果とインデックスを関連付けてソート
-                                let sortedResults = predictionResults
-                                    .enumerated()
-                                    .sorted { $0.element > $1.element }
-                                    .map { $0.offset }
-                                sortedIndices = sortedResults
-                            }
-                        } else {
-                            print("配列が空です")
-                        }
-                        self.assuming = false
+            guard let results = request.results as? [VNCoreMLFeatureValueObservation],
+                  let firstResult = results.first,
+                  let multiArray = firstResult.featureValue.multiArrayValue else { return }
+            //  分類器
+            let fc = FullyConnectedNetwork(inputChannels: 64, outputChannels: 2, user: user.first!)
+            let featureArray = self.convertToDoubleArray(from: multiArray)
+
+            var fcResults = fc.infer(input: featureArray)
+            let stylishResult  = softmax(fcResults)[0]
+            
+            DispatchQueue.main.async {
+                // 「おしゃれ」ラベルの信頼度を設定
+                self.predictionResult = Int((stylishResult) * 100)
+                self.predictionResults.append(self.predictionResult)
+            
+                if let highestValue = self.predictionResults.max() {
+                    if let index = self.predictionResults.firstIndex(of: highestValue) {
+                        print("最も高い値: \(highestValue), 位置番号: \(index)")
+                        self.predictionResult = self.predictionResults[index]
+                        self.selectedImages = selectedImagesPair[index+1]
+                        print("結果\(self.predictionResults)")
                     }
+                    // 値とインデックスをペアにしてソート
+                    let indexedNumbers = self.predictionResults.enumerated().sorted { $0.element < $1.element }
+                    // ソートされたインデックスのみを抽出
+                    sortedIndices = indexedNumbers.map { $0.offset }
+                } else {
+                    print("配列が空です")
                 }
+                self.assuming = false
             }
         }
 
@@ -258,6 +242,23 @@ struct OnetapRecommendView: View {
                 print("Error performing classification: \(error)")
             }
         }
+    }
+    // MLMultiArrayからDouble型の配列へ変換する関数
+    private func convertToDoubleArray(from multiArray: MLMultiArray) -> [Double] {
+        guard multiArray.dataType == .float32 else {
+            print("データタイプがFloat32ではありません。")
+            return []
+        }
+
+        return (0..<multiArray.count).compactMap { index in
+            Double(multiArray[index].floatValue)
+        }
+    }
+    
+    func softmax(_ x: [Double]) -> [Double] {
+        let exps = x.map { exp($0) }
+        let sumExps = exps.reduce(0, +)
+        return exps.map { $0 / sumExps }
     }
 
     func combineImages(_ firstImage: UIImage, _ secondImage: UIImage) -> UIImage? {

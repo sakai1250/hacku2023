@@ -5,38 +5,41 @@
 //  Created by 坂井泰吾 on 2024/03/30.
 //
 
+import SwiftUI
 import Foundation
 import CoreML
-
-// MLMultiArrayからDouble型の配列へ変換する関数
-func convertToDoubleArray(from multiArray: MLMultiArray) -> [Double] {
-    var doubleArray: [Double] = []
-    let length = multiArray.count
-    for i in 0..<length {
-        doubleArray.append(Double(truncating: multiArray[i]))
-    }
-    return doubleArray
-}
-
-//// 例：MLMultiArrayの生成と変換
-//let inputMultiArray = try MLMultiArray(shape: [64], dataType: .float32)
-//// MLMultiArrayに何らかの値を設定...
-//let inputDoubleArray = convertToDoubleArray(from: inputMultiArray)
-//
-
-
+import CoreData
 
 // 全結合のクラス定義
 class FullyConnectedNetwork {
+    @Environment(\.managedObjectContext) private var viewContext
+
     var weights: [[Double]]
     var biases: [Double]
+    var first: Bool?
     
-    init(inputChannels: Int, outputChannels: Int) {
-        // 重みとバイアスの初期化
-        weights = (0..<inputChannels).map { _ in (0..<outputChannels).map { _ in Double.random(in: -1.0...1.0) } }
-        biases = (0..<outputChannels).map { _ in Double.random(in: -1.0...1.0) }
+    init(inputChannels: Int, outputChannels: Int, user: ViViTUser) {
+        weights = firstFullConnectWeights()
+        biases = firstFullConnectBiases()
+        initfc(inputChannels: 64, outputChannels: 2, user: user)
     }
-    
+
+    func initfc(inputChannels: Int, outputChannels: Int, user: ViViTUser) {
+        // 既存のユーザー設定を更新
+        first = user.first_sp
+        if first ?? true {
+            print("FirstFirstFirstFirst")
+            weights = firstFullConnectWeights()
+            biases = firstFullConnectBiases()
+            user.first_sp = false
+            user.fullconne_sp_w = weights as NSObject
+            user.fullconne_sp_b = biases as NSObject
+        } else {
+            weights = user.fullconne_sp_w as! [[Double]]
+            biases = user.fullconne_sp_b as! [Double]
+        }
+    }
+
     // ネットワークの予測関数
     func predict(input: [Double]) -> [Double] {
         var output = [Double](repeating: 0.0, count: biases.count)
@@ -62,13 +65,14 @@ class FullyConnectedNetwork {
             biases[i] -= learningRate * gradientBias
         }
     }
-    
+
     // 学習関数
-    func train(inputs: [[Double]], trueOutputs: [[Double]], learningRate: Double, epochs: Int) {
-        for epoch in 1...epochs {
-            for (input, trueOutput) in zip(inputs, trueOutputs) {
-                updateParameters(input: input, trueOutput: trueOutput, learningRate: learningRate)
-            }
+    func train(inputs: [Double], trueOutputs: [Double], learningRate: Double, epochs: Int) {
+        for _ in 1...epochs {
+//            for (input, trueOutput) in zip(inputs, trueOutputs) {
+//                updateParameters(input: input, trueOutput: trueOutput, learningRate: learningRate)
+//            }
+            updateParameters(input: inputs, trueOutput: trueOutputs, learningRate: learningRate)
         }
     }
     
@@ -76,22 +80,6 @@ class FullyConnectedNetwork {
     func infer(input: [Double]) -> [Double] {
         return predict(input: input)
     }
-}
-//MultiArray (Float32 1 × 64)
-//// 使用例
-//let model = FullyConnectedNetwork(inputChannels: 64, outputChannels: 2)
-//
-//// 仮の学習データ
-//let inputs = (0..<5).map { _ in (0..<64).map { _ in Double.random(in: -1.0...1.0) } }
-//let trueOutputs = [[0.5, -0.5], [0.4, -0.4], [0.3, -0.3], [0.2, -0.2], [0.1, -0.1]]
-//let learningRate: Double = 0.01
-//let epochs: Int = 100
-//
-//// 学習プロセス
-//model.train(inputs: inputs, trueOutputs: trueOutputs, learningRate: learningRate, epochs: epochs)
-//
-//// 新しい入力データに対する推論
-//let newInput = (0..<64).map { _ in Double.random(in: -1.0...1.0) }
-//let prediction = model.infer(input: newInput)
-//print("推論結果: \(prediction)")
+    
 
+}

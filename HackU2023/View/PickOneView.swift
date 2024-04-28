@@ -25,6 +25,7 @@ struct PickOneView: View {
     @State private var isActiveHome = false
     @State private var isActiveBack = false
     @State private var isEmpty = true
+    @State private var selectedTab: Tab = .home
 
     @State private var topsImages: [UIImage] = []
     @State private var bottomsImages: [UIImage] = []
@@ -122,13 +123,13 @@ struct PickOneView: View {
                         .shadow(radius: 5)
                         .frame(maxWidth: screen.width / 2)
                         .frame(maxHeight: screen.height / 5)
-                        .navigationDestination(isPresented: $isActiveBack) {
-                            MainView()
-                        }
                     }
                 }
-            }
 
+            }
+            .navigationDestination(isPresented: $isActiveBack) {
+                MainView(selectedTab: $selectedTab).environment(\.managedObjectContext, viewContext)
+            }
             .sheet(isPresented: $isImagePickerDisplayed) {
                 ImagePicker(selectedImages: $selectedImages)
             }
