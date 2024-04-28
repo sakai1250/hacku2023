@@ -190,3 +190,50 @@ func selectModel_for_retrain(gender: String, season: String, weather: String) ->
 }
 
 
+
+func selectFC(gender: String, season: String, weather: String, user: ViViTUser) -> Bool {
+    switch (gender, season, weather) {
+    // 男性の組み合わせ
+    case ("男性", "春", "晴れ"):
+        return user.first_sp
+//    case ("男性", "春", "雨"):
+//        return try? VNCoreMLModel(for: spring_rainy_Man().model)
+//    case ("男性", "夏", "晴れ"):
+//        return try? VNCoreMLModel(for: summer_sunny_Man().model)
+//    case ("男性", "夏", "雨"):
+//        return try? VNCoreMLModel(for: summer_rainy_Man().model)
+//    case ("男性", "秋", "晴れ"):
+//        return try? VNCoreMLModel(for: autumn_sunny_Man().model)
+//    case ("男性", "秋", "雨"):
+//        return try? VNCoreMLModel(for: autumn_rainy_Man().model)
+    case ("男性", "冬", "晴れ"):
+//        return "winter_sunny_Man"
+        return user.first_wi
+//    case ("男性", "冬", "雨"):
+//        return try? VNCoreMLModel(for: winter_rainy_Man().model)
+
+    // 女性の組み合わせ
+    case ("女性", "春", "晴れ"):
+        return user.first_sp
+//    case ("女性", "春", "雨"):
+//        return try? VNCoreMLModel(for: spring_rainy_Woman().model)
+//    case ("女性", "夏", "晴れ"):
+//        return try? VNCoreMLModel(for: summer_sunny_Woman().model)
+//    case ("女性", "夏", "雨"):
+//        return try? VNCoreMLModel(for: summer_rainy_Woman().model)
+//    case ("女性", "秋", "晴れ"):
+//        return try? VNCoreMLModel(for: autumn_sunny_Woman().model)
+//    case ("女性", "秋", "雨"):
+//        return try? VNCoreMLModel(for: autumn_rainy_Woman().model)
+    case ("女性", "冬", "晴れ"):
+        return user.first_sp
+
+//        return try? VNCoreMLModel(for: winter_rainy_Woman().model)
+
+    default:
+        return user.first_sp
+//        return "spring_sunny_Man"
+    }
+}
+
+

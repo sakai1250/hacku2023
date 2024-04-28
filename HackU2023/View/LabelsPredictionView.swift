@@ -147,7 +147,8 @@ struct LabelsPredictionView: View {
 
                             print(gender, season, weather)
                             if let model = selectModel(gender: gender, season: season, weather: weather) {
-                                predictLabel(image: combinedImage, model: model)
+                                let fc = FullyConnectedNetwork(inputChannels: 64, outputChannels: 2, user: user.first!, gender: gender, season: season, weather: weather)
+                                predictLabel(image: combinedImage, model: model, fc: fc)
                             }
                         }
                         
@@ -163,14 +164,13 @@ struct LabelsPredictionView: View {
         }
     }
     //  推論
-    func predictLabel(image: UIImage?, model: VNCoreMLModel) {
+    func predictLabel(image: UIImage?, model: VNCoreMLModel, fc: FullyConnectedNetwork) {
         guard let image = image else { return }
         let request = VNCoreMLRequest(model: model) { request, error in
             guard let results = request.results as? [VNCoreMLFeatureValueObservation],
                   let firstResult = results.first,
                   let multiArray = firstResult.featureValue.multiArrayValue else { return }
             //  分類器
-            let fc = FullyConnectedNetwork(inputChannels: 64, outputChannels: 2, user: user.first!)
             let featureArray = self.convertToDoubleArray(from: multiArray)
 
             var fcResults = fc.infer(input: featureArray)

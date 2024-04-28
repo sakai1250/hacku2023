@@ -58,7 +58,8 @@ struct RetrainingView: View {
                     print(weather, season, gender)
                     //  学習
                     if let model = selectModel(gender: gender, season: season, weather: weather) {
-                        training(image: combinedImage, model: model)
+                        let fc = FullyConnectedNetwork(inputChannels: 64, outputChannels: 2, user: user.first!, gender: gender, season: season, weather: weather)
+                        training(image: combinedImage, model: model, fc: fc)
                         self.isActive = true
                     }
                 }
@@ -73,7 +74,7 @@ struct RetrainingView: View {
         }
     }
 //  推論
-    func training(image: UIImage?, model: VNCoreMLModel) {
+    func training(image: UIImage?, model: VNCoreMLModel, fc: FullyConnectedNetwork) {
         guard let image = image else { return }
         let request = VNCoreMLRequest(model: model) { request, error in
             if let error = error {
@@ -88,7 +89,6 @@ struct RetrainingView: View {
                 return
             }
             
-            let fc = FullyConnectedNetwork(inputChannels: 64, outputChannels: 2, user: user.first!)
             let featureArray = self.convertToDoubleArray(from: multiArray)
 
             // Assuming 'feedback' is correctly defined elsewhere in your code

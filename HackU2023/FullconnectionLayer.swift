@@ -13,33 +13,68 @@ import CoreData
 // 全結合のクラス定義
 class FullyConnectedNetwork {
     @Environment(\.managedObjectContext) private var viewContext
-
+    
     var weights: [[Double]]
     var biases: [Double]
     var first: Bool?
     
-    init(inputChannels: Int, outputChannels: Int, user: ViViTUser) {
-        weights = firstFullConnectWeights()
-        biases = firstFullConnectBiases()
-        initfc(inputChannels: 64, outputChannels: 2, user: user)
+    init(inputChannels: Int, outputChannels: Int, user: ViViTUser, gender: String, season: String, weather: String) {
+        weights = firstFullConnectWeights(gender: gender, season: season, weather: weather)
+        biases = firstFullConnectBiases(gender: gender, season: season, weather: weather)
+        initfc(inputChannels: 64, outputChannels: 2, user: user, gender: gender, season: season, weather: weather)
     }
-
-    func initfc(inputChannels: Int, outputChannels: Int, user: ViViTUser) {
+    
+    func initfc(inputChannels: Int, outputChannels: Int, user: ViViTUser, gender: String, season: String, weather: String) {
         // 既存のユーザー設定を更新
-        first = user.first_sp
-        if first ?? true {
-            print("FirstFirstFirstFirst")
-            weights = firstFullConnectWeights()
-            biases = firstFullConnectBiases()
-            user.first_sp = false
-            user.fullconne_sp_w = weights as NSObject
-            user.fullconne_sp_b = biases as NSObject
-        } else {
-            weights = user.fullconne_sp_w as! [[Double]]
-            biases = user.fullconne_sp_b as! [Double]
+        first = selectFC(gender: gender, season: season, weather: weather, user: user)
+        switch (gender, season, weather) {
+        case ("男性", "春", "晴れ"):
+            if first ?? true {
+                weights = firstFullConnectWeights(gender: gender, season: season, weather: weather)
+                biases = firstFullConnectBiases(gender: gender, season: season, weather: weather)
+                user.first_sp = false
+                user.fullconne_sp_w = weights as NSObject
+                user.fullconne_sp_b = biases as NSObject
+            } else {
+                weights = user.fullconne_sp_w as! [[Double]]
+                biases = user.fullconne_sp_b as! [Double]
+            }
+        case ("男性", "冬", "晴れ"):
+            if first ?? true {
+                weights = firstFullConnectWeights(gender: gender, season: season, weather: weather)
+                biases = firstFullConnectBiases(gender: gender, season: season, weather: weather)
+                user.first_sp = false
+                user.fullconne_sp_w = weights as NSObject
+                user.fullconne_sp_b = biases as NSObject
+            } else {
+                weights = user.fullconne_sp_w as! [[Double]]
+                biases = user.fullconne_sp_b as! [Double]
+            }
+        case ("女性", "春", "晴れ"):
+            if first ?? true {
+                weights = firstFullConnectWeights(gender: gender, season: season, weather: weather)
+                biases = firstFullConnectBiases(gender: gender, season: season, weather: weather)
+                user.first_sp = false
+                user.fullconne_sp_w = weights as NSObject
+                user.fullconne_sp_b = biases as NSObject
+            } else {
+                weights = user.fullconne_sp_w as! [[Double]]
+                biases = user.fullconne_sp_b as! [Double]
+            }
+        default:
+            if first ?? true {
+                weights = firstFullConnectWeights(gender: gender, season: season, weather: weather)
+                biases = firstFullConnectBiases(gender: gender, season: season, weather: weather)
+                user.first_sp = false
+                user.fullconne_sp_w = weights as NSObject
+                user.fullconne_sp_b = biases as NSObject
+            } else {
+                weights = user.fullconne_sp_w as! [[Double]]
+                biases = user.fullconne_sp_b as! [Double]
+            }
         }
     }
-
+    
     // ネットワークの予測関数
     func predict(input: [Double]) -> [Double] {
         var output = [Double](repeating: 0.0, count: biases.count)
@@ -65,13 +100,13 @@ class FullyConnectedNetwork {
             biases[i] -= learningRate * gradientBias
         }
     }
-
+    
     // 学習関数
     func train(inputs: [Double], trueOutputs: [Double], learningRate: Double, epochs: Int) {
         for _ in 1...epochs {
-//            for (input, trueOutput) in zip(inputs, trueOutputs) {
-//                updateParameters(input: input, trueOutput: trueOutput, learningRate: learningRate)
-//            }
+            //            for (input, trueOutput) in zip(inputs, trueOutputs) {
+            //                updateParameters(input: input, trueOutput: trueOutput, learningRate: learningRate)
+            //            }
             updateParameters(input: inputs, trueOutput: trueOutputs, learningRate: learningRate)
         }
     }
@@ -80,6 +115,5 @@ class FullyConnectedNetwork {
     func infer(input: [Double]) -> [Double] {
         return predict(input: input)
     }
-    
 
 }
