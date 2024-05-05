@@ -97,7 +97,7 @@ func checkAndUpdateLevel(for user: ViViTUser) -> [String] {
 
 
 func selectModel(gender: String, season: String, weather: String) -> VNCoreMLModel? {
-    return try? VNCoreMLModel(for: MobileNetV2_pytorch().model)
+    return try? VNCoreMLModel(for: spring_sunny_Man().model)
 //
 //    switch (gender, season, weather) {
 //    // 男性の組み合わせ
@@ -184,7 +184,7 @@ func selectModel_for_retrain(gender: String, season: String, weather: String) ->
 //        return try? VNCoreMLModel(for: winter_rainy_Woman().model)
 
     default:
-        return "MobileNetV2_pytorch"
+        return "spring_sunny_Man"
 //        return "spring_sunny_Man"
     }
 }
