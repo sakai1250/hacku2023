@@ -1,5 +1,5 @@
 ## kikonAshI
-Kikonashiは、「HackU名城大学2024」にてビビっとが独自開発したファッションAIを搭載する、iOSアプリです。3つの機能で悩める皆さんをサポートします。
+Kikonashiは、「HackU名城大学2023」にてビビっとが独自開発したファッションAIを搭載する、iOSアプリです。3つの機能で悩める皆さんをサポートします。
 
 <img src="https://github.com/sakai1250/hacku2023/assets/92532910/e296ff7c-7809-42c7-92cf-9b95e1365334" width="50%">
 
