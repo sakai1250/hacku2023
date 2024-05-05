@@ -25,7 +25,6 @@
 		5A5CBB852B1A69B400971E05 /* ImageScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CBB842B1A69B400971E05 /* ImageScoreView.swift */; };
 		5A5CBB872B1A6A0F00971E05 /* PickImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CBB862B1A6A0F00971E05 /* PickImage.swift */; };
 		5A78B66D2B1BC0FA004EC2AE /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A78B66C2B1BC0FA004EC2AE /* WeatherAPI.swift */; };
-		5A78B6722B1BC2CE004EC2AE /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 5A78B6712B1BC2CE004EC2AE /* Alamofire */; };
 		5A972D2C2BCBADF500B52570 /* MobileNetV2_pytorch.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 5A972D2B2BCBADF500B52570 /* MobileNetV2_pytorch.mlpackage */; };
 		5A972D2E2BCCE08800B52570 /* FullConnectWeightsBiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A972D2D2BCCE08800B52570 /* FullConnectWeightsBiases.swift */; };
 		5AAC08512BB842EB00C345E8 /* FullconnectionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAC08502BB842EB00C345E8 /* FullconnectionLayer.swift */; };
@@ -95,7 +94,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A78B6722B1BC2CE004EC2AE /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,7 +203,6 @@
 			);
 			name = HackU2023;
 			packageProductDependencies = (
-				5A78B6712B1BC2CE004EC2AE /* Alamofire */,
 			);
 			productName = HackU2023;
 			productReference = 5A5CBB522B1A30A900971E05 /* HackU2023.app */;
@@ -236,7 +233,6 @@
 			);
 			mainGroup = 5A5CBB492B1A30A900971E05;
 			packageReferences = (
-				5A78B6702B1BC2CE004EC2AE /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 5A5CBB532B1A30A900971E05 /* Products */;
 			projectDirPath = "";
@@ -467,7 +463,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HackU2023/Preview Content\"";
-				DEVELOPMENT_TEAM = J2ULS8DU87;
+				DEVELOPMENT_TEAM = GGB524629C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HackU2023/Info.plist;
@@ -521,25 +517,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		5A78B6702B1BC2CE004EC2AE /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		5A78B6712B1BC2CE004EC2AE /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5A78B6702B1BC2CE004EC2AE /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		5A5CBB602B1A30AA00971E05 /* HackU2023.xcdatamodeld */ = {
