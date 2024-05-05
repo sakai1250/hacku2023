@@ -46,7 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5A5CBB522B1A30A900971E05 /* kikonAshI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kikonAshI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A5CBB522B1A30A900971E05 /* HackU2023.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackU2023.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A5CBB552B1A30A900971E05 /* HackU2023App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackU2023App.swift; sourceTree = "<group>"; };
 		5A5CBB572B1A30A900971E05 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		5A5CBB592B1A30AA00971E05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -109,7 +109,7 @@
 		5A5CBB532B1A30A900971E05 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5A5CBB522B1A30A900971E05 /* kikonAshI.app */,
+				5A5CBB522B1A30A900971E05 /* HackU2023.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -186,9 +186,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5A5CBB512B1A30A900971E05 /* kikonAshI */ = {
+		5A5CBB512B1A30A900971E05 /* HackU2023 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5A5CBB652B1A30AA00971E05 /* Build configuration list for PBXNativeTarget "kikonAshI" */;
+			buildConfigurationList = 5A5CBB652B1A30AA00971E05 /* Build configuration list for PBXNativeTarget "HackU2023" */;
 			buildPhases = (
 				5A5CBB4E2B1A30A900971E05 /* Sources */,
 				5A5CBB4F2B1A30A900971E05 /* Frameworks */,
@@ -198,11 +198,11 @@
 			);
 			dependencies = (
 			);
-			name = kikonAshI;
+			name = HackU2023;
 			packageProductDependencies = (
 			);
 			productName = HackU2023;
-			productReference = 5A5CBB522B1A30A900971E05 /* kikonAshI.app */;
+			productReference = 5A5CBB522B1A30A900971E05 /* HackU2023.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -235,7 +235,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5A5CBB512B1A30A900971E05 /* kikonAshI */,
+				5A5CBB512B1A30A900971E05 /* HackU2023 */,
 			);
 		};
 /* End PBXProject section */
@@ -503,7 +503,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5A5CBB652B1A30AA00971E05 /* Build configuration list for PBXNativeTarget "kikonAshI" */ = {
+		5A5CBB652B1A30AA00971E05 /* Build configuration list for PBXNativeTarget "HackU2023" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5A5CBB662B1A30AA00971E05 /* Debug */,
