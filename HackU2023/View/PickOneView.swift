@@ -128,7 +128,7 @@ struct PickOneView: View {
 
             }
             .navigationDestination(isPresented: $isActiveBack) {
-                MainView(selectedTab: $selectedTab).environment(\.managedObjectContext, viewContext)
+                MainView().environment(\.managedObjectContext, viewContext)
             }
             .sheet(isPresented: $isImagePickerDisplayed) {
                 ImagePicker(selectedImages: $selectedImages)

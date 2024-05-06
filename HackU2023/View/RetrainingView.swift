@@ -43,7 +43,7 @@ struct RetrainingView: View {
         }
         .navigationBarBackButtonHidden(true)
         .navigationDestination(isPresented: $isActive) {
-            MainView(selectedTab: $selectedTab).environment(\.managedObjectContext, viewContext)
+            MainView().environment(\.managedObjectContext, viewContext)
         }
         .onAppear {
             DispatchQueue.global(qos: .userInitiated).async {

@@ -57,7 +57,7 @@ struct SetupView: View {
                 }
             }
             .navigationDestination(isPresented: $isActive) {
-                MainView(selectedTab: $selectedTab).environment(\.managedObjectContext, viewContext)
+                MainView().environment(\.managedObjectContext, viewContext)
             }
         }
     }

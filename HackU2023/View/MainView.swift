@@ -15,10 +15,15 @@ enum Tab {
     case settings
 }
 
+class TabViewModel: ObservableObject {
+    @Published var selectedTab: Tab = .home
+}
+
 struct MainView: View {
 //    @State var selection = 1
 //    @State private var selectedTab: Tab = .home
-    @Binding var selectedTab: Tab
+//    @Binding var selectedTab: Tab
+    @StateObject private var viewModel = TabViewModel()
 
     let tabHeight = UIScreen.main.bounds.height * 0.08
     let tabWidth = UIScreen.main.bounds.width
@@ -28,7 +33,7 @@ struct MainView: View {
     var body: some View {
         // コンテンツ
         VStack {
-            switch selectedTab {
+            switch viewModel.selectedTab {
             case .home:
                 HomeView()
             case .pickimage:
@@ -37,35 +42,34 @@ struct MainView: View {
                 AlbamView()
             case .settings:
                 SettingView()
-                
             }
             VStack {
                 // タブバー
                 HStack {
                     Spacer()
 
-                    Button(action: { self.selectedTab = .home }) {
+                    Button(action: { viewModel.selectedTab = .home }) {
                         Image("hacku_button5")
                             .resizable()
                             .frame(width: iconWidth, height: iconHeight)
                     }
                     Spacer()
 
-                    Button(action: { self.selectedTab = .pickimage }) {
+                    Button(action: { viewModel.selectedTab = .pickimage }) {
                         Image("hacku_button4")
                             .resizable()
                             .frame(width: iconWidth, height: iconHeight)
                     }
                     Spacer()
 
-                    Button(action: { self.selectedTab = .editphoto }) {
+                    Button(action: { viewModel.selectedTab = .editphoto }) {
                         Image("hacku_button2")
                             .resizable()
                             .frame(width: iconWidth, height: iconHeight)
                     }
                     Spacer()
 
-                    Button(action: { self.selectedTab = .settings }) {
+                    Button(action: { viewModel.selectedTab = .settings }) {
                         Image("hacku_button1")
                             .resizable()
                             .frame(width: iconWidth, height: iconHeight)
@@ -75,6 +79,9 @@ struct MainView: View {
                 }
                 .frame(width: tabWidth, height: tabHeight)
                 .background(.brown)
+            }
+            .onAppear {
+                viewModel.selectedTab = .home
             }
 
         }

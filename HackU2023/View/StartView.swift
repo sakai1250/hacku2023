@@ -37,7 +37,7 @@ struct StartView: View {
                                 .frame(width: geometry.size.width, height: geometry.size.height)
                         }
                         .navigationDestination(isPresented: $isActive_main) {
-                            MainView(selectedTab: $selectedTab).environment(\.managedObjectContext, viewContext)
+                            MainView().environment(\.managedObjectContext, viewContext)
                         }
                         .navigationDestination(isPresented: $isActive_setup) {
                             SetupView().environment(\.managedObjectContext, viewContext)

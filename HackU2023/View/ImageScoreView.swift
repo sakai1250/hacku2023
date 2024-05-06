@@ -102,7 +102,7 @@ struct ImageScoreView: View {
                 }
             }
             .navigationDestination(isPresented: $isActiveBack) {
-                MainView(selectedTab: $selectedTab).environment(\.managedObjectContext, viewContext)
+                MainView().environment(\.managedObjectContext, viewContext)
             }
 
             .sheet(isPresented: $isImagePickerDisplayed) {

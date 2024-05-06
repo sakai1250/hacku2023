@@ -167,7 +167,7 @@ struct AlbamView: View {
                         bottomsImageURLs = fetchImageURLs(from: "bottoms")
                     }
                     .navigationDestination(isPresented: $isImageSaved) {
-                        MainView(selectedTab: $selectedTab).environment(\.managedObjectContext, viewContext)
+                        MainView().environment(\.managedObjectContext, viewContext)
                     }
 
                 }

@@ -123,7 +123,7 @@ struct LabelsPredictionView: View {
             }
         }
         .navigationDestination(isPresented: $isActiveHome) {
-            MainView(selectedTab: $selectedTab).environment(\.managedObjectContext, viewContext)
+            MainView().environment(\.managedObjectContext, viewContext)
         }
         .navigationBarBackButtonHidden(true)
         .onAppear {
