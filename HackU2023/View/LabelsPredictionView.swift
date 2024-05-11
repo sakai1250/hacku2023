@@ -145,7 +145,7 @@ struct LabelsPredictionView: View {
                             let season = seasonFromDates([dateString])
                             let weather = weatherAPI.getWeatherCategory_for_predict(weatherAPI.getWeatherCategory(from: weatherCode).rawValue)
 
-                            print(gender, season, weather)
+//                            print(gender, season, weather)
                             if let model = selectModel(gender: gender, season: season, weather: weather) {
                                 let fc = FullyConnectedNetwork(inputChannels: 64, outputChannels: 2, user: user.first!, gender: gender, season: season, weather: weather)
                                 predictLabel(image: combinedImage, model: model, fc: fc)
@@ -153,7 +153,6 @@ struct LabelsPredictionView: View {
                         }
                         
                         else {
-                            print("ない")
                         }
                     }
                 }

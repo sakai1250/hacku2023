@@ -213,11 +213,31 @@ struct OnetapRecommendView: View {
                 self.predictionResult = Int((stylishResult) * 100)
                 self.predictionResults.append(self.predictionResult)
             
+//                if let highestValue = self.predictionResults.max() {
+//                    if let index = self.predictionResults.firstIndex(of: highestValue) {
+//                        print("最も高い値: \(highestValue), 位置番号: \(index)")
+//                        self.predictionResult = self.predictionResults[index]
+//                        self.selectedImages = selectedImagesPair[index+1]
+//                        print("結果\(self.predictionResults)")
+//                    }
+//                    // 値とインデックスをペアにしてソート
+//                    let indexedNumbers = self.predictionResults.enumerated().sorted { $0.element < $1.element }
+//                    // ソートされたインデックスのみを抽出
+//                    sortedIndices = indexedNumbers.map { $0.offset }
+//                } else {
+//                    print("配列が空です")
+//                }
                 if let highestValue = self.predictionResults.max() {
                     if let index = self.predictionResults.firstIndex(of: highestValue) {
                         print("最も高い値: \(highestValue), 位置番号: \(index)")
                         self.predictionResult = self.predictionResults[index]
-                        self.selectedImages = selectedImagesPair[index+1]
+                        // 配列の長さを超えているかチェック
+                        if index + 1 < selectedImagesPair.count {
+                            self.selectedImages = selectedImagesPair[index+1]
+                        } else {
+                            // 最後の要素の場合、最初に戻るか、別の適切な処理を行う
+                            self.selectedImages = selectedImagesPair[0] // 例: 最初の要素に戻る
+                        }
                         print("結果\(self.predictionResults)")
                     }
                     // 値とインデックスをペアにしてソート
@@ -227,6 +247,8 @@ struct OnetapRecommendView: View {
                 } else {
                     print("配列が空です")
                 }
+
+                
                 self.assuming = false
             }
         }

@@ -336,6 +336,30 @@ func generateCombinations() -> [[URL]] {
     return combinations
 }
 
+func checkExistUrl() -> [URL] {
+    let fileManager = FileManager.default
+    guard let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return [] }
+
+    let topsPath = documentDirectory.appendingPathComponent("tops")
+    let bottomsPath = documentDirectory.appendingPathComponent("bottoms")
+
+    let topsFiles = (try? fileManager.contentsOfDirectory(atPath: topsPath.path))?.filter { $0 != ".DS_Store" } ?? []
+    let bottomsFiles = (try? fileManager.contentsOfDirectory(atPath: bottomsPath.path))?.filter { $0 != ".DS_Store" } ?? []
+
+    var urlsForCheck = [URL]()
+
+    for top in topsFiles {
+        let topURL = topsPath.appendingPathComponent(top)
+        urlsForCheck.append(topURL)
+    }
+    for bottom in bottomsFiles {
+        let bottomURL = bottomsPath.appendingPathComponent(bottom)
+        urlsForCheck.append(bottomURL)
+    }
+
+    return urlsForCheck
+}
+
 func generateCombinations_customed(images1: [UIImage], images2: [UIImage]) -> [[UIImage]] {
     var combinations = [[UIImage]]()
 

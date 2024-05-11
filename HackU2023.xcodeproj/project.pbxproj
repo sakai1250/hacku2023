@@ -31,7 +31,7 @@
 		5ABB02C52B23A40E00487284 /* movies in Resources */ = {isa = PBXBuildFile; fileRef = 5ABB02C42B23A40E00487284 /* movies */; };
 		5ABB02C72B2428C600487284 /* OnetapRecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB02C62B2428C600487284 /* OnetapRecommendView.swift */; };
 		5ABB02C92B2473FC00487284 /* FashionTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB02C82B2473FB00487284 /* FashionTips.swift */; };
-		5ABB02D12B25CA6E00487284 /* spring_sunny_Man2.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB02D02B25CA6E00487284 /* spring_sunny_Man2.mlpackage */; };
+		5AC485792BEA84BE00CD65B2 /* spring_sunny_Man.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 5AC485782BEA84BE00CD65B2 /* spring_sunny_Man.mlpackage */; };
 		5AC6A33F2B1DEDCE006EDF36 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A33E2B1DEDCE006EDF36 /* LocationManager.swift */; };
 		5AC6A3422B1E11D6006EDF36 /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A3412B1E11D5006EDF36 /* SetupView.swift */; };
 		5AC6A3442B1E2EF5006EDF36 /* CheckUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A3432B1E2EF5006EDF36 /* CheckUserData.swift */; };
@@ -39,7 +39,6 @@
 		5AC6A34C2B20B1EC006EDF36 /* PickOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A34B2B20B1EC006EDF36 /* PickOneView.swift */; };
 		5AC6A3512B20E7DD006EDF36 /* winter_sunny_Woman.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A34D2B20E7D9006EDF36 /* winter_sunny_Woman.mlpackage */; };
 		5AC6A3522B20E7DD006EDF36 /* spring_sunny_Woman.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A34E2B20E7DA006EDF36 /* spring_sunny_Woman.mlpackage */; };
-		5AC6A3532B20E7DD006EDF36 /* spring_sunny_Man.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A34F2B20E7DC006EDF36 /* spring_sunny_Man.mlpackage */; };
 		5AC6A3542B20E7DD006EDF36 /* winter_sunny_Man.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A3502B20E7DD006EDF36 /* winter_sunny_Man.mlpackage */; };
 		5AC6A3562B21CA68006EDF36 /* SelectFunctionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A3552B21CA67006EDF36 /* SelectFunctionView.swift */; };
 		5AC6A3582B21CBBD006EDF36 /* LabelsPredictionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A3572B21CBBD006EDF36 /* LabelsPredictionView.swift */; };
@@ -72,7 +71,7 @@
 		5ABB02C42B23A40E00487284 /* movies */ = {isa = PBXFileReference; lastKnownFileType = folder; path = movies; sourceTree = "<group>"; };
 		5ABB02C62B2428C600487284 /* OnetapRecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnetapRecommendView.swift; sourceTree = "<group>"; };
 		5ABB02C82B2473FB00487284 /* FashionTips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FashionTips.swift; sourceTree = "<group>"; };
-		5ABB02D02B25CA6E00487284 /* spring_sunny_Man2.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = spring_sunny_Man2.mlpackage; sourceTree = "<group>"; };
+		5AC485782BEA84BE00CD65B2 /* spring_sunny_Man.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = spring_sunny_Man.mlpackage; sourceTree = "<group>"; };
 		5AC6A33E2B1DEDCE006EDF36 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		5AC6A3402B1DFAD0006EDF36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5AC6A3412B1E11D5006EDF36 /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
@@ -81,7 +80,6 @@
 		5AC6A34B2B20B1EC006EDF36 /* PickOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickOneView.swift; sourceTree = "<group>"; };
 		5AC6A34D2B20E7D9006EDF36 /* winter_sunny_Woman.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = winter_sunny_Woman.mlpackage; sourceTree = "<group>"; };
 		5AC6A34E2B20E7DA006EDF36 /* spring_sunny_Woman.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = spring_sunny_Woman.mlpackage; sourceTree = "<group>"; };
-		5AC6A34F2B20E7DC006EDF36 /* spring_sunny_Man.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = spring_sunny_Man.mlpackage; sourceTree = "<group>"; };
 		5AC6A3502B20E7DD006EDF36 /* winter_sunny_Man.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = winter_sunny_Man.mlpackage; sourceTree = "<group>"; };
 		5AC6A3552B21CA67006EDF36 /* SelectFunctionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFunctionView.swift; sourceTree = "<group>"; };
 		5AC6A3572B21CBBD006EDF36 /* LabelsPredictionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsPredictionView.swift; sourceTree = "<group>"; };
@@ -134,11 +132,10 @@
 				5A5CBB592B1A30AA00971E05 /* Assets.xcassets */,
 				5ABB02C42B23A40E00487284 /* movies */,
 				5A972D2A2BCAE79700B52570 /* retrain.mlpackage */,
-				5AC6A34F2B20E7DC006EDF36 /* spring_sunny_Man.mlpackage */,
+				5AC485782BEA84BE00CD65B2 /* spring_sunny_Man.mlpackage */,
 				5AC6A34E2B20E7DA006EDF36 /* spring_sunny_Woman.mlpackage */,
 				5AC6A3502B20E7DD006EDF36 /* winter_sunny_Man.mlpackage */,
 				5AC6A34D2B20E7D9006EDF36 /* winter_sunny_Woman.mlpackage */,
-				5ABB02D02B25CA6E00487284 /* spring_sunny_Man2.mlpackage */,
 				5A5CBB712B1A32B000971E05 /* tops.png */,
 				5A5CBB5B2B1A30AA00971E05 /* Preview Content */,
 			);
@@ -271,16 +268,15 @@
 				5A5CBB692B1A327400971E05 /* LabelPredictionView.swift in Sources */,
 				5A972D2E2BCCE08800B52570 /* FullConnectWeightsBiases.swift in Sources */,
 				5A5CBB852B1A69B400971E05 /* ImageScoreView.swift in Sources */,
+				5AC485792BEA84BE00CD65B2 /* spring_sunny_Man.mlpackage in Sources */,
 				5ABB02C72B2428C600487284 /* OnetapRecommendView.swift in Sources */,
 				5AC6A34A2B1E820D006EDF36 /* ScreenShotManager.swift in Sources */,
 				5A5CBB622B1A30AA00971E05 /* HackU2023.xcdatamodeld in Sources */,
-				5AC6A3532B20E7DD006EDF36 /* spring_sunny_Man.mlpackage in Sources */,
 				5AAC08512BB842EB00C345E8 /* FullconnectionLayer.swift in Sources */,
 				5AC6A33F2B1DEDCE006EDF36 /* LocationManager.swift in Sources */,
 				5AC6A3512B20E7DD006EDF36 /* winter_sunny_Woman.mlpackage in Sources */,
 				5A5CBB7D2B1A62E100971E05 /* EditPhotosView.swift in Sources */,
 				5AC6A3542B20E7DD006EDF36 /* winter_sunny_Man.mlpackage in Sources */,
-				5ABB02D12B25CA6E00487284 /* spring_sunny_Man2.mlpackage in Sources */,
 				5A5CBB7F2B1A659E00971E05 /* MainView.swift in Sources */,
 				5AC6A3522B20E7DD006EDF36 /* spring_sunny_Woman.mlpackage in Sources */,
 				5AC6A3422B1E11D6006EDF36 /* SetupView.swift in Sources */,
@@ -423,7 +419,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"HackU2023/Preview Content\"";
 				DEVELOPMENT_TEAM = GGB524629C;
 				ENABLE_PREVIEWS = YES;
@@ -431,9 +427,9 @@
 				INFOPLIST_FILE = HackU2023/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = KikonAshI;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = HackU2023;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "このAppは位置情報を利用します。";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "このAppは服の画像を利用するために、写真へのアクセスを必要とします。";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "このAppは起動している間、天気、日時を取得するために常に位置情報を利用します。";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "このAppは服の画像を利用するために、写真へのアクセスを必要とします。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -441,11 +437,12 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vivit.kikonAshI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -464,7 +461,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"HackU2023/Preview Content\"";
 				DEVELOPMENT_TEAM = GGB524629C;
 				ENABLE_PREVIEWS = YES;
@@ -472,9 +469,9 @@
 				INFOPLIST_FILE = HackU2023/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = KikonAshI;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = HackU2023;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "このAppは位置情報を利用します。";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "このAppは服の画像を利用するために、写真へのアクセスを必要とします。";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "このAppは起動している間、天気、日時を取得するために常に位置情報を利用します。";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "このAppは服の画像を利用するために、写真へのアクセスを必要とします。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -482,11 +479,12 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vivit.kikonAshI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

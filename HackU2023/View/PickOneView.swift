@@ -16,7 +16,14 @@ struct PickOneView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \ViViTUser.level, ascending: true)],
         animation: .default)
     private var user: FetchedResults<ViViTUser>
-    
+    enum AlertType {
+        case none
+        case tops
+        case bottoms
+    }
+
+    @State private var alertType: AlertType = .none
+
     @State private var selectedImages: [UIImage] = []
     @State private var selectedImagesPair: [[UIImage]] = [[]]
     @State private var imagePath: URL?
@@ -71,8 +78,12 @@ struct PickOneView: View {
                                 }
                                 HStack {
                                     Button("上の服と診断") {
-                                        isActive = true
-                                        selectedImagesPair = generateCombinations_customed(images1: topsImages, images2: selectedImages)
+                                        if topsImages.isEmpty {
+                                            alertType = .tops
+                                        } else {
+                                            isActive = true
+                                            selectedImagesPair = generateCombinations_customed(images1: topsImages, images2: selectedImages)
+                                        }
                                     }
                                     .padding()
                                     .background(Color.blue)
@@ -85,8 +96,12 @@ struct PickOneView: View {
                                         LabelsPredictionView(selectedImagesPair: $selectedImagesPair)
                                     }
                                     Button("下の服と診断") {
-                                        isActive = true
-                                        selectedImagesPair = generateCombinations_customed(images1: selectedImages, images2: bottomsImages)
+                                        if bottomsImages.isEmpty {
+                                            alertType = .bottoms
+                                        } else {
+                                            isActive = true
+                                            selectedImagesPair = generateCombinations_customed(images1: selectedImages, images2: bottomsImages)
+                                        }
 
                                     }
                                     .padding()
@@ -132,6 +147,27 @@ struct PickOneView: View {
             }
             .sheet(isPresented: $isImagePickerDisplayed) {
                 ImagePicker(selectedImages: $selectedImages)
+            }
+            .alert(isPresented: Binding<Bool>(
+                get: { alertType != .none },
+                set: { _ in alertType = .none }
+            )) {
+                switch alertType {
+                case .tops:
+                    return Alert(
+                        title: Text("エラー"),
+                        message: Text("上の服の画像がありません。下の「アルバム」から上の服を選択・保存することで、その中からベストな組み合わせを選択します。"),
+                        dismissButton: .default(Text("OK"))
+                    )
+                case .bottoms:
+                    return Alert(
+                        title: Text("エラー"),
+                        message: Text("下の服の画像がありません。下の「アルバム」から下の服を選択・保存することで、その中からベストな組み合わせを選択します。"),
+                        dismissButton: .default(Text("OK"))
+                    )
+                case .none:
+                    return Alert(title: Text("")) // 何も表示しない
+                }
             }
             .onAppear {
                 topsImages = convertURLsToUIImages(urls: fetchImageURLs(from: "tops"))

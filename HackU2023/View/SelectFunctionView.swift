@@ -22,6 +22,7 @@ struct SelectFunctionView: View {
     let screen: CGRect = UIScreen.main.bounds
 
     @State private var selectedImagesPair: [[UIImage]] = [[]]
+    @State private var imageurl: [URL] = []
 
     var body: some View {
         ZStack {
@@ -64,14 +65,17 @@ struct SelectFunctionView: View {
                     ImageScoreView()
                 }
                 Button("購入サポート") {
-                    if selectedImagesPair.isEmpty || selectedImagesPair.allSatisfy({ $0.isEmpty }) {
-                        // selectedImagesPairが空の場合、アラートを表示
+                    // imageurl配列が空であるか、全ての要素がnilの場合にアラートを表示
+                    if imageurl.isEmpty || !imageurl.contains(where: { $0 != nil }) {
                         showAlert = true
                     } else {
-                        // selectedImagesPairに画像がある場合、画面遷移
+                        // 少なくとも1つの有効なURLが含まれている場合、画面遷移
+                        showAlert = false
                         isActiveOne = true
                     }
                 }
+
+
                 .padding()
                 .background(Color(red: 0.0, green: 0.6, blue: 0.9))
                 .foregroundColor(.black)
@@ -87,12 +91,13 @@ struct SelectFunctionView: View {
         .alert(isPresented: $showAlert) {
             Alert(
                 title: Text("エラー"),
-                message: Text("画像がありません。下のアルバムから服を選択することで、その中からベストな組み合わせをを選択します。"),
+                message: Text("画像がありません。下の「アルバム」から服を選択・保存することで、その中からベストな組み合わせをを選択します。"),
                 dismissButton: .default(Text("OK"))
             )
         }
         .onAppear{
             selectedImagesPair = convertURLsToUIImages(urls: generateCombinations())
+            imageurl = checkExistUrl()
         }
     }
 }
