@@ -24,6 +24,7 @@
 		5A5CBB832B1A679100971E05 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CBB822B1A679100971E05 /* SettingView.swift */; };
 		5A5CBB852B1A69B400971E05 /* ImageScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CBB842B1A69B400971E05 /* ImageScoreView.swift */; };
 		5A5CBB872B1A6A0F00971E05 /* PickImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CBB862B1A6A0F00971E05 /* PickImage.swift */; };
+		5A5E4BDC2BFB2EE600EF47F7 /* AdMobBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5E4BDB2BFB2EE600EF47F7 /* AdMobBannerView.swift */; };
 		5A78B66D2B1BC0FA004EC2AE /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A78B66C2B1BC0FA004EC2AE /* WeatherAPI.swift */; };
 		5A972D2E2BCCE08800B52570 /* FullConnectWeightsBiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A972D2D2BCCE08800B52570 /* FullConnectWeightsBiases.swift */; };
 		5AAC08512BB842EB00C345E8 /* FullconnectionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAC08502BB842EB00C345E8 /* FullconnectionLayer.swift */; };
@@ -40,9 +41,12 @@
 		5AC6A3562B21CA68006EDF36 /* SelectFunctionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A3552B21CA67006EDF36 /* SelectFunctionView.swift */; };
 		5AC6A3582B21CBBD006EDF36 /* LabelsPredictionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A3572B21CBBD006EDF36 /* LabelsPredictionView.swift */; };
 		5AEDAEE72BFAF15600484AD9 /* Enocoder.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 5AEDAEE62BFAF15600484AD9 /* Enocoder.mlpackage */; };
+		80812AA564B763B60DD6E270 /* Pods_HackU2023.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2511A955E043350A767C016A /* Pods_HackU2023.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F14F438D12B0A2F09B5B5FD /* Pods-HackU2023.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackU2023.release.xcconfig"; path = "Target Support Files/Pods-HackU2023/Pods-HackU2023.release.xcconfig"; sourceTree = "<group>"; };
+		2511A955E043350A767C016A /* Pods_HackU2023.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HackU2023.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A5CBB522B1A30A900971E05 /* HackU2023.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackU2023.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A5CBB552B1A30A900971E05 /* HackU2023App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackU2023App.swift; sourceTree = "<group>"; };
 		5A5CBB572B1A30A900971E05 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
@@ -61,6 +65,7 @@
 		5A5CBB822B1A679100971E05 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		5A5CBB842B1A69B400971E05 /* ImageScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScoreView.swift; sourceTree = "<group>"; };
 		5A5CBB862B1A6A0F00971E05 /* PickImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickImage.swift; sourceTree = "<group>"; };
+		5A5E4BDB2BFB2EE600EF47F7 /* AdMobBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobBannerView.swift; sourceTree = "<group>"; };
 		5A78B66C2B1BC0FA004EC2AE /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
 		5A972D2D2BCCE08800B52570 /* FullConnectWeightsBiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullConnectWeightsBiases.swift; sourceTree = "<group>"; };
 		5AAC08502BB842EB00C345E8 /* FullconnectionLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullconnectionLayer.swift; sourceTree = "<group>"; };
@@ -78,6 +83,7 @@
 		5AC6A3552B21CA67006EDF36 /* SelectFunctionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFunctionView.swift; sourceTree = "<group>"; };
 		5AC6A3572B21CBBD006EDF36 /* LabelsPredictionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsPredictionView.swift; sourceTree = "<group>"; };
 		5AEDAEE62BFAF15600484AD9 /* Enocoder.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; name = Enocoder.mlpackage; path = ../../Enocoder.mlpackage; sourceTree = "<group>"; };
+		DCE7466A86314C7DFD1F1BB6 /* Pods-HackU2023.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackU2023.debug.xcconfig"; path = "Target Support Files/Pods-HackU2023/Pods-HackU2023.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80812AA564B763B60DD6E270 /* Pods_HackU2023.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +103,8 @@
 			children = (
 				5A5CBB542B1A30A900971E05 /* HackU2023 */,
 				5A5CBB532B1A30A900971E05 /* Products */,
+				B9306E700DF2AFC76B6758EF /* Pods */,
+				D2C370614CA367DB6EB08D31 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,6 +132,7 @@
 				5A5CBB6F2B1A32AF00971E05 /* ToCVPixelBuffer.swift */,
 				5A5CBB5E2B1A30AA00971E05 /* Persistence.swift */,
 				5A5CBB7C2B1A62E100971E05 /* EditPhotosView.swift */,
+				5A5E4BDB2BFB2EE600EF47F7 /* AdMobBannerView.swift */,
 				5A5CBB602B1A30AA00971E05 /* HackU2023.xcdatamodeld */,
 				5A5CBB592B1A30AA00971E05 /* Assets.xcassets */,
 				5ABB02C42B23A40E00487284 /* movies */,
@@ -172,6 +182,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		B9306E700DF2AFC76B6758EF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DCE7466A86314C7DFD1F1BB6 /* Pods-HackU2023.debug.xcconfig */,
+				1F14F438D12B0A2F09B5B5FD /* Pods-HackU2023.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D2C370614CA367DB6EB08D31 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2511A955E043350A767C016A /* Pods_HackU2023.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -179,17 +206,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5A5CBB652B1A30AA00971E05 /* Build configuration list for PBXNativeTarget "HackU2023" */;
 			buildPhases = (
+				281511BF40EF2F8F0150C680 /* [CP] Check Pods Manifest.lock */,
 				5A5CBB4E2B1A30A900971E05 /* Sources */,
 				5A5CBB4F2B1A30A900971E05 /* Frameworks */,
 				5A5CBB502B1A30A900971E05 /* Resources */,
+				0232A237E7A7ED4726D9759A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = HackU2023;
-			packageProductDependencies = (
-			);
 			productName = HackU2023;
 			productReference = 5A5CBB522B1A30A900971E05 /* HackU2023.app */;
 			productType = "com.apple.product-type.application";
@@ -218,8 +245,6 @@
 				Base,
 			);
 			mainGroup = 5A5CBB492B1A30A900971E05;
-			packageReferences = (
-			);
 			productRefGroup = 5A5CBB532B1A30A900971E05 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -243,6 +268,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0232A237E7A7ED4726D9759A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HackU2023/Pods-HackU2023-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HackU2023/Pods-HackU2023-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HackU2023/Pods-HackU2023-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		281511BF40EF2F8F0150C680 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HackU2023-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5A5CBB4E2B1A30A900971E05 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -251,6 +318,7 @@
 				5ABB02C92B2473FC00487284 /* FashionTips.swift in Sources */,
 				5ABB02C32B23992B00487284 /* VideoController.swift in Sources */,
 				5A5CBB5F2B1A30AA00971E05 /* Persistence.swift in Sources */,
+				5A5E4BDC2BFB2EE600EF47F7 /* AdMobBannerView.swift in Sources */,
 				5A5CBB732B1A32B000971E05 /* AlbamView.swift in Sources */,
 				5AEDAEE72BFAF15600484AD9 /* Enocoder.mlpackage in Sources */,
 				5A5CBB812B1A672400971E05 /* HomeView.swift in Sources */,
@@ -405,6 +473,7 @@
 		};
 		5A5CBB662B1A30AA00971E05 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCE7466A86314C7DFD1F1BB6 /* Pods-HackU2023.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -447,6 +516,7 @@
 		};
 		5A5CBB672B1A30AA00971E05 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F14F438D12B0A2F09B5B5FD /* Pods-HackU2023.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

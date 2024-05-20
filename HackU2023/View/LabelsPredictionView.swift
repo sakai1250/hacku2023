@@ -42,6 +42,7 @@ struct LabelsPredictionView: View {
         NavigationStack {
             if assuming || waiting {
                 ZStack {
+                    AdMobBannerView()
                     Image(items[2])
                         .resizable()
                         .aspectRatio(CGSize(width: 1, height: 2), contentMode: .fill)
