@@ -32,45 +32,193 @@ class FullyConnectedNetwork {
             if first ?? true {
                 weights = firstFullConnectWeights(gender: gender, season: season, weather: weather)
                 biases = firstFullConnectBiases(gender: gender, season: season, weather: weather)
-                user.first_sp = false
-                user.fullconne_sp_w = weights as NSObject
-                user.fullconne_sp_b = biases as NSObject
+                user.first_sp_m_s = false
+                user.fullconne_w_spms = weights as NSObject
+                user.fullconne_b_spms = biases as NSObject
             } else {
-                weights = user.fullconne_sp_w as! [[Double]]
-                biases = user.fullconne_sp_b as! [Double]
+                weights = user.fullconne_w_spms as! [[Double]]
+                biases = user.fullconne_b_spms as! [Double]
+            }
+        case ("男性", "夏", "晴れ"):
+            if first ?? true {
+                weights = firstFullConnectWeights(gender: gender, season: season, weather: weather)
+                biases = firstFullConnectBiases(gender: gender, season: season, weather: weather)
+                user.first_sm_m_s = false
+                user.fullconne_w_smms = weights as NSObject
+                user.fullconne_b_smms = biases as NSObject
+            } else {
+                weights = user.fullconne_w_smms as! [[Double]]
+                biases = user.fullconne_b_smms as! [Double]
+            }
+        case ("男性", "秋", "晴れ"):
+            if first ?? true {
+                weights = firstFullConnectWeights(gender: gender, season: season, weather: weather)
+                biases = firstFullConnectBiases(gender: gender, season: season, weather: weather)
+                user.first_fl_m_s = false
+                user.fullconne_w_fms = weights as NSObject
+                user.fullconne_b_fms = biases as NSObject
+            } else {
+                weights = user.fullconne_w_fms as! [[Double]]
+                biases = user.fullconne_b_fms as! [Double]
             }
         case ("男性", "冬", "晴れ"):
             if first ?? true {
                 weights = firstFullConnectWeights(gender: gender, season: season, weather: weather)
                 biases = firstFullConnectBiases(gender: gender, season: season, weather: weather)
-                user.first_sp = false
-                user.fullconne_sp_w = weights as NSObject
-                user.fullconne_sp_b = biases as NSObject
+                user.first_wi_m_s = false
+                user.fullconne_w_wms = weights as NSObject
+                user.fullconne_b_wms = biases as NSObject
             } else {
-                weights = user.fullconne_sp_w as! [[Double]]
-                biases = user.fullconne_sp_b as! [Double]
+                weights = user.fullconne_w_wms as! [[Double]]
+                biases = user.fullconne_b_wms as! [Double]
             }
+
         case ("女性", "春", "晴れ"):
             if first ?? true {
                 weights = firstFullConnectWeights(gender: gender, season: season, weather: weather)
                 biases = firstFullConnectBiases(gender: gender, season: season, weather: weather)
-                user.first_sp = false
-                user.fullconne_sp_w = weights as NSObject
-                user.fullconne_sp_b = biases as NSObject
+                user.first_sp_w_s = false
+                user.fullconne_w_spws = weights as NSObject
+                user.fullconne_b_spws = biases as NSObject
             } else {
-                weights = user.fullconne_sp_w as! [[Double]]
-                biases = user.fullconne_sp_b as! [Double]
+                weights = user.fullconne_w_spws as! [[Double]]
+                biases = user.fullconne_b_spws as! [Double]
             }
+        case ("女性", "夏", "晴れ"):
+            if first ?? true {
+                weights = firstFullConnectWeights(gender: gender, season: season, weather: weather)
+                biases = firstFullConnectBiases(gender: gender, season: season, weather: weather)
+                user.first_sm_w_s = false
+                user.fullconne_w_smws = weights as NSObject
+                user.fullconne_b_smws = biases as NSObject
+            } else {
+                weights = user.fullconne_w_smws as! [[Double]]
+                biases = user.fullconne_b_smws as! [Double]
+            }
+        case ("女性", "秋", "晴れ"):
+            if first ?? true {
+                weights = firstFullConnectWeights(gender: gender, season: season, weather: weather)
+                biases = firstFullConnectBiases(gender: gender, season: season, weather: weather)
+                user.first_fl_w_s = false
+                user.fullconne_w_fws = weights as NSObject
+                user.fullconne_b_fws = biases as NSObject
+            } else {
+                weights = user.fullconne_w_fws as! [[Double]]
+                biases = user.fullconne_b_fws as! [Double]
+            }
+        case ("女性", "冬", "晴れ"):
+            if first ?? true {
+                weights = firstFullConnectWeights(gender: gender, season: season, weather: weather)
+                biases = firstFullConnectBiases(gender: gender, season: season, weather: weather)
+                user.first_wi_w_s = false
+                user.fullconne_w_wws = weights as NSObject
+                user.fullconne_b_wws = biases as NSObject
+            } else {
+                weights = user.fullconne_w_wws as! [[Double]]
+                biases = user.fullconne_b_wws as! [Double]
+            }
+
+        case ("男性", "春", "雨"):
+            if first ?? true {
+                weights = firstFullConnectWeights(gender: gender, season: season, weather: weather)
+                biases = firstFullConnectBiases(gender: gender, season: season, weather: weather)
+                user.first_sp_m_r = false
+                user.fullconne_w_spmr = weights as NSObject
+                user.fullconne_b_spmr = biases as NSObject
+            } else {
+                weights = user.fullconne_w_spmr as! [[Double]]
+                biases = user.fullconne_b_spmr as! [Double]
+            }
+        case ("男性", "夏", "雨"):
+            if first ?? true {
+                weights = firstFullConnectWeights(gender: gender, season: season, weather: weather)
+                biases = firstFullConnectBiases(gender: gender, season: season, weather: weather)
+                user.first_sm_m_r = false
+                user.fullconne_w_smmr = weights as NSObject
+                user.fullconne_b_smmr = biases as NSObject
+            } else {
+                weights = user.fullconne_w_smmr as! [[Double]]
+                biases = user.fullconne_b_smmr as! [Double]
+            }
+        case ("男性", "秋", "雨"):
+            if first ?? true {
+                weights = firstFullConnectWeights(gender: gender, season: season, weather: weather)
+                biases = firstFullConnectBiases(gender: gender, season: season, weather: weather)
+                user.first_fl_m_r = false
+                user.fullconne_w_fmr = weights as NSObject
+                user.fullconne_b_fmr = biases as NSObject
+            } else {
+                weights = user.fullconne_w_fmr as! [[Double]]
+                biases = user.fullconne_b_fmr as! [Double]
+            }
+        case ("男性", "冬", "雨"):
+            if first ?? true {
+                weights = firstFullConnectWeights(gender: gender, season: season, weather: weather)
+                biases = firstFullConnectBiases(gender: gender, season: season, weather: weather)
+                user.first_wi_m_r = false
+                user.fullconne_w_wmr = weights as NSObject
+                user.fullconne_b_wmr = biases as NSObject
+            } else {
+                weights = user.fullconne_w_wmr as! [[Double]]
+                biases = user.fullconne_b_wmr as! [Double]
+            }
+
+        case ("女性", "春", "雨"):
+            if first ?? true {
+                weights = firstFullConnectWeights(gender: gender, season: season, weather: weather)
+                biases = firstFullConnectBiases(gender: gender, season: season, weather: weather)
+                user.first_sp_w_r = false
+                user.fullconne_w_spwr = weights as NSObject
+                user.fullconne_b_spwr = biases as NSObject
+            } else {
+                weights = user.fullconne_w_spwr as! [[Double]]
+                biases = user.fullconne_b_spwr as! [Double]
+            }
+        case ("女性", "夏", "雨"):
+            if first ?? true {
+                weights = firstFullConnectWeights(gender: gender, season: season, weather: weather)
+                biases = firstFullConnectBiases(gender: gender, season: season, weather: weather)
+                user.first_sm_w_r = false
+                user.fullconne_w_smwr = weights as NSObject
+                user.fullconne_b_smwr = biases as NSObject
+            } else {
+                weights = user.fullconne_w_smwr as! [[Double]]
+                biases = user.fullconne_b_smwr as! [Double]
+            }
+        case ("女性", "秋", "雨"):
+            if first ?? true {
+                weights = firstFullConnectWeights(gender: gender, season: season, weather: weather)
+                biases = firstFullConnectBiases(gender: gender, season: season, weather: weather)
+                user.first_fl_w_r = false
+                user.fullconne_w_fwr = weights as NSObject
+                user.fullconne_b_fwr = biases as NSObject
+            } else {
+                weights = user.fullconne_w_fwr as! [[Double]]
+                biases = user.fullconne_b_fwr as! [Double]
+            }
+        case ("女性", "冬", "雨"):
+            if first ?? true {
+                weights = firstFullConnectWeights(gender: gender, season: season, weather: weather)
+                biases = firstFullConnectBiases(gender: gender, season: season, weather: weather)
+                user.first_wi_w_r = false
+                user.fullconne_w_wwr = weights as NSObject
+                user.fullconne_b_wwr = biases as NSObject
+            } else {
+                weights = user.fullconne_w_wwr as! [[Double]]
+                biases = user.fullconne_b_wwr as! [Double]
+            }
+
+
         default:
             if first ?? true {
                 weights = firstFullConnectWeights(gender: gender, season: season, weather: weather)
                 biases = firstFullConnectBiases(gender: gender, season: season, weather: weather)
-                user.first_sp = false
-                user.fullconne_sp_w = weights as NSObject
-                user.fullconne_sp_b = biases as NSObject
+                user.first_sp_m_s = false
+                user.fullconne_w_spms = weights as NSObject
+                user.fullconne_b_spms = biases as NSObject
             } else {
-                weights = user.fullconne_sp_w as! [[Double]]
-                biases = user.fullconne_sp_b as! [Double]
+                weights = user.fullconne_w_spms as! [[Double]]
+                biases = user.fullconne_b_spms as! [Double]
             }
         }
     }

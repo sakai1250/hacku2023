@@ -177,7 +177,8 @@ struct OnetapRecommendView: View {
                             // 季節を出力
                             let season = seasonFromDates([dateString])
                             print(gender, season, weather)
-                            if let model = selectModel(gender: gender, season: season, weather: weather) {
+                            if let model = try? VNCoreMLModel(for: Enocoder().model) {
+//                            if let model = selectModel(gender: gender, season: season, weather: weather) {
                                 let fc = FullyConnectedNetwork(inputChannels: 64, outputChannels: 2, user: user.first!, gender: gender, season: season, weather: weather)
                                 predictLabel(image: combinedImage, model: model, fc: fc)                            }
                         }

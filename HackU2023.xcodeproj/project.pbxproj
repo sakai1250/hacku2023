@@ -37,11 +37,9 @@
 		5AC6A3442B1E2EF5006EDF36 /* CheckUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A3432B1E2EF5006EDF36 /* CheckUserData.swift */; };
 		5AC6A34A2B1E820D006EDF36 /* ScreenShotManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A3492B1E820D006EDF36 /* ScreenShotManager.swift */; };
 		5AC6A34C2B20B1EC006EDF36 /* PickOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A34B2B20B1EC006EDF36 /* PickOneView.swift */; };
-		5AC6A3512B20E7DD006EDF36 /* winter_sunny_Woman.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A34D2B20E7D9006EDF36 /* winter_sunny_Woman.mlpackage */; };
-		5AC6A3522B20E7DD006EDF36 /* spring_sunny_Woman.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A34E2B20E7DA006EDF36 /* spring_sunny_Woman.mlpackage */; };
-		5AC6A3542B20E7DD006EDF36 /* winter_sunny_Man.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A3502B20E7DD006EDF36 /* winter_sunny_Man.mlpackage */; };
 		5AC6A3562B21CA68006EDF36 /* SelectFunctionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A3552B21CA67006EDF36 /* SelectFunctionView.swift */; };
 		5AC6A3582B21CBBD006EDF36 /* LabelsPredictionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A3572B21CBBD006EDF36 /* LabelsPredictionView.swift */; };
+		5AEDAEE72BFAF15600484AD9 /* Enocoder.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 5AEDAEE62BFAF15600484AD9 /* Enocoder.mlpackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,7 +62,6 @@
 		5A5CBB842B1A69B400971E05 /* ImageScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScoreView.swift; sourceTree = "<group>"; };
 		5A5CBB862B1A6A0F00971E05 /* PickImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickImage.swift; sourceTree = "<group>"; };
 		5A78B66C2B1BC0FA004EC2AE /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
-		5A972D2A2BCAE79700B52570 /* retrain.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = retrain.mlpackage; sourceTree = "<group>"; };
 		5A972D2D2BCCE08800B52570 /* FullConnectWeightsBiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullConnectWeightsBiases.swift; sourceTree = "<group>"; };
 		5AAC08502BB842EB00C345E8 /* FullconnectionLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullconnectionLayer.swift; sourceTree = "<group>"; };
 		5ABB02C22B23992B00487284 /* VideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoController.swift; sourceTree = "<group>"; };
@@ -78,11 +75,9 @@
 		5AC6A3432B1E2EF5006EDF36 /* CheckUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUserData.swift; sourceTree = "<group>"; };
 		5AC6A3492B1E820D006EDF36 /* ScreenShotManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenShotManager.swift; sourceTree = "<group>"; };
 		5AC6A34B2B20B1EC006EDF36 /* PickOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickOneView.swift; sourceTree = "<group>"; };
-		5AC6A34D2B20E7D9006EDF36 /* winter_sunny_Woman.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = winter_sunny_Woman.mlpackage; sourceTree = "<group>"; };
-		5AC6A34E2B20E7DA006EDF36 /* spring_sunny_Woman.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = spring_sunny_Woman.mlpackage; sourceTree = "<group>"; };
-		5AC6A3502B20E7DD006EDF36 /* winter_sunny_Man.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = winter_sunny_Man.mlpackage; sourceTree = "<group>"; };
 		5AC6A3552B21CA67006EDF36 /* SelectFunctionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFunctionView.swift; sourceTree = "<group>"; };
 		5AC6A3572B21CBBD006EDF36 /* LabelsPredictionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsPredictionView.swift; sourceTree = "<group>"; };
+		5AEDAEE62BFAF15600484AD9 /* Enocoder.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; name = Enocoder.mlpackage; path = ../../Enocoder.mlpackage; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,11 +126,8 @@
 				5A5CBB602B1A30AA00971E05 /* HackU2023.xcdatamodeld */,
 				5A5CBB592B1A30AA00971E05 /* Assets.xcassets */,
 				5ABB02C42B23A40E00487284 /* movies */,
-				5A972D2A2BCAE79700B52570 /* retrain.mlpackage */,
 				5AC485782BEA84BE00CD65B2 /* spring_sunny_Man.mlpackage */,
-				5AC6A34E2B20E7DA006EDF36 /* spring_sunny_Woman.mlpackage */,
-				5AC6A3502B20E7DD006EDF36 /* winter_sunny_Man.mlpackage */,
-				5AC6A34D2B20E7D9006EDF36 /* winter_sunny_Woman.mlpackage */,
+				5AEDAEE62BFAF15600484AD9 /* Enocoder.mlpackage */,
 				5A5CBB712B1A32B000971E05 /* tops.png */,
 				5A5CBB5B2B1A30AA00971E05 /* Preview Content */,
 			);
@@ -260,6 +252,7 @@
 				5ABB02C32B23992B00487284 /* VideoController.swift in Sources */,
 				5A5CBB5F2B1A30AA00971E05 /* Persistence.swift in Sources */,
 				5A5CBB732B1A32B000971E05 /* AlbamView.swift in Sources */,
+				5AEDAEE72BFAF15600484AD9 /* Enocoder.mlpackage in Sources */,
 				5A5CBB812B1A672400971E05 /* HomeView.swift in Sources */,
 				5A5CBB832B1A679100971E05 /* SettingView.swift in Sources */,
 				5A5CBB872B1A6A0F00971E05 /* PickImage.swift in Sources */,
@@ -274,11 +267,8 @@
 				5A5CBB622B1A30AA00971E05 /* HackU2023.xcdatamodeld in Sources */,
 				5AAC08512BB842EB00C345E8 /* FullconnectionLayer.swift in Sources */,
 				5AC6A33F2B1DEDCE006EDF36 /* LocationManager.swift in Sources */,
-				5AC6A3512B20E7DD006EDF36 /* winter_sunny_Woman.mlpackage in Sources */,
 				5A5CBB7D2B1A62E100971E05 /* EditPhotosView.swift in Sources */,
-				5AC6A3542B20E7DD006EDF36 /* winter_sunny_Man.mlpackage in Sources */,
 				5A5CBB7F2B1A659E00971E05 /* MainView.swift in Sources */,
-				5AC6A3522B20E7DD006EDF36 /* spring_sunny_Woman.mlpackage in Sources */,
 				5AC6A3422B1E11D6006EDF36 /* SetupView.swift in Sources */,
 				5A5CBB762B1A32B000971E05 /* RetrainingView.swift in Sources */,
 				5A5CBB582B1A30A900971E05 /* StartView.swift in Sources */,
@@ -419,7 +409,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"HackU2023/Preview Content\"";
 				DEVELOPMENT_TEAM = GGB524629C;
 				ENABLE_PREVIEWS = YES;
@@ -442,7 +432,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vivit.kikonAshI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -461,7 +451,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"HackU2023/Preview Content\"";
 				DEVELOPMENT_TEAM = GGB524629C;
 				ENABLE_PREVIEWS = YES;
@@ -484,7 +474,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vivit.kikonAshI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

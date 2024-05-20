@@ -57,9 +57,10 @@ struct RetrainingView: View {
                     let season = seasonFromDates([dateString])
                     print(weather, season, gender)
                     //  学習
-                    if let model = selectModel(gender: gender, season: season, weather: weather) {
+                    if let model = try? VNCoreMLModel(for: Enocoder().model) {
+//                    if let model = selectModel(gender: gender, season: season, weather: weather) {
                         let fc = FullyConnectedNetwork(inputChannels: 64, outputChannels: 2, user: user.first!, gender: gender, season: season, weather: weather)
-                        training(image: combinedImage, model: model, fc: fc)
+                        training(image: combinedImage, model: model, fc: fc, gender: gender, season: season, weather: weather)
                         self.isActive = true
                     }
                 }
@@ -74,7 +75,7 @@ struct RetrainingView: View {
         }
     }
 //  推論
-    func training(image: UIImage?, model: VNCoreMLModel, fc: FullyConnectedNetwork) {
+    func training(image: UIImage?, model: VNCoreMLModel, fc: FullyConnectedNetwork, gender: String, season: String, weather: String) {
         guard let image = image else { return }
         let request = VNCoreMLRequest(model: model) { request, error in
             if let error = error {
@@ -93,7 +94,7 @@ struct RetrainingView: View {
 
             // Assuming 'feedback' is correctly defined elsewhere in your code
             fc.train(inputs: featureArray, trueOutputs: feedback, learningRate: 0.01, epochs: 3)
-            saveFullConne(weights: fc.weights, biases: fc.biases, fc: user.first!)
+            saveFullConne(weights: fc.weights, biases: fc.biases, fc: user.first!, gender: gender, season: season, weather: weather)
 
         }
         
@@ -110,10 +111,63 @@ struct RetrainingView: View {
 
     }
 //    重みとバイアスの保存
-    func saveFullConne(weights: [[Double]], biases: [Double], fc: ViViTUser) {
+    func saveFullConne(weights: [[Double]], biases: [Double], fc: ViViTUser, gender: String, season: String, weather: String) {
         print(weights)
-        fc.fullconne_sp_w = weights as NSObject
-        fc.fullconne_sp_b = biases as NSObject
+        switch (gender, season, weather) {
+        case ("男性", "春", "晴れ"):
+            fc.fullconne_w_spms = weights as NSObject
+            fc.fullconne_b_spms = biases as NSObject
+        case ("男性", "春", "雨"):
+            fc.fullconne_w_smmr = weights as NSObject
+            fc.fullconne_b_spmr = biases as NSObject
+        case ("男性", "夏", "晴れ"):
+            fc.fullconne_w_smms = weights as NSObject
+            fc.fullconne_b_smms = biases as NSObject
+        case ("男性", "夏", "雨"):
+            fc.fullconne_w_smmr = weights as NSObject
+            fc.fullconne_b_smmr = biases as NSObject
+        case ("男性", "秋", "晴れ"):
+            fc.fullconne_w_fms = weights as NSObject
+            fc.fullconne_b_fms = biases as NSObject
+        case ("男性", "秋", "雨"):
+            fc.fullconne_w_fmr = weights as NSObject
+            fc.fullconne_b_fmr = biases as NSObject
+        case ("男性", "冬", "晴れ"):
+            fc.fullconne_w_wms = weights as NSObject
+            fc.fullconne_b_wms = biases as NSObject
+        case ("男性", "冬", "雨"):
+            fc.fullconne_w_wmr = weights as NSObject
+            fc.fullconne_b_wmr = biases as NSObject
+        
+        case ("女性", "春", "晴れ"):
+            fc.fullconne_w_spws = weights as NSObject
+            fc.fullconne_b_spws = biases as NSObject
+        case ("女性", "春", "雨"):
+            fc.fullconne_w_spwr = weights as NSObject
+            fc.fullconne_b_spwr = biases as NSObject
+        case ("女性", "夏", "晴れ"):
+            fc.fullconne_w_smws = weights as NSObject
+            fc.fullconne_b_smws = biases as NSObject
+        case ("女性", "夏", "雨"):
+            fc.fullconne_w_smwr = weights as NSObject
+            fc.fullconne_b_smwr = biases as NSObject
+        case ("女性", "秋", "晴れ"):
+            fc.fullconne_w_fws = weights as NSObject
+            fc.fullconne_b_fws = biases as NSObject
+        case ("女性", "秋", "雨"):
+            fc.fullconne_w_fwr = weights as NSObject
+            fc.fullconne_b_fwr = biases as NSObject
+        case ("女性", "冬", "晴れ"):
+            fc.fullconne_w_wws = weights as NSObject
+            fc.fullconne_b_wws = biases as NSObject
+        case ("女性", "冬", "雨"):
+            fc.fullconne_w_wwr = weights as NSObject
+            fc.fullconne_b_wwr = biases as NSObject
+
+        default:
+            fc.fullconne_w_spms = weights as NSObject
+            fc.fullconne_b_spms = biases as NSObject
+        }
         
         do {
             try viewContext.save()

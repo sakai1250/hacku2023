@@ -154,7 +154,8 @@ struct LabelPredictionView: View {
                     let season = seasonFromDates([dateString])
                     weather = weatherAPI.getWeatherCategory_for_predict(weatherAPI.getWeatherCategory(from: weatherCode).rawValue)
                     //  推論
-                    if let model = selectModel(gender: gender, season: season, weather: weather) {
+                    if let model = try? VNCoreMLModel(for: Enocoder().model) {
+//                    if let model = selectModel(gender: gender, season: season, weather: weather) {
                         //  分類器
                         let fc = FullyConnectedNetwork(inputChannels: 64, outputChannels: 2, user: user.first!, gender: gender, season: season, weather: weather)
                         predictLabel(image: combinedImage, model: model, fc: fc)

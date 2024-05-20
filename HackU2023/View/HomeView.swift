@@ -64,24 +64,49 @@ struct HomeView: View {
                             } else {
                                 Text("データがありません")
                             }
+//                            ForEach(users) { user in
+//                                HStack {
+//                                    VStack(alignment: .leading) { // VStackを左揃えに設定
+//                                        Text("Name: \(user.name ?? "Unknown")")
+//                                            .font(.headline)
+//                                    }
+//                                    Spacer() // 右側にスペースを追加して左揃えにする
+//                                    VStack(alignment: .leading) {
+//                                        Text("Level: \(user.level)")
+//                                            .font(.subheadline)
+//                                        Text("Exp: \(user.exp)")
+//                                            .font(.subheadline)
+//                                        ProgressView(value: Double(user.exp), total: 3) // 仮の最大値
+//                                            .progressViewStyle(LinearProgressViewStyle())
+//                                            .frame(width: 100)
+//                                    }
+//                                }
+//                            }
                             ForEach(users) { user in
                                 HStack {
-                                    VStack(alignment: .leading) { // VStackを左揃えに設定
+                                    VStack(alignment: .leading) {
                                         Text("Name: \(user.name ?? "Unknown")")
                                             .font(.headline)
                                     }
-                                    Spacer() // 右側にスペースを追加して左揃えにする
+                                    Spacer()
                                     VStack(alignment: .leading) {
                                         Text("Level: \(user.level)")
                                             .font(.subheadline)
                                         Text("Exp: \(user.exp)")
                                             .font(.subheadline)
-                                        ProgressView(value: Double(user.exp), total: 3) // 仮の最大値
+                                        
+                                        // 最大経験値を仮に定義します（実際の値に基づいて変更が必要かもしれません）
+                                        let maxExp = 100.0
+                                        // 経験値が最大値を超えないようにする
+                                        let safeExp = min(Double(user.exp), maxExp)
+
+                                        ProgressView(value: safeExp, total: maxExp)
                                             .progressViewStyle(LinearProgressViewStyle())
                                             .frame(width: 100)
                                     }
                                 }
                             }
+
                             Button(action: {
                                 manager.captureScreenShot(windowScene: UIApplication.shared.connectedScenes.first as? UIWindowScene, rect: manager.rect)
                             }){

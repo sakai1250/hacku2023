@@ -5,18 +5,54 @@
     </entity>
     <entity name="ViViTUser" representedClassName="ViViTUser" syncable="YES" codeGenerationType="class">
         <attribute name="exp" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
-        <attribute name="first_fl" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
-        <attribute name="first_sm" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
-        <attribute name="first_sp" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
-        <attribute name="first_wi" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
-        <attribute name="fullconne_fl_b" optional="YES" attributeType="Transformable"/>
-        <attribute name="fullconne_fl_w" optional="YES" attributeType="Transformable"/>
-        <attribute name="fullconne_sm_b" optional="YES" attributeType="Transformable"/>
-        <attribute name="fullconne_sm_w" optional="YES" attributeType="Transformable"/>
-        <attribute name="fullconne_sp_b" optional="YES" attributeType="Transformable"/>
-        <attribute name="fullconne_sp_w" optional="YES" attributeType="Transformable"/>
-        <attribute name="fullconne_wi_b" optional="YES" attributeType="Transformable"/>
-        <attribute name="fullconne_wi_w" optional="YES" attributeType="Transformable"/>
+        <attribute name="first_fl_m_r" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_fl_m_s" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="first_fl_w_r" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_fl_w_s" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_sm_m_r" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_sm_m_s" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_sm_w_r" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_sm_w_s" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_sp_m_r" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_sp_m_s" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_sp_w_r" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_sp_w_s" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_wi_m_r" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_wi_m_s" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_wi_w_r" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_wi_w_s" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="fullconne_b_fmr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_fms" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_fwr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_fws" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_smmr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_smms" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_smwr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_smws" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_spmr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_spms" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_spwr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_spws" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_wmr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_wms" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_wwr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_wws" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_fmr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_fms" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_fwr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_fws" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_smmr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_smms" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_smwr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_smws" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_spmr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_spms" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_spwr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_spws" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_wmr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_wms" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_wwr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_wws" optional="YES" attributeType="Transformable"/>
         <attribute name="gender" optional="YES" attributeType="String" defaultValueString="選択してください"/>
         <attribute name="level" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
