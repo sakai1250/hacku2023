@@ -42,12 +42,16 @@ struct LabelsPredictionView: View {
         NavigationStack {
             if assuming || waiting {
                 ZStack {
-                    AdMobBannerView()
                     Image(items[2])
                         .resizable()
                         .aspectRatio(CGSize(width: 1, height: 2), contentMode: .fill)
                         .frame(maxWidth: screen.width / 0.9)
                         .frame(maxHeight: screen.height / 0.9)
+                    VStack {
+                        Spacer()
+                            .frame(height: screen.height*8/10)
+                        AdMobBannerView()
+                    }
                     VStack {
                         HStack {
                             Spacer()
@@ -84,6 +88,11 @@ struct LabelsPredictionView: View {
                         .resizable()
                         .frame(maxWidth: screen.width / 0.9)
                         .frame(maxHeight: screen.height / 0.9)
+                    VStack {
+                        Spacer()
+                            .frame(height: screen.height*8/10)
+                        AdMobBannerView()
+                    }
                     VStack {
                         ScrollView {
                             ForEach(Array(selectedImagesPair.enumerated()), id: \.offset) { index, _selectedImages in

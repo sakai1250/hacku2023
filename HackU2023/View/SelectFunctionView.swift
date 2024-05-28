@@ -112,8 +112,3 @@ func convertURLsToUIImages(urls: [[URL]]) -> [[UIImage]] {
 
 
 
-struct SelectFunctionView_Previews: PreviewProvider {
-    static var previews: some View {
-        SelectFunctionView()
-    }
-}

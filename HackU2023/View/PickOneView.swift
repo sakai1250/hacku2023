@@ -248,8 +248,4 @@ struct PickOneView: View {
     }
  }
 
-struct PickImagesView_Previews: PreviewProvider {
-    static var previews: some View {
-        PickOneView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}
+

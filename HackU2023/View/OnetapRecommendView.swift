@@ -43,12 +43,16 @@ struct OnetapRecommendView: View {
         NavigationStack {
             if assuming || waiting {
                 ZStack {
-                    AdMobBannerView()
                     Image(items[2])
                         .resizable()
                         .aspectRatio(CGSize(width: 1, height: 2), contentMode: .fill)
                         .frame(maxWidth: screen.width / 0.9)
                         .frame(maxHeight: screen.height / 0.9)
+                    VStack {
+                        Spacer()
+                            .frame(height: screen.height*8/10)
+                        AdMobBannerView()
+                    }
                     VStack {
                         HStack {
                             Spacer()
@@ -86,6 +90,11 @@ struct OnetapRecommendView: View {
                         .frame(maxWidth: screen.width / 0.9)
                         .frame(maxHeight: screen.height / 0.9)
                     VStack {
+                        Spacer()
+                            .frame(height: screen.height*8/10)
+                        AdMobBannerView()
+                    }
+                    VStack {
                         HStack {
                             ForEach(selectedImages, id: \.self) { image in
                                 Image(uiImage: resizeImage(image: image, targetSize: CGSize(width: 200, height: 200)))
@@ -117,16 +126,13 @@ struct OnetapRecommendView: View {
                             }
                             
                             Button("やめとく") {
-                                if isfirst {
-                                    isfirst = false
-                                }
                                 // 次の画像を表示
                                 if let currentIndex = sortedIndices.first {
+                                    print(currentIndex)
                                     selectedImages = selectedImagesPair[currentIndex]
                                     predictionResult = predictionResults[currentIndex]
                                     combinedImage = combineImages(selectedImagesPair[currentIndex][0], selectedImagesPair[currentIndex][1])
                                     sortedIndices.removeFirst()
-                                    
                                 } else {
                                     // 画像がもうない場合、RetrainingViewに遷移
                                     feedback = [0.0, 1.0] as [Double]
@@ -207,28 +213,14 @@ struct OnetapRecommendView: View {
             //  分類器
             let featureArray = self.convertToDoubleArray(from: multiArray)
 
-            var fcResults = fc.infer(input: featureArray)
+            let fcResults = fc.infer(input: featureArray)
             let stylishResult  = softmax(fcResults)[0]
             
             DispatchQueue.main.async {
                 // 「おしゃれ」ラベルの信頼度を設定
                 self.predictionResult = Int((stylishResult) * 100)
                 self.predictionResults.append(self.predictionResult)
-            
-//                if let highestValue = self.predictionResults.max() {
-//                    if let index = self.predictionResults.firstIndex(of: highestValue) {
-//                        print("最も高い値: \(highestValue), 位置番号: \(index)")
-//                        self.predictionResult = self.predictionResults[index]
-//                        self.selectedImages = selectedImagesPair[index+1]
-//                        print("結果\(self.predictionResults)")
-//                    }
-//                    // 値とインデックスをペアにしてソート
-//                    let indexedNumbers = self.predictionResults.enumerated().sorted { $0.element < $1.element }
-//                    // ソートされたインデックスのみを抽出
-//                    sortedIndices = indexedNumbers.map { $0.offset }
-//                } else {
-//                    print("配列が空です")
-//                }
+                
                 if let highestValue = self.predictionResults.max() {
                     if let index = self.predictionResults.firstIndex(of: highestValue) {
                         print("最も高い値: \(highestValue), 位置番号: \(index)")
@@ -240,12 +232,16 @@ struct OnetapRecommendView: View {
                             // 最後の要素の場合、最初に戻るか、別の適切な処理を行う
                             self.selectedImages = selectedImagesPair[0] // 例: 最初の要素に戻る
                         }
-                        print("結果\(self.predictionResults)")
+                        print("結果\(self.predictionResults[index])")
                     }
                     // 値とインデックスをペアにしてソート
-                    let indexedNumbers = self.predictionResults.enumerated().sorted { $0.element < $1.element }
+                    let indexedNumbers = self.predictionResults.enumerated().sorted { $0.element > $1.element }
+                    print("結果2\(indexedNumbers)")
+
                     // ソートされたインデックスのみを抽出
-                    sortedIndices = indexedNumbers.map { $0.offset }
+                    self.sortedIndices = indexedNumbers.map { $0.offset }
+                    print("結果3\(self.predictionResults[0])")
+
                 } else {
                     print("配列が空です")
                 }

@@ -117,8 +117,4 @@ struct EditPhotosView: View {
 
 }
 
-struct EditPhotosView_Previews: PreviewProvider {
-    static var previews: some View {
-        EditPhotosView()
-    }
-}
+

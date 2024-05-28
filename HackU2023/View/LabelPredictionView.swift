@@ -36,12 +36,16 @@ struct LabelPredictionView: View {
         NavigationStack {
             if assuming {
                 ZStack {
-                    AdMobBannerView()
                     Image(items[2])
                         .resizable()
                         .aspectRatio(CGSize(width: 1, height: 2), contentMode: .fill)
                         .frame(maxWidth: screen.width / 0.9)
                         .frame(maxHeight: screen.height / 0.9)
+                    VStack {
+                        Spacer()
+                            .frame(height: screen.height*8/10)
+                        AdMobBannerView()
+                    }
                     VStack {
                         HStack {
                             Spacer()
@@ -78,6 +82,11 @@ struct LabelPredictionView: View {
                         .resizable()
                         .frame(maxWidth: screen.width / 0.9)
                         .frame(maxHeight: screen.height / 0.9)
+                    VStack {
+                        Spacer()
+                            .frame(height: screen.height*8/10)
+                        AdMobBannerView()
+                    }
                     VStack {
                         HStack {
                             ForEach(selectedImages, id: \.self) { image in

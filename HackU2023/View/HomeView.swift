@@ -144,10 +144,3 @@ struct HomeView: View {
         .background(RectangleGetter(rect: $manager.rect))
     }
 }
-
-
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}

@@ -132,7 +132,6 @@
 				5A5CBB6F2B1A32AF00971E05 /* ToCVPixelBuffer.swift */,
 				5A5CBB5E2B1A30AA00971E05 /* Persistence.swift */,
 				5A5CBB7C2B1A62E100971E05 /* EditPhotosView.swift */,
-				5A5E4BDB2BFB2EE600EF47F7 /* AdMobBannerView.swift */,
 				5A5CBB602B1A30AA00971E05 /* HackU2023.xcdatamodeld */,
 				5A5CBB592B1A30AA00971E05 /* Assets.xcassets */,
 				5ABB02C42B23A40E00487284 /* movies */,
@@ -168,6 +167,7 @@
 				5A5CBB6E2B1A32AF00971E05 /* RetrainingView.swift */,
 				5A5CBB6B2B1A32AE00971E05 /* AlbamView.swift */,
 				5A5CBB822B1A679100971E05 /* SettingView.swift */,
+				5A5E4BDB2BFB2EE600EF47F7 /* AdMobBannerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -478,14 +478,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"HackU2023/Preview Content\"";
 				DEVELOPMENT_TEAM = GGB524629C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HackU2023/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = KikonAshI;
-				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "このAppは服の画像を利用するために、写真へのアクセスを必要とします。";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "このAppは起動している間、天気、日時を取得するために常に位置情報を利用します。";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "このAppは服の画像を利用するために、写真へのアクセスを必要とします。";
@@ -501,7 +501,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vivit.kikonAshI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -521,14 +521,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"HackU2023/Preview Content\"";
 				DEVELOPMENT_TEAM = GGB524629C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HackU2023/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = KikonAshI;
-				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "このAppは服の画像を利用するために、写真へのアクセスを必要とします。";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "このAppは起動している間、天気、日時を取得するために常に位置情報を利用します。";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "このAppは服の画像を利用するために、写真へのアクセスを必要とします。";
@@ -544,7 +544,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vivit.kikonAshI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

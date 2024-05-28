@@ -29,6 +29,7 @@ struct RetrainingView: View {
     @Binding var weather: String
     @State private var selectedTab: Tab = .home
 
+
     let screen: CGRect = UIScreen.main.bounds
     
     @State private var retraining = true
@@ -39,6 +40,11 @@ struct RetrainingView: View {
                 Image(items[3])
                     .resizable()
                     .aspectRatio(CGSize(width: 1, height: 2), contentMode: .fill)
+                VStack {
+                    AdMobBannerView()
+                    Spacer()
+                        .frame(height: screen.height*8/10)
+                }
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -61,7 +67,6 @@ struct RetrainingView: View {
 //                    if let model = selectModel(gender: gender, season: season, weather: weather) {
                         let fc = FullyConnectedNetwork(inputChannels: 64, outputChannels: 2, user: user.first!, gender: gender, season: season, weather: weather)
                         training(image: combinedImage, model: model, fc: fc, gender: gender, season: season, weather: weather)
-                        self.isActive = true
                     }
                 }
                 user.first?.exp += 1
@@ -71,6 +76,9 @@ struct RetrainingView: View {
                     let nsError = error as NSError
                     fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
                 }
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                self.isActive = true
             }
         }
     }

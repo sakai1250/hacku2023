@@ -59,9 +59,3 @@ struct StartView: View {
         .navigationBarBackButtonHidden(true)
     }
 }
-
-struct StartView_Previews: PreviewProvider {
-    static var previews: some View {
-        StartView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}

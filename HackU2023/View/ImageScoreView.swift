@@ -178,8 +178,3 @@ struct ImageScoreView: View {
     }
  }
 
-struct PickImageView_Previews: PreviewProvider {
-    static var previews: some View {
-        ImageScoreView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}
