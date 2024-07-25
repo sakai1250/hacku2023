@@ -163,6 +163,39 @@ class WeatherAPI: ObservableObject {
         }
     }
     
+//    private func getLocationAndFetchData() {
+//        // 位置情報を取得
+//        LocationManager.shared.getLocation { result in
+//            switch result {
+//            case .success(let location):
+//                // 現在の緯度と経度を使用してAPIリクエストを作成
+//                let latitude = location.latitude
+//                let longitude = location.longitude
+////                let url = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=\(latitude)&longitude=\(longitude)&daily=weather_code,temperature_2m_max,temperature_2m_min&forecast_days=1")!
+//                let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&units=metric&appid=b39a2a2623dc3a950cfa43de28802916")!
+//                // APIリクエストを送信
+//                URLSession.shared.dataTask(with: url) { data, _, error in
+//                    if let data = data {
+//                        do {
+//                            let decoder = JSONDecoder()
+//                            let decodedData = try decoder.decode(WeatherInfo.self, from: data)
+//                            DispatchQueue.main.async {
+//                                self.weatherData = decodedData
+//                            }
+//                        } catch {
+//                            print("データのデコードエラー: \(error)")
+//                        }
+//                    } else if let error = error {
+//                        print("APIリクエストエラー: \(error)")
+//                    }
+//                }.resume()
+//            case .failure(let error):
+//                print("位置情報取得エラー: \(error)")
+//            }
+//        }
+//    }
+//}
+
     private func getLocationAndFetchData() {
         // 位置情報を取得
         LocationManager.shared.getLocation { result in
@@ -171,32 +204,56 @@ class WeatherAPI: ObservableObject {
                 // 現在の緯度と経度を使用してAPIリクエストを作成
                 let latitude = location.latitude
                 let longitude = location.longitude
-//                let url = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=\(latitude)&longitude=\(longitude)&daily=weather_code,temperature_2m_max,temperature_2m_min&forecast_days=1")!
                 let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&units=metric&appid=b39a2a2623dc3a950cfa43de28802916")!
                 // APIリクエストを送信
                 URLSession.shared.dataTask(with: url) { data, _, error in
-                    if let data = data {
-                        do {
-                            let decoder = JSONDecoder()
-                            let decodedData = try decoder.decode(WeatherInfo.self, from: data)
-                            DispatchQueue.main.async {
+                    DispatchQueue.main.async {
+                        if let data = data {
+                            do {
+                                let decoder = JSONDecoder()
+                                let decodedData = try decoder.decode(WeatherInfo.self, from: data)
                                 self.weatherData = decodedData
+                            } catch {
+                                print("データのデコードエラー: \(error)")
+                                self.setDefaultWeatherData()
                             }
-                        } catch {
-                            print("データのデコードエラー: \(error)")
+                        } else if let error = error {
+                            print("APIリクエストエラー: \(error)")
+                            self.setDefaultWeatherData()
+                        } else {
+                            print("不明なエラー")
+                            self.setDefaultWeatherData()
                         }
-                    } else if let error = error {
-                        print("APIリクエストエラー: \(error)")
                     }
                 }.resume()
             case .failure(let error):
                 print("位置情報取得エラー: \(error)")
+                DispatchQueue.main.async {
+                    self.setDefaultWeatherData()
+                }
             }
         }
     }
+
+    private func setDefaultWeatherData() {
+        let defaultWeather = WeatherInfo(
+            coord: WeatherInfo.Coord(lon: 0, lat: 0),
+            weather: [WeatherInfo.Weather(id: 800, main: "不明", description: "不明", icon: "01d")],
+            base: "stations",
+            main: WeatherInfo.Main(temp: 99999, feels_like: 99999, temp_min: 99999, temp_max: 99999, pressure: 99999, humidity: 99999, sea_level: 99999, grnd_level: 99999),
+            visibility: 10000,
+            wind: WeatherInfo.Wind(speed: 1.5, deg: 0, gust: nil),
+            clouds: WeatherInfo.Clouds(all: 0),
+            dt: Int(Date().timeIntervalSince1970),
+            sys: WeatherInfo.Sys(type: 1, id: 1, country: "JP", sunrise: Int(Date().timeIntervalSince1970), sunset: Int(Date().timeIntervalSince1970 + 43200)),
+            timezone: 32400,
+            id: 1,
+            name: "Default City",
+            cod: 200
+        )
+        self.weatherData = defaultWeather
+    }
 }
-
-
 
 func seasonFromDates(_ dateStrings: [String]) -> String {
     func seasonForMonth(_ month: Int) -> String {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23E224" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ImageEntity" representedClassName="ImageEntity" syncable="YES" codeGenerationType="class">
         <attribute name="imageHash" optional="YES" attributeType="String"/>
     </entity>
@@ -54,6 +54,7 @@
         <attribute name="fullconne_w_wwr" optional="YES" attributeType="Transformable"/>
         <attribute name="fullconne_w_wws" optional="YES" attributeType="Transformable"/>
         <attribute name="gender" optional="YES" attributeType="String" defaultValueString="選択してください"/>
+        <attribute name="gender_avater" optional="YES" attributeType="String"/>
         <attribute name="level" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>

@@ -54,9 +54,14 @@ struct HomeView: View {
                                 if let weatherCode = data.weather.first?.main {
                                     let maxTemperature = data.main.temp_max
                                     let minTemperature = data.main.temp_min
-                                    Text("天気: \(weatherAPI.getWeatherCategory(from: weatherCode).rawValue)")
-                                    Text("最高気温: \(Int(round(maxTemperature))) °C")
-                                    Text("最低気温: \(Int(round(minTemperature))) °C")
+                                    if weatherAPI.getWeatherCategory(from: weatherCode).rawValue != "不明" {
+                                        Text("天気: \(weatherAPI.getWeatherCategory(from: weatherCode).rawValue)")
+                                    }
+                                    
+                                    if maxTemperature <= 1000 {
+                                        Text("最高気温: \(Int(round(maxTemperature))) °C")
+                                        Text("最低気温: \(Int(round(minTemperature))) °C")
+                                    }
                                 }
 //                                    Text("天気: \(weatherAPI.getWeatherCategory(weatherCode).rawValue)")
 //                                    Text("最高気温: \(Int(round(maxTemperature))) °C")
@@ -95,7 +100,7 @@ struct HomeView: View {
                                         Text("Exp: \(user.exp)")
                                             .font(.subheadline)
                                         
-                                        // 最大経験値を仮に定義します（実際の値に基づいて変更が必要かもしれません）
+                                        // 最大経験値を仮に定義
                                         let maxExp = 100.0
                                         // 経験値が最大値を超えないようにする
                                         let safeExp = min(Double(user.exp), maxExp)

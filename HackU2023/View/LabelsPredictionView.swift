@@ -17,6 +17,8 @@ struct LabelsPredictionView: View {
     private var user: FetchedResults<ViViTUser>
 
     @ObservedObject private var weatherAPI = WeatherAPI()
+    @State private var weather = ""
+    @State private var season = ""
 
     @State private var predictionResult = 0
     @State private var predictionResults: [Int] = []
@@ -50,7 +52,7 @@ struct LabelsPredictionView: View {
                     VStack {
                         Spacer()
                             .frame(height: screen.height*8/10)
-                        AdMobBannerView()
+                        AdMobBannerView().frame(height: screen.height*8/10)
                     }
                     VStack {
                         HStack {

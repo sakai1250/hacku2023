@@ -26,6 +26,7 @@ struct OnetapRecommendView: View {
     @State private var combinedImage: UIImage?
     @State private var selectedImages: [UIImage] = []
     @State private var weather = ""
+    @State private var season = ""
 
     @Binding var selectedImagesPair: [[UIImage]]
 
@@ -49,9 +50,8 @@ struct OnetapRecommendView: View {
                         .frame(maxWidth: screen.width / 0.9)
                         .frame(maxHeight: screen.height / 0.9)
                     VStack {
-                        Spacer()
-                            .frame(height: screen.height*8/10)
-                        AdMobBannerView()
+                        AdMobBannerView().frame(width: screen.width, height: screen.height*3/10)
+
                     }
                     VStack {
                         HStack {
@@ -90,9 +90,8 @@ struct OnetapRecommendView: View {
                         .frame(maxWidth: screen.width / 0.9)
                         .frame(maxHeight: screen.height / 0.9)
                     VStack {
-                        Spacer()
-                            .frame(height: screen.height*8/10)
-                        AdMobBannerView()
+                        AdMobBannerView().frame(width: screen.width, height: screen.height*3/10)
+
                     }
                     VStack {
                         HStack {

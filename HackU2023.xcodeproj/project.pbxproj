@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A4815C52C5259EF005190C2 /* SwiftyUpdateKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5A4815C42C5259EF005190C2 /* SwiftyUpdateKit */; };
 		5A5CBB562B1A30A900971E05 /* HackU2023App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CBB552B1A30A900971E05 /* HackU2023App.swift */; };
 		5A5CBB582B1A30A900971E05 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CBB572B1A30A900971E05 /* StartView.swift */; };
 		5A5CBB5A2B1A30AA00971E05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A5CBB592B1A30AA00971E05 /* Assets.xcassets */; };
@@ -91,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A4815C52C5259EF005190C2 /* SwiftyUpdateKit in Frameworks */,
 				80812AA564B763B60DD6E270 /* Pods_HackU2023.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,6 +219,9 @@
 			dependencies = (
 			);
 			name = HackU2023;
+			packageProductDependencies = (
+				5A4815C42C5259EF005190C2 /* SwiftyUpdateKit */,
+			);
 			productName = HackU2023;
 			productReference = 5A5CBB522B1A30A900971E05 /* HackU2023.app */;
 			productType = "com.apple.product-type.application";
@@ -245,6 +250,9 @@
 				Base,
 			);
 			mainGroup = 5A5CBB492B1A30A900971E05;
+			packageReferences = (
+				5A4815C32C5259EF005190C2 /* XCRemoteSwiftPackageReference "SwiftyUpdateKit" */,
+			);
 			productRefGroup = 5A5CBB532B1A30A900971E05 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -478,7 +486,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"HackU2023/Preview Content\"";
 				DEVELOPMENT_TEAM = GGB524629C;
 				ENABLE_PREVIEWS = YES;
@@ -501,7 +509,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.8;
+				MARKETING_VERSION = 1.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vivit.kikonAshI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -521,7 +529,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"HackU2023/Preview Content\"";
 				DEVELOPMENT_TEAM = GGB524629C;
 				ENABLE_PREVIEWS = YES;
@@ -544,7 +552,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.8;
+				MARKETING_VERSION = 1.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vivit.kikonAshI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -579,6 +587,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5A4815C32C5259EF005190C2 /* XCRemoteSwiftPackageReference "SwiftyUpdateKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/HituziANDO/SwiftyUpdateKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5A4815C42C5259EF005190C2 /* SwiftyUpdateKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A4815C32C5259EF005190C2 /* XCRemoteSwiftPackageReference "SwiftyUpdateKit" */;
+			productName = SwiftyUpdateKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		5A5CBB602B1A30AA00971E05 /* HackU2023.xcdatamodeld */ = {

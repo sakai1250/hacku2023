@@ -1,0 +1,15 @@
+{
+  "originHash" : "faf913b4cf3ce94a23771b298be77b3bc59d55a867ac1f6ea1a9ca683d671a20",
+  "pins" : [
+    {
+      "identity" : "swiftyupdatekit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/HituziANDO/SwiftyUpdateKit.git",
+      "state" : {
+        "revision" : "a24aa0b8b3b7808ad6559dbd08a9e13801f6c57b",
+        "version" : "1.4.0"
+      }
+    }
+  ],
+  "version" : 3
+}

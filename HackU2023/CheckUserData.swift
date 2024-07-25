@@ -21,7 +21,7 @@ func checkAndUpdateLevel(for user: ViViTUser) -> [String] {
         user.exp = 0
         if user.level == 2 {
             shouldPlayVideo = true
-            videoName = user.gender == "男性" ? "movies/male_blue/male1b.mp4" : "movies/female_pink/female1p.mp4"
+            videoName = user.gender_avater == "男性" ? "movies/male_blue/male1b.mp4" : "movies/female_pink/female1p.mp4"
         }
     }
     if user.exp == 3 && user.level == 2{
@@ -29,19 +29,19 @@ func checkAndUpdateLevel(for user: ViViTUser) -> [String] {
         user.exp = 0
         if user.level == 3 {
             shouldPlayVideo = true
-            videoName = user.gender == "男性" ? "movies/male_blue/male2b.mp4" : "movies/female_pink/female2p.mp4"
+            videoName = user.gender_avater == "男性" ? "movies/male_blue/male2b.mp4" : "movies/female_pink/female2p.mp4"
         }
     }
     
     if user.level == 1 {
-        if user.gender == "男性" {
+        if user.gender_avater == "男性" {
             room = "\(room)M"
             avater = "Male1"
             assume = "\(assume)1"
             retrain = "\(retrain)1"
 
         }
-        else if user.gender == "女性" {
+        else if user.gender_avater == "女性" {
             room = "\(room)F"
             avater = "Female1"
             assume = "\(assume)0"
@@ -52,14 +52,14 @@ func checkAndUpdateLevel(for user: ViViTUser) -> [String] {
     }
 
     else if user.level == 2 {
-        if user.gender == "男性" {
+        if user.gender_avater == "男性" {
             room = "\(room)M"
             avater = "Male2"
             assume = "\(assume)3"
             retrain = "\(retrain)3"
 
         }
-        else if user.gender == "女性" {
+        else if user.gender_avater == "女性" {
             room = "\(room)F"
             avater = "Female2"
             assume = "\(assume)2"
@@ -71,7 +71,7 @@ func checkAndUpdateLevel(for user: ViViTUser) -> [String] {
     }
 
     else if user.level >= 3 {
-        if user.gender == "男性" {
+        if user.gender_avater == "男性" {
             room = "\(room)M"
             avater = "Male3"
             assume = "\(assume)5"
@@ -79,7 +79,7 @@ func checkAndUpdateLevel(for user: ViViTUser) -> [String] {
             
             
         }
-        else if user.gender == "女性" {
+        else if user.gender_avater == "女性" {
             room = "\(room)F"
             avater = "Female3"
             assume = "\(assume)4"

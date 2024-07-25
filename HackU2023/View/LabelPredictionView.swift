@@ -24,6 +24,7 @@ struct LabelPredictionView: View {
     @State private var feedback: [Double] = [0.0, 0.0]
     @State public var combinedImage: UIImage?
     @State private var weather = ""
+    @State private var season = ""
 
     @Binding var selectedImages: [UIImage]
 
@@ -43,7 +44,7 @@ struct LabelPredictionView: View {
                         .frame(maxHeight: screen.height / 0.9)
                     VStack {
                         Spacer()
-                            .frame(height: screen.height*8/10)
+                            .frame(height: screen.height*6/10)
                         AdMobBannerView()
                     }
                     VStack {
@@ -84,7 +85,7 @@ struct LabelPredictionView: View {
                         .frame(maxHeight: screen.height / 0.9)
                     VStack {
                         Spacer()
-                            .frame(height: screen.height*8/10)
+                            .frame(height: screen.height*6/10)
                         AdMobBannerView()
                     }
                     VStack {

@@ -24,7 +24,8 @@ struct SetupView: View {
     
     @State private var username: String = ""
     @State private var selectedGender: Gender = .none
-    
+    @State private var selectedGenderAvater: Gender = .none
+
     @State private var isActive = false
     @State private var showResetAlert = false
     @State private var selectedTab: Tab = .home
@@ -33,13 +34,20 @@ struct SetupView: View {
         NavigationStack {
             Form {
                 TextField("キャラ名", text: $username)
-                Picker("キャラの性別", selection: $selectedGender) {
+                Picker("あなたの性別", selection: $selectedGender) {
                     ForEach(Gender.allCases) { gender in
                         Text(gender.rawValue).tag(gender)
                     }
                 }
                 .pickerStyle(MenuPickerStyle()) // ドロップダウンスタイル
                 
+                Picker("キャラの性別", selection: $selectedGenderAvater) {
+                    ForEach(Gender.allCases) { gender in
+                        Text(gender.rawValue).tag(gender)
+                    }
+                }
+                .pickerStyle(MenuPickerStyle()) // ドロップダウンスタイル
+
                 Button("設定完了") {
                     if selectedGender != .none {
                         addOrUpdateUserSetting()
@@ -76,6 +84,7 @@ struct SetupView: View {
 
         userSetting.name = username
         userSetting.gender = selectedGender.rawValue
+        userSetting.gender_avater = selectedGenderAvater.rawValue
 
         do {
             try viewContext.save()
