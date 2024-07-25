@@ -50,8 +50,9 @@ struct OnetapRecommendView: View {
                         .frame(maxWidth: screen.width / 0.9)
                         .frame(maxHeight: screen.height / 0.9)
                     VStack {
-                        AdMobBannerView().frame(width: screen.width, height: screen.height*3/10)
-
+                        Spacer()
+                            .frame(height: screen.height*6/10)
+                        AdMobBannerView()
                     }
                     VStack {
                         HStack {
@@ -90,7 +91,9 @@ struct OnetapRecommendView: View {
                         .frame(maxWidth: screen.width / 0.9)
                         .frame(maxHeight: screen.height / 0.9)
                     VStack {
-                        AdMobBannerView().frame(width: screen.width, height: screen.height*3/10)
+                        Spacer()
+                            .frame(height: screen.height*6/10)
+                        AdMobBannerView()
 
                     }
                     VStack {

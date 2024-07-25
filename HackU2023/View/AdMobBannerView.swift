@@ -14,6 +14,7 @@ struct AdMobBannerView: UIViewRepresentable {
         let banner = GADBannerView(adSize: GADAdSizeBanner) // インスタンスを生成
         // 諸々の設定をしていく
         banner.adUnitID = "ca-app-pub-8954877192591804/8897975257"
+//        banner.adUnitID = "ca-app-pub-3940256099942544/2435281174" // テスト用
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             banner.rootViewController = window.rootViewController

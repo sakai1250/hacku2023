@@ -41,7 +41,9 @@ struct RetrainingView: View {
                     .resizable()
                     .aspectRatio(CGSize(width: 1, height: 2), contentMode: .fill)
                 VStack {
-                    AdMobBannerView().frame(width: screen.width, height: screen.height*3/10)
+                    Spacer()
+                        .frame(height: screen.height*6/10)
+                    AdMobBannerView()
                 }
             }
         }

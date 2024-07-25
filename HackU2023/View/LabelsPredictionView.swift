@@ -51,8 +51,8 @@ struct LabelsPredictionView: View {
                         .frame(maxHeight: screen.height / 0.9)
                     VStack {
                         Spacer()
-                            .frame(height: screen.height*8/10)
-                        AdMobBannerView().frame(height: screen.height*8/10)
+                            .frame(height: screen.height*6/10)
+                        AdMobBannerView()
                     }
                     VStack {
                         HStack {
@@ -92,7 +92,7 @@ struct LabelsPredictionView: View {
                         .frame(maxHeight: screen.height / 0.9)
                     VStack {
                         Spacer()
-                            .frame(height: screen.height*8/10)
+                            .frame(height: screen.height*6/10)
                         AdMobBannerView()
                     }
                     VStack {
