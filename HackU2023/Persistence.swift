@@ -82,7 +82,7 @@ struct PersistenceController {
         let viewContext = container.viewContext
         let user = ViViTUser(context: viewContext)
         user.name = name
-        user.level = level
+        user.level = Int64(level)
         
         do {
             try viewContext.save()

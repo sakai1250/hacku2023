@@ -20,7 +20,8 @@ struct OnetapRecommendView: View {
 
     @State private var predictionResult = 0
     @State private var predictionResults: [Int] = []
-    @State private var isActiveRetrain = false
+    @State private var isActiveRetrainOK = false
+    @State private var isActiveRetrainNG = false
     @State private var isActiveHome = false
     @State private var feedback: [Double] = [0.0, 0.0]
     @State private var combinedImage: UIImage?
@@ -49,11 +50,11 @@ struct OnetapRecommendView: View {
                         .aspectRatio(CGSize(width: 1, height: 2), contentMode: .fill)
                         .frame(maxWidth: screen.width / 0.9)
                         .frame(maxHeight: screen.height / 0.9)
-                    VStack {
-                        Spacer()
-                            .frame(height: screen.height*6/10)
-                        AdMobBannerView()
-                    }
+//                    VStack {
+//                        Spacer()
+//                            .frame(height: screen.height*9/10)
+//                        AdMobBannerView()
+//                    }
                     VStack {
                         HStack {
                             Spacer()
@@ -83,6 +84,11 @@ struct OnetapRecommendView: View {
                         }
                     }
                 }
+//                .frame(maxWidth: screen.width * 0.9)
+                .frame(maxHeight: screen.height * 0.9)
+                VStack {
+                    AdMobBannerView()
+                        .frame(width: screen.width * 0.9, height: 50)                }
             }
             else {
                 ZStack {
@@ -90,12 +96,12 @@ struct OnetapRecommendView: View {
                         .resizable()
                         .frame(maxWidth: screen.width / 0.9)
                         .frame(maxHeight: screen.height / 0.9)
-                    VStack {
-                        Spacer()
-                            .frame(height: screen.height*6/10)
-                        AdMobBannerView()
-
-                    }
+//                    VStack {
+//                        Spacer()
+//                            .frame(height: screen.height*9/10)
+//                        AdMobBannerView()
+//
+//                    }
                     VStack {
                         HStack {
                             ForEach(selectedImages, id: \.self) { image in
@@ -114,7 +120,9 @@ struct OnetapRecommendView: View {
                         HStack {
                             Button("これにする") {
                                 feedback = [1.0, 0.0] as [Double]
-                                isActiveRetrain = true
+                                isActiveRetrainOK = true
+                                print("これにする: \(isActiveRetrainOK)") // デバッグログ
+
                             }
                             .padding()
                             .background(Color(red: 0.0, green: 0.6, blue: 0.9))
@@ -123,7 +131,7 @@ struct OnetapRecommendView: View {
                             .shadow(radius: 5)
                             .frame(maxWidth: screen.width / 2)
                             .frame(maxHeight: screen.height / 5)
-                            .navigationDestination(isPresented: $isActiveRetrain) {
+                            .navigationDestination(isPresented: $isActiveRetrainOK) {
                                 RetrainingView(feedback: $feedback, combinedImage: $combinedImage, items: $items, weather: $weather)
                             }
                             
@@ -138,13 +146,14 @@ struct OnetapRecommendView: View {
                                 } else {
                                     // 画像がもうない場合、RetrainingViewに遷移
                                     feedback = [0.0, 1.0] as [Double]
-                                    isActiveRetrain = true
+                                    isActiveRetrainNG = true
                                 }
+                                print("やめとく: \(isActiveRetrainNG)") // デバッグログ
                             }
                             
-                            .navigationDestination(isPresented: $isActiveRetrain) {
-                                RetrainingView(feedback: $feedback, combinedImage: $combinedImage, items: $items, weather: $weather)
-                            }
+//                            .navigationDestination(isPresented: $isActiveRetrain) {
+//                                RetrainingView(feedback: $feedback, combinedImage: $combinedImage, items: $items, weather: $weather)
+//                            }
 
                             .padding()
                             .background(Color.blue)
@@ -153,7 +162,7 @@ struct OnetapRecommendView: View {
                             .shadow(radius: 5)
                             .frame(maxWidth: screen.width / 2)
                             .frame(maxHeight: screen.height / 5)
-                            .navigationDestination(isPresented: $isActiveRetrain) {
+                            .navigationDestination(isPresented: $isActiveRetrainNG) {
                                 RetrainingView(feedback: $feedback, combinedImage: $combinedImage, items: $items, weather: $weather)
                             }
 
@@ -162,6 +171,11 @@ struct OnetapRecommendView: View {
                         Spacer()
                     }
                 }
+//                .frame(maxWidth: screen.width * 0.9)
+                .frame(maxHeight: screen.height * 0.9)
+                VStack {
+                    AdMobBannerView()
+                        .frame(width: screen.width * 0.9, height: 50)                }
             }
         }
         .navigationBarBackButtonHidden(true)

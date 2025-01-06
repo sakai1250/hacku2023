@@ -1,5 +1,6 @@
 import SwiftUI
 import CoreData
+import SwiftyUpdateKit
 
 struct StartView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -21,12 +22,9 @@ struct StartView: View {
                 Image("Hacku_start")
                     .resizable()
                     .aspectRatio(CGSize(width: 1, height: 2), contentMode: .fill)
-//                    .frame(maxWidth: screen.width / 0.8)
-//                    .frame(maxHeight: screen.height / 0.8)
                 VStack {
                     GeometryReader { geometry in
                         Button(action: {
-                            // Core DataからViViTUserエンティティの最初のレコードを確認
                             if let firstUserSetting = userSettings.first, firstUserSetting.name != nil {
                                 isActive_main = true
                             } else {
@@ -50,12 +48,46 @@ struct StartView: View {
                         .animation(Animation.easeInOut(duration: 1.5).repeatForever(autoreverses: true), value: isTextVisible)
                 }
                 .offset(y: -screen.height / 10)
-
             }
             .onAppear {
                 isTextVisible.toggle()
+                checkVersionAndShowReleaseNotes()
             }
         }
         .navigationBarBackButtonHidden(true)
+    }
+
+    private func checkVersionAndShowReleaseNotes() {
+        SUK.checkVersion(VersionCheckConditionAlways(), newRelease: { newVersion, releaseNotes, firstUpdated in
+            DispatchQueue.main.async {
+                let hostingController = UIHostingController(rootView: ReleaseNotesView(releaseNotes: releaseNotes ?? "", version: newVersion ?? ""))
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                   let window = windowScene.windows.first,
+                   let rootViewController = window.rootViewController {
+                    rootViewController.present(hostingController, animated: true, completion: nil)
+                }
+            }
+        }) {
+            SUK.requestReview(RequestReviewConditionAlways())
+        }
+    }
+}
+
+struct ReleaseNotesView: View {
+    let releaseNotes: String
+    let version: String
+    @Environment(\.presentationMode) var presentationMode
+
+    var body: some View {
+        NavigationView {
+            ScrollView {
+                Text(releaseNotes)
+                    .padding()
+            }
+            .navigationBarTitle("Version \(version)", displayMode: .inline)
+            .navigationBarItems(trailing: Button("Close") {
+                presentationMode.wrappedValue.dismiss()
+            })
+        }
     }
 }

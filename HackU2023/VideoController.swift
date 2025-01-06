@@ -55,6 +55,9 @@ struct VideoPlayerView: UIViewControllerRepresentable {
             playerViewController.player = player
             player.play() // 動画の自動再生
         }
+        else {
+            print("Error")
+        }
         playerViewController.modalPresentationStyle = .fullScreen // 全画面表示
         return playerViewController
     }

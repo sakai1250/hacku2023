@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5A4815C52C5259EF005190C2 /* SwiftyUpdateKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5A4815C42C5259EF005190C2 /* SwiftyUpdateKit */; };
+		5A4815C82C5273C7005190C2 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 5A4815C72C5273C7005190C2 /* GoogleMobileAds */; };
 		5A5CBB562B1A30A900971E05 /* HackU2023App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CBB552B1A30A900971E05 /* HackU2023App.swift */; };
 		5A5CBB582B1A30A900971E05 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CBB572B1A30A900971E05 /* StartView.swift */; };
 		5A5CBB5A2B1A30AA00971E05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A5CBB592B1A30AA00971E05 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 		5AC6A34C2B20B1EC006EDF36 /* PickOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A34B2B20B1EC006EDF36 /* PickOneView.swift */; };
 		5AC6A3562B21CA68006EDF36 /* SelectFunctionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A3552B21CA67006EDF36 /* SelectFunctionView.swift */; };
 		5AC6A3582B21CBBD006EDF36 /* LabelsPredictionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A3572B21CBBD006EDF36 /* LabelsPredictionView.swift */; };
+		5AFE49F12CC9211500AC4C93 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFE49F02CC9211500AC4C93 /* TutorialView.swift */; };
 		80812AA564B763B60DD6E270 /* Pods_HackU2023.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2511A955E043350A767C016A /* Pods_HackU2023.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,7 +73,7 @@
 		5A972D2D2BCCE08800B52570 /* FullConnectWeightsBiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullConnectWeightsBiases.swift; sourceTree = "<group>"; };
 		5A9A59112BFDDDBF00241A0D /* Enocoder.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = Enocoder.mlpackage; sourceTree = "<group>"; };
 		5AAC08502BB842EB00C345E8 /* FullconnectionLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullconnectionLayer.swift; sourceTree = "<group>"; };
-		5ABB02C22B23992B00487284 /* VideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoController.swift; sourceTree = "<group>"; };
+		5ABB02C22B23992B00487284 /* VideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoController.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		5ABB02C42B23A40E00487284 /* movies */ = {isa = PBXFileReference; lastKnownFileType = folder; path = movies; sourceTree = "<group>"; };
 		5ABB02C62B2428C600487284 /* OnetapRecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnetapRecommendView.swift; sourceTree = "<group>"; };
 		5ABB02C82B2473FB00487284 /* FashionTips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FashionTips.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 		5AC6A34B2B20B1EC006EDF36 /* PickOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickOneView.swift; sourceTree = "<group>"; };
 		5AC6A3552B21CA67006EDF36 /* SelectFunctionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFunctionView.swift; sourceTree = "<group>"; };
 		5AC6A3572B21CBBD006EDF36 /* LabelsPredictionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsPredictionView.swift; sourceTree = "<group>"; };
+		5AFE49F02CC9211500AC4C93 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		DCE7466A86314C7DFD1F1BB6 /* Pods-HackU2023.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackU2023.debug.xcconfig"; path = "Target Support Files/Pods-HackU2023/Pods-HackU2023.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A4815C82C5273C7005190C2 /* GoogleMobileAds in Frameworks */,
 				5A4815C52C5259EF005190C2 /* SwiftyUpdateKit in Frameworks */,
 				80812AA564B763B60DD6E270 /* Pods_HackU2023.framework in Frameworks */,
 			);
@@ -157,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				5A5CBB572B1A30A900971E05 /* StartView.swift */,
+				5AFE49F02CC9211500AC4C93 /* TutorialView.swift */,
 				5AC6A3412B1E11D5006EDF36 /* SetupView.swift */,
 				5A5CBB7E2B1A659E00971E05 /* MainView.swift */,
 				5A5CBB802B1A672400971E05 /* HomeView.swift */,
@@ -221,6 +226,7 @@
 			name = HackU2023;
 			packageProductDependencies = (
 				5A4815C42C5259EF005190C2 /* SwiftyUpdateKit */,
+				5A4815C72C5273C7005190C2 /* GoogleMobileAds */,
 			);
 			productName = HackU2023;
 			productReference = 5A5CBB522B1A30A900971E05 /* HackU2023.app */;
@@ -252,6 +258,7 @@
 			mainGroup = 5A5CBB492B1A30A900971E05;
 			packageReferences = (
 				5A4815C32C5259EF005190C2 /* XCRemoteSwiftPackageReference "SwiftyUpdateKit" */,
+				5A4815C62C5273C7005190C2 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = 5A5CBB532B1A30A900971E05 /* Products */;
 			projectDirPath = "";
@@ -338,6 +345,7 @@
 				5A5CBB852B1A69B400971E05 /* ImageScoreView.swift in Sources */,
 				5AC485792BEA84BE00CD65B2 /* spring_sunny_Man.mlpackage in Sources */,
 				5ABB02C72B2428C600487284 /* OnetapRecommendView.swift in Sources */,
+				5AFE49F12CC9211500AC4C93 /* TutorialView.swift in Sources */,
 				5AC6A34A2B1E820D006EDF36 /* ScreenShotManager.swift in Sources */,
 				5A5CBB622B1A30AA00971E05 /* HackU2023.xcdatamodeld in Sources */,
 				5AAC08512BB842EB00C345E8 /* FullconnectionLayer.swift in Sources */,
@@ -486,7 +494,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_ASSET_PATHS = "\"HackU2023/Preview Content\"";
 				DEVELOPMENT_TEAM = GGB524629C;
 				ENABLE_PREVIEWS = YES;
@@ -509,7 +517,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.9;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vivit.kikonAshI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -529,7 +537,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_ASSET_PATHS = "\"HackU2023/Preview Content\"";
 				DEVELOPMENT_TEAM = GGB524629C;
 				ENABLE_PREVIEWS = YES;
@@ -552,7 +560,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.9;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vivit.kikonAshI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -597,6 +605,14 @@
 				minimumVersion = 1.4.0;
 			};
 		};
+		5A4815C62C5273C7005190C2 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.7.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -604,6 +620,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5A4815C32C5259EF005190C2 /* XCRemoteSwiftPackageReference "SwiftyUpdateKit" */;
 			productName = SwiftyUpdateKit;
+		};
+		5A4815C72C5273C7005190C2 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A4815C62C5273C7005190C2 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -4,9 +4,9 @@
         <attribute name="imageHash" optional="YES" attributeType="String"/>
     </entity>
     <entity name="ViViTUser" representedClassName="ViViTUser" syncable="YES" codeGenerationType="class">
-        <attribute name="exp" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="exp" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="first_fl_m_r" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
-        <attribute name="first_fl_m_s" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="first_fl_m_s" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="first_fl_w_r" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="first_fl_w_s" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="first_sm_m_r" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
@@ -54,8 +54,9 @@
         <attribute name="fullconne_w_wwr" optional="YES" attributeType="Transformable"/>
         <attribute name="fullconne_w_wws" optional="YES" attributeType="Transformable"/>
         <attribute name="gender" optional="YES" attributeType="String" defaultValueString="選択してください"/>
-        <attribute name="gender_avater" optional="YES" attributeType="String"/>
-        <attribute name="level" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="gender_avater" optional="YES" attributeType="String" defaultValueString="男"/>
+        <attribute name="level" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="tutrial" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
     </entity>
 </model>

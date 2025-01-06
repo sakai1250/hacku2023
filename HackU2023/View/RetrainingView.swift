@@ -40,18 +40,24 @@ struct RetrainingView: View {
                 Image(items[3])
                     .resizable()
                     .aspectRatio(CGSize(width: 1, height: 2), contentMode: .fill)
-                VStack {
-                    Spacer()
-                        .frame(height: screen.height*6/10)
-                    AdMobBannerView()
-                }
+//                VStack {
+//                    Spacer()
+//                        .frame(height: screen.height*9/10)
+//                    AdMobBannerView()
+//                }
+                
             }
+//            .frame(maxWidth: screen.width * 0.9)
+            .frame(maxHeight: screen.height * 0.9)
+            AdMobBannerView()
+                .frame(width: screen.width * 0.9, height: 50)
         }
         .navigationBarBackButtonHidden(true)
         .navigationDestination(isPresented: $isActive) {
             MainView().environment(\.managedObjectContext, viewContext)
         }
         .onAppear {
+            print("Retrain view start")
             DispatchQueue.global(qos: .userInitiated).async {
                 if let usr = user.first, let gender = usr.gender {
                     // 現在の日付を取得
@@ -63,6 +69,7 @@ struct RetrainingView: View {
                     let season = seasonFromDates([dateString])
                     print(weather, season, gender)
                     //  学習
+                    print("start retraining")
                     if let model = try? VNCoreMLModel(for: Enocoder().model) {
 //                    if let model = selectModel(gender: gender, season: season, weather: weather) {
                         let fc = FullyConnectedNetwork(inputChannels: 64, outputChannels: 2, user: user.first!, gender: gender, season: season, weather: weather)
@@ -101,9 +108,11 @@ struct RetrainingView: View {
             let featureArray = self.convertToDoubleArray(from: multiArray)
 
             // Assuming 'feedback' is correctly defined elsewhere in your code
+            print("Retraining...")
             fc.train(inputs: featureArray, trueOutputs: feedback, learningRate: 0.01, epochs: 3)
+            print("saveFullConne")
             saveFullConne(weights: fc.weights, biases: fc.biases, fc: user.first!, gender: gender, season: season, weather: weather)
-
+            print("done saveFullConne")
         }
         
         // 画像をVisionリクエストに変換

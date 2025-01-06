@@ -49,11 +49,11 @@ struct LabelsPredictionView: View {
                         .aspectRatio(CGSize(width: 1, height: 2), contentMode: .fill)
                         .frame(maxWidth: screen.width / 0.9)
                         .frame(maxHeight: screen.height / 0.9)
-                    VStack {
-                        Spacer()
-                            .frame(height: screen.height*6/10)
-                        AdMobBannerView()
-                    }
+//                    VStack {
+//                        Spacer()
+//                            .frame(height: screen.height*9/10)
+//                        AdMobBannerView()
+//                    }
                     VStack {
                         HStack {
                             Spacer()
@@ -83,18 +83,21 @@ struct LabelsPredictionView: View {
                         }
                     }
                 }
-            }
+//                .frame(maxWidth: screen.width * 0.9)
+                .frame(maxHeight: screen.height * 0.9)
+                AdMobBannerView()
+                    .frame(width: screen.width * 0.9, height: 50)            }
             else {
                 ZStack {
                     Image("Hacku_select2")
                         .resizable()
                         .frame(maxWidth: screen.width / 0.9)
                         .frame(maxHeight: screen.height / 0.9)
-                    VStack {
-                        Spacer()
-                            .frame(height: screen.height*6/10)
-                        AdMobBannerView()
-                    }
+//                    VStack {
+//                        Spacer()
+//                            .frame(height: screen.height*9/10)
+//                        AdMobBannerView()
+//                    }
                     VStack {
                         ScrollView {
                             ForEach(Array(selectedImagesPair.enumerated()), id: \.offset) { index, _selectedImages in
@@ -132,6 +135,12 @@ struct LabelsPredictionView: View {
                     }
 
                 }
+//                .frame(maxWidth: screen.width * 0.9)
+                .frame(maxHeight: screen.height * 0.9)
+                VStack {
+                    AdMobBannerView()
+                        .frame(width: screen.width * 0.9, height: 50)                }
+
             }
         }
         .navigationDestination(isPresented: $isActiveHome) {

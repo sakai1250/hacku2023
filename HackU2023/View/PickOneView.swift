@@ -28,7 +28,8 @@ struct PickOneView: View {
     @State private var selectedImagesPair: [[UIImage]] = [[]]
     @State private var imagePath: URL?
     @State private var isImagePickerDisplayed = false
-    @State private var isActive = false
+    @State private var isActiveTop = false
+    @State private var isActiveBottom = false
     @State private var isActiveHome = false
     @State private var isActiveBack = false
     @State private var isEmpty = true
@@ -81,7 +82,7 @@ struct PickOneView: View {
                                         if topsImages.isEmpty {
                                             alertType = .tops
                                         } else {
-                                            isActive = true
+                                            isActiveTop = true
                                             selectedImagesPair = generateCombinations_customed(images1: topsImages, images2: selectedImages)
                                         }
                                     }
@@ -92,15 +93,16 @@ struct PickOneView: View {
                                     .shadow(radius: 5)
                                     .frame(maxWidth: screen.width / 2)
                                     .frame(maxHeight: screen.height / 5)
-                                    .navigationDestination(isPresented: $isActive) {
+                                    .navigationDestination(isPresented: $isActiveTop) {
                                         LabelsPredictionView(selectedImagesPair: $selectedImagesPair)
                                     }
                                     Button("下の服と診断") {
                                         if bottomsImages.isEmpty {
                                             alertType = .bottoms
                                         } else {
-                                            isActive = true
+                                            isActiveBottom = true
                                             selectedImagesPair = generateCombinations_customed(images1: selectedImages, images2: bottomsImages)
+
                                         }
 
                                     }
@@ -111,7 +113,7 @@ struct PickOneView: View {
                                     .shadow(radius: 5)
                                     .frame(maxWidth: screen.width / 2)
                                     .frame(maxHeight: screen.height / 5)
-                                    .navigationDestination(isPresented: $isActive) {
+                                    .navigationDestination(isPresented: $isActiveBottom) {
                                         LabelsPredictionView(selectedImagesPair: $selectedImagesPair)
                                     }
                                 }
