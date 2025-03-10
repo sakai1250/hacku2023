@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ImageEntity" representedClassName="ImageEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="imageHash" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="ViViTUser" representedClassName="ViViTUser" syncable="YES" codeGenerationType="class">
+        <attribute name="exp" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="first_fl_m_r" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_fl_m_s" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_fl_w_r" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_fl_w_s" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_sm_m_r" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_sm_m_s" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_sm_w_r" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_sm_w_s" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_sp_m_r" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_sp_m_s" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_sp_w_r" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_sp_w_s" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_wi_m_r" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_wi_m_s" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_wi_w_r" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="first_wi_w_s" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="fullconne_b_fmr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_fms" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_fwr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_fws" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_smmr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_smms" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_smwr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_smws" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_spmr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_spms" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_spwr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_spws" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_wmr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_wms" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_wwr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_b_wws" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_fmr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_fms" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_fwr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_fws" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_smmr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_smms" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_smwr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_smws" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_spmr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_spms" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_spwr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_spws" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_wmr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_wms" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_wwr" optional="YES" attributeType="Transformable"/>
+        <attribute name="fullconne_w_wws" optional="YES" attributeType="Transformable"/>
+        <attribute name="gender" optional="YES" attributeType="String" defaultValueString="選択してください"/>
+        <attribute name="gender_avater" optional="YES" attributeType="String" defaultValueString="男"/>
+        <attribute name="level" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="tutrial" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+    </entity>
+</model>

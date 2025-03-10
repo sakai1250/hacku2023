@@ -1,0 +1,645 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5A4815C52C5259EF005190C2 /* SwiftyUpdateKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5A4815C42C5259EF005190C2 /* SwiftyUpdateKit */; };
+		5A4815C82C5273C7005190C2 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 5A4815C72C5273C7005190C2 /* GoogleMobileAds */; };
+		5A5CBB562B1A30A900971E05 /* HackU2023App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CBB552B1A30A900971E05 /* HackU2023App.swift */; };
+		5A5CBB582B1A30A900971E05 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CBB572B1A30A900971E05 /* StartView.swift */; };
+		5A5CBB5A2B1A30AA00971E05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A5CBB592B1A30AA00971E05 /* Assets.xcassets */; };
+		5A5CBB5D2B1A30AA00971E05 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A5CBB5C2B1A30AA00971E05 /* Preview Assets.xcassets */; };
+		5A5CBB5F2B1A30AA00971E05 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CBB5E2B1A30AA00971E05 /* Persistence.swift */; };
+		5A5CBB622B1A30AA00971E05 /* HackU2023.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CBB602B1A30AA00971E05 /* HackU2023.xcdatamodeld */; };
+		5A5CBB692B1A327400971E05 /* LabelPredictionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CBB682B1A327400971E05 /* LabelPredictionView.swift */; };
+		5A5CBB732B1A32B000971E05 /* AlbamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CBB6B2B1A32AE00971E05 /* AlbamView.swift */; };
+		5A5CBB762B1A32B000971E05 /* RetrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CBB6E2B1A32AF00971E05 /* RetrainingView.swift */; };
+		5A5CBB772B1A32B000971E05 /* ToCVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CBB6F2B1A32AF00971E05 /* ToCVPixelBuffer.swift */; };
+		5A5CBB792B1A32B000971E05 /* tops.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A5CBB712B1A32B000971E05 /* tops.png */; };
+		5A5CBB7D2B1A62E100971E05 /* EditPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CBB7C2B1A62E100971E05 /* EditPhotosView.swift */; };
+		5A5CBB7F2B1A659E00971E05 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CBB7E2B1A659E00971E05 /* MainView.swift */; };
+		5A5CBB812B1A672400971E05 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CBB802B1A672400971E05 /* HomeView.swift */; };
+		5A5CBB832B1A679100971E05 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CBB822B1A679100971E05 /* SettingView.swift */; };
+		5A5CBB852B1A69B400971E05 /* ImageScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CBB842B1A69B400971E05 /* ImageScoreView.swift */; };
+		5A5CBB872B1A6A0F00971E05 /* PickImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CBB862B1A6A0F00971E05 /* PickImage.swift */; };
+		5A5E4BDC2BFB2EE600EF47F7 /* AdMobBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5E4BDB2BFB2EE600EF47F7 /* AdMobBannerView.swift */; };
+		5A78B66D2B1BC0FA004EC2AE /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A78B66C2B1BC0FA004EC2AE /* WeatherAPI.swift */; };
+		5A972D2E2BCCE08800B52570 /* FullConnectWeightsBiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A972D2D2BCCE08800B52570 /* FullConnectWeightsBiases.swift */; };
+		5A9A59122BFDDDBF00241A0D /* Enocoder.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 5A9A59112BFDDDBF00241A0D /* Enocoder.mlpackage */; };
+		5AAC08512BB842EB00C345E8 /* FullconnectionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAC08502BB842EB00C345E8 /* FullconnectionLayer.swift */; };
+		5ABB02C32B23992B00487284 /* VideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB02C22B23992B00487284 /* VideoController.swift */; };
+		5ABB02C52B23A40E00487284 /* movies in Resources */ = {isa = PBXBuildFile; fileRef = 5ABB02C42B23A40E00487284 /* movies */; };
+		5ABB02C72B2428C600487284 /* OnetapRecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB02C62B2428C600487284 /* OnetapRecommendView.swift */; };
+		5ABB02C92B2473FC00487284 /* FashionTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB02C82B2473FB00487284 /* FashionTips.swift */; };
+		5AC485792BEA84BE00CD65B2 /* spring_sunny_Man.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 5AC485782BEA84BE00CD65B2 /* spring_sunny_Man.mlpackage */; };
+		5AC6A33F2B1DEDCE006EDF36 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A33E2B1DEDCE006EDF36 /* LocationManager.swift */; };
+		5AC6A3422B1E11D6006EDF36 /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A3412B1E11D5006EDF36 /* SetupView.swift */; };
+		5AC6A3442B1E2EF5006EDF36 /* CheckUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A3432B1E2EF5006EDF36 /* CheckUserData.swift */; };
+		5AC6A34A2B1E820D006EDF36 /* ScreenShotManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A3492B1E820D006EDF36 /* ScreenShotManager.swift */; };
+		5AC6A34C2B20B1EC006EDF36 /* PickOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A34B2B20B1EC006EDF36 /* PickOneView.swift */; };
+		5AC6A3562B21CA68006EDF36 /* SelectFunctionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A3552B21CA67006EDF36 /* SelectFunctionView.swift */; };
+		5AC6A3582B21CBBD006EDF36 /* LabelsPredictionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6A3572B21CBBD006EDF36 /* LabelsPredictionView.swift */; };
+		5AFE49F12CC9211500AC4C93 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFE49F02CC9211500AC4C93 /* TutorialView.swift */; };
+		80812AA564B763B60DD6E270 /* Pods_HackU2023.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2511A955E043350A767C016A /* Pods_HackU2023.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1F14F438D12B0A2F09B5B5FD /* Pods-HackU2023.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackU2023.release.xcconfig"; path = "Target Support Files/Pods-HackU2023/Pods-HackU2023.release.xcconfig"; sourceTree = "<group>"; };
+		2511A955E043350A767C016A /* Pods_HackU2023.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HackU2023.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A5CBB522B1A30A900971E05 /* HackU2023.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackU2023.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A5CBB552B1A30A900971E05 /* HackU2023App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackU2023App.swift; sourceTree = "<group>"; };
+		5A5CBB572B1A30A900971E05 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		5A5CBB592B1A30AA00971E05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5A5CBB5C2B1A30AA00971E05 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5A5CBB5E2B1A30AA00971E05 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		5A5CBB612B1A30AA00971E05 /* HackU2023.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HackU2023.xcdatamodel; sourceTree = "<group>"; };
+		5A5CBB682B1A327400971E05 /* LabelPredictionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelPredictionView.swift; sourceTree = "<group>"; };
+		5A5CBB6B2B1A32AE00971E05 /* AlbamView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbamView.swift; sourceTree = "<group>"; };
+		5A5CBB6E2B1A32AF00971E05 /* RetrainingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetrainingView.swift; sourceTree = "<group>"; };
+		5A5CBB6F2B1A32AF00971E05 /* ToCVPixelBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToCVPixelBuffer.swift; sourceTree = "<group>"; };
+		5A5CBB712B1A32B000971E05 /* tops.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tops.png; sourceTree = "<group>"; };
+		5A5CBB7C2B1A62E100971E05 /* EditPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhotosView.swift; sourceTree = "<group>"; };
+		5A5CBB7E2B1A659E00971E05 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		5A5CBB802B1A672400971E05 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		5A5CBB822B1A679100971E05 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		5A5CBB842B1A69B400971E05 /* ImageScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScoreView.swift; sourceTree = "<group>"; };
+		5A5CBB862B1A6A0F00971E05 /* PickImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickImage.swift; sourceTree = "<group>"; };
+		5A5E4BDB2BFB2EE600EF47F7 /* AdMobBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobBannerView.swift; sourceTree = "<group>"; };
+		5A78B66C2B1BC0FA004EC2AE /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
+		5A972D2D2BCCE08800B52570 /* FullConnectWeightsBiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullConnectWeightsBiases.swift; sourceTree = "<group>"; };
+		5A9A59112BFDDDBF00241A0D /* Enocoder.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = Enocoder.mlpackage; sourceTree = "<group>"; };
+		5AAC08502BB842EB00C345E8 /* FullconnectionLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullconnectionLayer.swift; sourceTree = "<group>"; };
+		5ABB02C22B23992B00487284 /* VideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoController.swift; sourceTree = "<group>"; wrapsLines = 0; };
+		5ABB02C42B23A40E00487284 /* movies */ = {isa = PBXFileReference; lastKnownFileType = folder; path = movies; sourceTree = "<group>"; };
+		5ABB02C62B2428C600487284 /* OnetapRecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnetapRecommendView.swift; sourceTree = "<group>"; };
+		5ABB02C82B2473FB00487284 /* FashionTips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FashionTips.swift; sourceTree = "<group>"; };
+		5AC485782BEA84BE00CD65B2 /* spring_sunny_Man.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = spring_sunny_Man.mlpackage; sourceTree = "<group>"; };
+		5AC6A33E2B1DEDCE006EDF36 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		5AC6A3402B1DFAD0006EDF36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5AC6A3412B1E11D5006EDF36 /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
+		5AC6A3432B1E2EF5006EDF36 /* CheckUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUserData.swift; sourceTree = "<group>"; };
+		5AC6A3492B1E820D006EDF36 /* ScreenShotManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenShotManager.swift; sourceTree = "<group>"; };
+		5AC6A34B2B20B1EC006EDF36 /* PickOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickOneView.swift; sourceTree = "<group>"; };
+		5AC6A3552B21CA67006EDF36 /* SelectFunctionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFunctionView.swift; sourceTree = "<group>"; };
+		5AC6A3572B21CBBD006EDF36 /* LabelsPredictionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsPredictionView.swift; sourceTree = "<group>"; };
+		5AFE49F02CC9211500AC4C93 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
+		DCE7466A86314C7DFD1F1BB6 /* Pods-HackU2023.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackU2023.debug.xcconfig"; path = "Target Support Files/Pods-HackU2023/Pods-HackU2023.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5A5CBB4F2B1A30A900971E05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A4815C82C5273C7005190C2 /* GoogleMobileAds in Frameworks */,
+				5A4815C52C5259EF005190C2 /* SwiftyUpdateKit in Frameworks */,
+				80812AA564B763B60DD6E270 /* Pods_HackU2023.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5A5CBB492B1A30A900971E05 = {
+			isa = PBXGroup;
+			children = (
+				5A5CBB542B1A30A900971E05 /* HackU2023 */,
+				5A5CBB532B1A30A900971E05 /* Products */,
+				B9306E700DF2AFC76B6758EF /* Pods */,
+				D2C370614CA367DB6EB08D31 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5A5CBB532B1A30A900971E05 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5A5CBB522B1A30A900971E05 /* HackU2023.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5A5CBB542B1A30A900971E05 /* HackU2023 */ = {
+			isa = PBXGroup;
+			children = (
+				5AC6A3402B1DFAD0006EDF36 /* Info.plist */,
+				5A5CBB552B1A30A900971E05 /* HackU2023App.swift */,
+				5A5CBB7A2B1A366300971E05 /* View */,
+				5A5CBB7B2B1A36D800971E05 /* Model */,
+				5AAC08502BB842EB00C345E8 /* FullconnectionLayer.swift */,
+				5AC6A3492B1E820D006EDF36 /* ScreenShotManager.swift */,
+				5AC6A3432B1E2EF5006EDF36 /* CheckUserData.swift */,
+				5ABB02C22B23992B00487284 /* VideoController.swift */,
+				5A5CBB862B1A6A0F00971E05 /* PickImage.swift */,
+				5AC6A33E2B1DEDCE006EDF36 /* LocationManager.swift */,
+				5A5CBB6F2B1A32AF00971E05 /* ToCVPixelBuffer.swift */,
+				5A5CBB5E2B1A30AA00971E05 /* Persistence.swift */,
+				5A5CBB7C2B1A62E100971E05 /* EditPhotosView.swift */,
+				5A5CBB602B1A30AA00971E05 /* HackU2023.xcdatamodeld */,
+				5A5CBB592B1A30AA00971E05 /* Assets.xcassets */,
+				5ABB02C42B23A40E00487284 /* movies */,
+				5AC485782BEA84BE00CD65B2 /* spring_sunny_Man.mlpackage */,
+				5A9A59112BFDDDBF00241A0D /* Enocoder.mlpackage */,
+				5A5CBB712B1A32B000971E05 /* tops.png */,
+				5A5CBB5B2B1A30AA00971E05 /* Preview Content */,
+			);
+			path = HackU2023;
+			sourceTree = "<group>";
+		};
+		5A5CBB5B2B1A30AA00971E05 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5A5CBB5C2B1A30AA00971E05 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5A5CBB7A2B1A366300971E05 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5A5CBB572B1A30A900971E05 /* StartView.swift */,
+				5AFE49F02CC9211500AC4C93 /* TutorialView.swift */,
+				5AC6A3412B1E11D5006EDF36 /* SetupView.swift */,
+				5A5CBB7E2B1A659E00971E05 /* MainView.swift */,
+				5A5CBB802B1A672400971E05 /* HomeView.swift */,
+				5AC6A3552B21CA67006EDF36 /* SelectFunctionView.swift */,
+				5A5CBB842B1A69B400971E05 /* ImageScoreView.swift */,
+				5AC6A34B2B20B1EC006EDF36 /* PickOneView.swift */,
+				5A5CBB682B1A327400971E05 /* LabelPredictionView.swift */,
+				5AC6A3572B21CBBD006EDF36 /* LabelsPredictionView.swift */,
+				5ABB02C62B2428C600487284 /* OnetapRecommendView.swift */,
+				5A5CBB6E2B1A32AF00971E05 /* RetrainingView.swift */,
+				5A5CBB6B2B1A32AE00971E05 /* AlbamView.swift */,
+				5A5CBB822B1A679100971E05 /* SettingView.swift */,
+				5A5E4BDB2BFB2EE600EF47F7 /* AdMobBannerView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5A5CBB7B2B1A36D800971E05 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5ABB02C82B2473FB00487284 /* FashionTips.swift */,
+				5A972D2D2BCCE08800B52570 /* FullConnectWeightsBiases.swift */,
+				5A78B66C2B1BC0FA004EC2AE /* WeatherAPI.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B9306E700DF2AFC76B6758EF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DCE7466A86314C7DFD1F1BB6 /* Pods-HackU2023.debug.xcconfig */,
+				1F14F438D12B0A2F09B5B5FD /* Pods-HackU2023.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D2C370614CA367DB6EB08D31 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2511A955E043350A767C016A /* Pods_HackU2023.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5A5CBB512B1A30A900971E05 /* HackU2023 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A5CBB652B1A30AA00971E05 /* Build configuration list for PBXNativeTarget "HackU2023" */;
+			buildPhases = (
+				281511BF40EF2F8F0150C680 /* [CP] Check Pods Manifest.lock */,
+				5A5CBB4E2B1A30A900971E05 /* Sources */,
+				5A5CBB4F2B1A30A900971E05 /* Frameworks */,
+				5A5CBB502B1A30A900971E05 /* Resources */,
+				0232A237E7A7ED4726D9759A /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HackU2023;
+			packageProductDependencies = (
+				5A4815C42C5259EF005190C2 /* SwiftyUpdateKit */,
+				5A4815C72C5273C7005190C2 /* GoogleMobileAds */,
+			);
+			productName = HackU2023;
+			productReference = 5A5CBB522B1A30A900971E05 /* HackU2023.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5A5CBB4A2B1A30A900971E05 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					5A5CBB512B1A30A900971E05 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 5A5CBB4D2B1A30A900971E05 /* Build configuration list for PBXProject "HackU2023" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5A5CBB492B1A30A900971E05;
+			packageReferences = (
+				5A4815C32C5259EF005190C2 /* XCRemoteSwiftPackageReference "SwiftyUpdateKit" */,
+				5A4815C62C5273C7005190C2 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+			);
+			productRefGroup = 5A5CBB532B1A30A900971E05 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5A5CBB512B1A30A900971E05 /* HackU2023 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5A5CBB502B1A30A900971E05 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5ABB02C52B23A40E00487284 /* movies in Resources */,
+				5A5CBB5D2B1A30AA00971E05 /* Preview Assets.xcassets in Resources */,
+				5A5CBB5A2B1A30AA00971E05 /* Assets.xcassets in Resources */,
+				5A5CBB792B1A32B000971E05 /* tops.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0232A237E7A7ED4726D9759A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HackU2023/Pods-HackU2023-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HackU2023/Pods-HackU2023-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HackU2023/Pods-HackU2023-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		281511BF40EF2F8F0150C680 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HackU2023-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5A5CBB4E2B1A30A900971E05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5ABB02C92B2473FC00487284 /* FashionTips.swift in Sources */,
+				5ABB02C32B23992B00487284 /* VideoController.swift in Sources */,
+				5A5CBB5F2B1A30AA00971E05 /* Persistence.swift in Sources */,
+				5A5E4BDC2BFB2EE600EF47F7 /* AdMobBannerView.swift in Sources */,
+				5A5CBB732B1A32B000971E05 /* AlbamView.swift in Sources */,
+				5A5CBB812B1A672400971E05 /* HomeView.swift in Sources */,
+				5A5CBB832B1A679100971E05 /* SettingView.swift in Sources */,
+				5A5CBB872B1A6A0F00971E05 /* PickImage.swift in Sources */,
+				5AC6A3442B1E2EF5006EDF36 /* CheckUserData.swift in Sources */,
+				5AC6A3562B21CA68006EDF36 /* SelectFunctionView.swift in Sources */,
+				5A5CBB692B1A327400971E05 /* LabelPredictionView.swift in Sources */,
+				5A972D2E2BCCE08800B52570 /* FullConnectWeightsBiases.swift in Sources */,
+				5A5CBB852B1A69B400971E05 /* ImageScoreView.swift in Sources */,
+				5AC485792BEA84BE00CD65B2 /* spring_sunny_Man.mlpackage in Sources */,
+				5ABB02C72B2428C600487284 /* OnetapRecommendView.swift in Sources */,
+				5AFE49F12CC9211500AC4C93 /* TutorialView.swift in Sources */,
+				5AC6A34A2B1E820D006EDF36 /* ScreenShotManager.swift in Sources */,
+				5A5CBB622B1A30AA00971E05 /* HackU2023.xcdatamodeld in Sources */,
+				5AAC08512BB842EB00C345E8 /* FullconnectionLayer.swift in Sources */,
+				5A9A59122BFDDDBF00241A0D /* Enocoder.mlpackage in Sources */,
+				5AC6A33F2B1DEDCE006EDF36 /* LocationManager.swift in Sources */,
+				5A5CBB7D2B1A62E100971E05 /* EditPhotosView.swift in Sources */,
+				5A5CBB7F2B1A659E00971E05 /* MainView.swift in Sources */,
+				5AC6A3422B1E11D6006EDF36 /* SetupView.swift in Sources */,
+				5A5CBB762B1A32B000971E05 /* RetrainingView.swift in Sources */,
+				5A5CBB582B1A30A900971E05 /* StartView.swift in Sources */,
+				5A78B66D2B1BC0FA004EC2AE /* WeatherAPI.swift in Sources */,
+				5AC6A34C2B20B1EC006EDF36 /* PickOneView.swift in Sources */,
+				5AC6A3582B21CBBD006EDF36 /* LabelsPredictionView.swift in Sources */,
+				5A5CBB772B1A32B000971E05 /* ToCVPixelBuffer.swift in Sources */,
+				5A5CBB562B1A30A900971E05 /* HackU2023App.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5A5CBB632B1A30AA00971E05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				"INFOPLIST_KEY_UIUserInterfaceStyle[sdk=*]" = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5A5CBB642B1A30AA00971E05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				"INFOPLIST_KEY_UIUserInterfaceStyle[sdk=*]" = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5A5CBB662B1A30AA00971E05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCE7466A86314C7DFD1F1BB6 /* Pods-HackU2023.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 14;
+				DEVELOPMENT_ASSET_PATHS = "\"HackU2023/Preview Content\"";
+				DEVELOPMENT_TEAM = GGB524629C;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HackU2023/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = KikonAshI;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "このAppは服の画像を利用するために、写真へのアクセスを必要とします。";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "このAppは起動している間、天気、日時を取得するために常に位置情報を利用します。";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "このAppは服の画像を利用するために、写真へのアクセスを必要とします。";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arm64;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vivit.kikonAshI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		5A5CBB672B1A30AA00971E05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F14F438D12B0A2F09B5B5FD /* Pods-HackU2023.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 14;
+				DEVELOPMENT_ASSET_PATHS = "\"HackU2023/Preview Content\"";
+				DEVELOPMENT_TEAM = GGB524629C;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HackU2023/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = KikonAshI;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "このAppは服の画像を利用するために、写真へのアクセスを必要とします。";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "このAppは起動している間、天気、日時を取得するために常に位置情報を利用します。";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "このAppは服の画像を利用するために、写真へのアクセスを必要とします。";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arm64;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vivit.kikonAshI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5A5CBB4D2B1A30A900971E05 /* Build configuration list for PBXProject "HackU2023" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A5CBB632B1A30AA00971E05 /* Debug */,
+				5A5CBB642B1A30AA00971E05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5A5CBB652B1A30AA00971E05 /* Build configuration list for PBXNativeTarget "HackU2023" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A5CBB662B1A30AA00971E05 /* Debug */,
+				5A5CBB672B1A30AA00971E05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5A4815C32C5259EF005190C2 /* XCRemoteSwiftPackageReference "SwiftyUpdateKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/HituziANDO/SwiftyUpdateKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.0;
+			};
+		};
+		5A4815C62C5273C7005190C2 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5A4815C42C5259EF005190C2 /* SwiftyUpdateKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A4815C32C5259EF005190C2 /* XCRemoteSwiftPackageReference "SwiftyUpdateKit" */;
+			productName = SwiftyUpdateKit;
+		};
+		5A4815C72C5273C7005190C2 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A4815C62C5273C7005190C2 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		5A5CBB602B1A30AA00971E05 /* HackU2023.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5A5CBB612B1A30AA00971E05 /* HackU2023.xcdatamodel */,
+			);
+			currentVersion = 5A5CBB612B1A30AA00971E05 /* HackU2023.xcdatamodel */;
+			path = HackU2023.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 5A5CBB4A2B1A30A900971E05 /* Project object */;
+}

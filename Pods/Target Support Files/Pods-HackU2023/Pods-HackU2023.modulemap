@@ -1,0 +1,6 @@
+framework module Pods_HackU2023 {
+  umbrella header "Pods-HackU2023-umbrella.h"
+
+  export *
+  module * { export * }
+}
